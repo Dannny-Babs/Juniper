@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:juniper/features/onboarding/presentation/onboarding_screen.dart';
+import 'core/utils/router.dart';
 import 'core/utils/utils.dart';
+import 'features/onboarding/bloc/onboarding_bloc.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => OnboardingBloc(prefs: prefs)..add(OnboardingStarted()),
+        ),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -15,14 +28,18 @@ class MainApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       useInheritedMediaQuery: true,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: ThemeMode.system,
-        home: Scaffold(
-          body: OnboardingPage(),
-        ),
+      child: BlocBuilder<OnboardingBloc, OnboardingState>(
+        builder: (context, state) {
+          final router = AppRouter.createRouter(state.isCompleted);
+
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.system,
+            routerConfig: router,
+          );
+        },
       ),
     );
   }

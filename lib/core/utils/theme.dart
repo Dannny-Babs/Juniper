@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'constants.dart';
+import '../constants/constants.dart';
 import 'colors.dart';
 
 /// A utility class that defines the app's theme configuration.

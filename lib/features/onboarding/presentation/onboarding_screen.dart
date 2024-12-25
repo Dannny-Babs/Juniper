@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
+import '../bloc/onboarding_bloc.dart';
 import '../widgets/slider.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -12,11 +13,10 @@ class OnboardingPage extends StatefulWidget {
 
 class _OnboardingPageState extends State<OnboardingPage> {
   final PageController _pageController = PageController();
-  int _currentIndex = 0;
 
   final List<OnboardingSlide> slides = [
     OnboardingSlide(
-      title: "Find Your\n Dream Apartment",
+      title: "Find Your\nDream Apartment",
       description:
           "Your one-stop app for finding apartments, tracking investments, and managing properties effortlessly",
       image: "assets/images/onboarding-2.png",
@@ -36,77 +36,106 @@ class _OnboardingPageState extends State<OnboardingPage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    context.read<OnboardingBloc>().add(OnboardingStarted());
+  }
+
+  void _onPageChanged(int index) {
+    context.read<OnboardingBloc>().add(OnboardingPageChanged(index));
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(AppConstants.padding24),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildPagination(),
-                TextButton( 
-                  iconAlignment: IconAlignment.end,
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/login');
-                  },
-                  child: Row(
-                    children: [
-                      Text(
-                        'Skip',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: AppColors.neutral500.withAlpha(230),
-                          fontSize: 14.sp,
+    return BlocConsumer<OnboardingBloc, OnboardingState>(
+      listener: (context, state) {
+        if (state.isCompleted) {
+          Navigator.pushReplacementNamed(context, '/login');
+        }
+        if (state.error != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.error!)),
+          );
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          body: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(AppConstants.padding24),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildPagination(state.currentPage),
+                        TextButton(
+                          onPressed: () => context.read<OnboardingBloc>().add(OnboardingSkipped()),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Skip',
+                                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                  color: AppColors.neutral500.withAlpha(230),
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                              const SizedBox(width: 3),
+                              const Icon(
+                                Icons.arrow_forward_ios,
+                                color: AppColors.neutral500,
+                                size: 15,
+                              ),
+                            ],
+                          ),
                         ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Expanded(
+                      child: PageView.builder(
+                        controller: _pageController,
+                        itemCount: slides.length,
+                        onPageChanged: _onPageChanged,
+                        itemBuilder: (context, index) {
+                          return OnboardingSlideWidget(slide: slides[index]);
+                        },
                       ),
-                      const SizedBox(width: 3),
-                      const Icon(
-                        Icons.arrow_forward_ios,
-                        color: AppColors.neutral500,
-                        size: 15,
-                      ),
-                    ],
+                    ),
+                    const SizedBox(height: 20),
+                    _buildButtons(state),
+                    SizedBox(height: 15.sp),
+                  ],
+                ),
+              ),
+              if (state.isLoading)
+                Container(
+                  color: Colors.black26,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: slides.length,
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-                itemBuilder: (context, index) {
-                  return OnboardingSlideWidget(slide: slides[index]);
-                },
-              ),
-            ),
-            const SizedBox(height: 20),
-            _buildButtons(),
-            SizedBox(height: 15.sp),
-          ],
-        ),
-      ),
+            ],
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildPagination() {
+  Widget _buildPagination(int currentIndex) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         slides.length,
-        (index) => Container(
+        (index) => AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.symmetric(horizontal: 1.0),
-          width: _currentIndex == index ? 30.0 : 5.0,
+          width: currentIndex == index ? 30.0 : 5.0,
           height: 5.0,
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            color: _currentIndex == index ? AppColors.neutral500 : Colors.grey,
+            color: currentIndex == index ? AppColors.neutral500 : Colors.grey,
             borderRadius: BorderRadius.circular(16.0),
           ),
         ),
@@ -114,16 +143,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
   }
 
-  Widget _buildButtons() {
+  Widget _buildButtons(OnboardingState state) {
     return CustomButton(
       height: 48.sp,
-      text: _currentIndex == slides.length - 1 ? 'Get Started' : 'Continue',
+      text: state.currentPage == slides.length - 1 ? 'Get Started' : 'Continue',
       backgroundColor: AppColors.neutral500,
       textColor: AppColors.neutral100,
       size: ButtonSize.medium,
+      isLoading: state.isLoading,
       onPressed: () {
-        if (_currentIndex == slides.length - 1) {
-          Navigator.pushReplacementNamed(context, '/login');
+        if (state.currentPage == slides.length - 1) {
+          context.read<OnboardingBloc>().add(OnboardingCompleted());
+          print('Onboarding Completed');
         } else {
           _pageController.nextPage(
             duration: const Duration(milliseconds: 300),
@@ -132,5 +163,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
         }
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }
