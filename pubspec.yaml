@@ -35,3 +35,26 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/fonts/
+  
+  fonts:
+    - family: HelveticaNeue
+      fonts:
+        - asset: assets/fonts/HelveticaNeueUltraLight.otf
+          weight: 100
+        - asset: assets/fonts/HelveticaNeueThin.otf
+          weight: 200
+        - asset: assets/fonts/HelveticaNeueLight.otf
+          weight: 300
+        - asset: assets/fonts/HelveticaNeueRoman.otf
+          weight: 400
+        - asset: assets/fonts/HelveticaNeueMedium.otf
+          weight: 500
+        - asset: assets/fonts/HelveticaNeueBold.otf
+          weight: 700
+        - asset: assets/fonts/HelveticaNeueHeavy.otf
+          weight: 800
+        - asset: assets/fonts/HelveticaNeueBlack.otf
+          weight: 900
