@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:juniper/core/utils/utils.dart';
 
 enum ButtonVariant {
   primary,
@@ -32,7 +33,7 @@ class CustomButton extends StatefulWidget {
   final BorderRadius? borderRadius;
   final Color? textColor;
   final Color? backgroundColor;
-  final TextStyle? textStyle;
+
 
   const CustomButton({
     super.key,
@@ -52,7 +53,7 @@ class CustomButton extends StatefulWidget {
     this.borderRadius,
     this.textColor,
     this.backgroundColor,
-    this.textStyle,
+
   });
 
   @override
@@ -125,27 +126,23 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
   Size _getButtonSize() {
     switch (widget.size) {
       case ButtonSize.small:
-        return Size(widget.width ?? double.infinity, widget.height ?? 40);
+        return Size(widget.width ?? double.infinity, widget.height ?? 40.sp);
       case ButtonSize.medium:
-        return Size(widget.width ?? double.infinity, widget.height ?? 52);
+        return Size(widget.width ?? double.infinity, widget.height ?? 52.sp);
       case ButtonSize.large:
-        return Size(widget.width ?? double.infinity, widget.height ?? 64);
+        return Size(widget.width ?? double.infinity, widget.height ?? 64.sp);
     }
   }
 
   TextStyle _getTextStyle(BuildContext context) {
-    if (widget.textStyle != null) {
-      return widget.textStyle!;
-    }
 
-    final theme = Theme.of(context);
-    final baseStyle = theme.textTheme.bodyMedium!;
-    
+    final baseStyle = Theme.of(context).textTheme.bodyMedium!;
+
     switch (widget.size) {
       case ButtonSize.small:
         return baseStyle.copyWith(fontSize: 14);
       case ButtonSize.medium:
-        return baseStyle.copyWith(fontSize: 16, fontWeight: FontWeight.normal, letterSpacing: -0.3);
+        return baseStyle.copyWith(fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: -0.1,);
       case ButtonSize.large:
         return baseStyle.copyWith(fontSize: 18);
     }
@@ -286,7 +283,6 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
                           widget.text,
                           style: _getTextStyle(context).copyWith(
                             color: _getTextColor(context),
-                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       if (widget.suffixIcon != null) ...[

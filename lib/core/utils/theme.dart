@@ -99,7 +99,7 @@ class AppTheme {
       ),
       bodySmall: TextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.w500, // Light
+        fontWeight: FontWeight.w400, // Light
         color: AppColors.gray300,
         letterSpacing: -0.24,
       ),
