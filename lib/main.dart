@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:juniper/features/onboarding/presentation/onboarding_screen.dart';
 import 'core/utils/utils.dart';
 
 void main() {
@@ -20,9 +21,7 @@ class MainApp extends StatelessWidget {
         darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.system,
         home: Scaffold(
-          body: Center(
-            child: Text('Hello World!'),
-          ),
+          body: OnboardingPage(),
         ),
       ),
     );
