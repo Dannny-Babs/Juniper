@@ -6,7 +6,7 @@ import 'features/onboarding/bloc/onboarding_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
-
+  
   runApp(
     MultiBlocProvider(
       providers: [
@@ -28,10 +28,9 @@ class MainApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       useInheritedMediaQuery: true,
-      child: BlocBuilder<OnboardingBloc, OnboardingState>(
+      builder: (context, child) => BlocBuilder<OnboardingBloc, OnboardingState>(
         builder: (context, state) {
           final router = AppRouter.createRouter(state.isCompleted);
-
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,

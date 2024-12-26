@@ -241,7 +241,7 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
                 height: buttonSize.height,
                 decoration: BoxDecoration(
                   color: _getBackgroundColor(context),
-                  borderRadius: widget.borderRadius ?? BorderRadius.circular(48),
+                  borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
                   border: _getBorder(context),
                   boxShadow: widget.isDisabled || widget.isLoading
                       ? []
