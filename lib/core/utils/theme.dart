@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
 import 'colors.dart';
 
 class AppTheme {
@@ -70,16 +69,17 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     primaryColor: AppColors.neutral500,
     highlightColor: AppColors.primary500,
+    primaryColorDark: AppColors.neutral100,
+    primaryColorLight: AppColors.neutral500,
+    primarySwatch: Colors.blueGrey,
     colorScheme: ColorScheme.light(
       primary: AppColors.neutral500,
       secondary: AppColors.primary500,
       surface: AppColors.neutral100,
-      background: AppColors.neutral100,
       error: AppColors.error500,
       onPrimary: AppColors.neutral100,
       onSecondary: AppColors.neutral100,
       onSurface: AppColors.neutral900,
-      onBackground: AppColors.neutral900,
       onError: AppColors.neutral100,
       brightness: Brightness.light,
     ),
@@ -152,14 +152,12 @@ class AppTheme {
       colorScheme: ColorScheme(
         primary: AppColors.neutral500,
         onPrimary: Colors.white,
-        secondary: AppColors.primary500,
+        secondary: AppColors.gray500,
         onSecondary: AppColors.neutral100,
         surface: AppColors.gray900,
         onSurface: AppColors.neutral100,
         error: AppColors.error500,
         onError: Colors.white,
-        background: AppColors.neutral500,
-        onBackground: AppColors.neutral100,
         brightness: Brightness.light,
       ),
     ),
@@ -251,14 +249,12 @@ class AppTheme {
       colorScheme: ColorScheme(
         primary: AppColors.neutral500,
         onPrimary: Colors.white,
-        secondary: AppColors.primary500,
+        secondary: AppColors.gray500,
         onSecondary: AppColors.neutral100,
         surface: AppColors.gray900,
         onSurface: AppColors.neutral100,
         error: AppColors.error500,
         onError: Colors.white,
-        background: AppColors.neutral500,
-        onBackground: AppColors.neutral100,
         brightness: Brightness.dark,
       ),
     ),
