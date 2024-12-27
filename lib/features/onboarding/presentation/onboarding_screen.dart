@@ -50,7 +50,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return BlocConsumer<OnboardingBloc, OnboardingState>(
       listener: (context, state) {
         if (state.isCompleted) {
-          Navigator.pushReplacementNamed(context, '/login');
+          GoRouter.of(context).go('/login');
         }
         if (state.error != null) {
           ScaffoldMessenger.of(context).showSnackBar(
