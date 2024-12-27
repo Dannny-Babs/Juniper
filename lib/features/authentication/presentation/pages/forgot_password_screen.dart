@@ -15,18 +15,10 @@ class ForgotPasswordPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        leading: IconButton(
-          style: ButtonStyle(
-            backgroundColor: WidgetStateProperty.all(AppColors.gray300),
-            padding: WidgetStateProperty.all(EdgeInsets.all(8),          
-            ),
-          ),
-          icon: Icon(EneftyIcons.arrow_left_3_outline),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        leading: PlatformBackButton(
+          onPressed: () => Navigator.of(context).pop(),
+          color: AppColors.neutral500,
         ),
-        
       ),
       body: Padding(
         padding: EdgeInsets.all(24.sp),
@@ -34,7 +26,6 @@ class ForgotPasswordPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           
             SizedBox(height: 20.sp),
             Text(
               'Forgot Password',

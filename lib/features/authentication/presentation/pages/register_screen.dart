@@ -16,11 +16,9 @@ class RegisterPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        leading: IconButton(icon: 
-          Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          }        
+        leading: PlatformBackButton(
+          onPressed: () => Navigator.of(context).pop(),
+          color: AppColors.neutral500,
         ),
       ),
       body: Padding(
@@ -29,7 +27,6 @@ class RegisterPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           
             SizedBox(height: 20.sp),
             Text(
               'Create an account',
@@ -66,9 +63,9 @@ class RegisterPage extends StatelessWidget {
               size: ButtonSize.medium,
               isLoading: false, // You may want to bind this to a state variable
               onPressed: () {
-              //  if (formKey.currentState!.validate()) {
-                  // Do something
-                  context.push('/otp');
+                //  if (formKey.currentState!.validate()) {
+                // Do something
+                context.push('/otp');
                 //}
               },
             ),

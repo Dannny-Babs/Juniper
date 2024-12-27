@@ -12,14 +12,10 @@ class NotFoundPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        leading: IconButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(AppColors.gray300),
-            padding: MaterialStateProperty.all(EdgeInsets.all(8)),
-          ),
-          icon: Icon(EneftyIcons.arrow_left_3_outline),
-          onPressed: () => Navigator.pop(context),
-        ),
+        leading: PlatformBackButton(
+    onPressed: () => Navigator.of(context).pop(),
+    color: AppColors.neutral500,
+  ),
       ),
       body: Padding(
         padding: EdgeInsets.all(24.sp),

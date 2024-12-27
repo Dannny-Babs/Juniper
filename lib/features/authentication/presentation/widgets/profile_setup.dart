@@ -37,8 +37,8 @@ class PersonalInfoStep extends StatelessWidget {
         Text(
           'Date of Birth',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AppColors.neutral500,
-          ),
+                color: AppColors.neutral300,
+              ),
         ),
         SizedBox(height: 8.sp),
         InkWell(
@@ -68,17 +68,52 @@ class PersonalInfoStep extends StatelessWidget {
                       ? DateFormat('MM/dd/yyyy').format(dateOfBirth!)
                       : 'MM/DD/YYYY',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: dateOfBirth != null
-                        ? AppColors.neutral500
-                        : AppColors.gray500,
-                  ),
+                        color: dateOfBirth != null
+                            ? AppColors.neutral500
+                            : AppColors.gray500,
+                      ),
                 ),
                 Icon(EneftyIcons.calendar_2_outline, color: AppColors.gray500),
               ],
             ),
           ),
         ),
+        SizedBox(height: 16.sp),
+        Text(
+          'Who are you?',
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(color: AppColors.neutral300, letterSpacing: 0),
+        ),
+        SizedBox(height: 6.sp),
+        Row(
+          children: [
+            _buildGenderButton(context),
+            SizedBox(width: 16.sp),
+            _buildGenderButton(context),
+          ],
+        ),
       ],
+    );
+  }
+
+  Widget _buildGenderButton(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.all(16.sp),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        child: Center(
+          child: Text(
+            'Student', // You might want to make this dynamic
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ),
+      ),
     );
   }
 
@@ -94,17 +129,17 @@ class PersonalInfoStep extends StatelessWidget {
         Text(
           label,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AppColors.neutral500,
-          ),
+                color: AppColors.neutral300,
+              ),
         ),
-        SizedBox(height: 8.sp),
+        SizedBox(height: 6.sp),
         TextFormField(
           controller: controller,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: AppColors.gray500,
-            ),
+                  color: AppColors.gray500,
+                ),
             filled: true,
             fillColor: Colors.white,
             focusColor: AppColors.neutral500,

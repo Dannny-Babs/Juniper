@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:juniper/features/authentication/presentation/pages/profile_setup_screen.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/button.dart';
 
@@ -85,8 +83,10 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text('Verify OTP'),
-        centerTitle: true,
+        leading: PlatformBackButton(
+          onPressed: () => Navigator.of(context).pop(),
+          color: AppColors.neutral500,
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(24.sp),
@@ -188,6 +188,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
               onPressed: _isOtpComplete()
                   ? () async {
                       String otp = _controllers.map((c) => c.text).join();
+                      print('OTP: $otp');
 
                       
 

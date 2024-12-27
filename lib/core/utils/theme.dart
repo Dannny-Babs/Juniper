@@ -35,12 +35,13 @@ class AppTheme {
     hintStyle: _baseTextStyle.copyWith(
       color: AppColors.gray700,
     ),
+  
     filled: true,
     border: _commonInputBorder,
     enabledBorder: _commonInputBorder,
     focusedBorder: _commonInputBorder.copyWith(
       borderSide: BorderSide(
-        color: AppColors.neutral500,
+        color: AppColors.neutral300,
         width: 1.5,
       ),
     ),

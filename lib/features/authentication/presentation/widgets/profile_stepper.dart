@@ -58,11 +58,12 @@ class ProfileStepper extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        leading: onBack != null ? IconButton(
-          
-          icon: Icon(Icons.arrow_left),
-          onPressed: onBack,
-        ) : null,
+        leading: onBack != null
+            ? PlatformBackButton(
+                onPressed: () => onBack?.call(),
+                color: AppColors.neutral500,
+              )
+            : null,
       ),
       body: Column(
         children: [
@@ -73,8 +74,8 @@ class ProfileStepper extends StatelessWidget {
               children: [
                 SizedBox(height: 20.sp),
                 LinearProgressIndicator(
-                  value: (ProfileSetupStage.values.indexOf(currentStage) + 1) / 
-                         ProfileSetupStage.values.length,
+                  value: (ProfileSetupStage.values.indexOf(currentStage) + 1) /
+                      ProfileSetupStage.values.length,
                   borderRadius: BorderRadius.circular(8.sp),
                   backgroundColor: AppColors.gray300,
                   valueColor: AlwaysStoppedAnimation<Color>(
@@ -85,32 +86,32 @@ class ProfileStepper extends StatelessWidget {
                 Text(
                   'Step ${ProfileSetupStage.values.indexOf(currentStage) + 1} of ${ProfileSetupStage.values.length}',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.gray500,
-                    fontSize: 14.sp,
-                  ),
+                        color: AppColors.gray500,
+                        fontSize: 14.sp,
+                      ),
                 ),
                 SizedBox(height: 12.sp),
                 Text(
                   currentStage.title,
                   style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                    fontFamily: 'HelveticaNeue',
-                    color: AppColors.neutral500,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 24.5.sp,
-                    letterSpacing: -0.5,
-                  ),
+                        fontFamily: 'HelveticaNeue',
+                        color: AppColors.neutral500,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24.5.sp,
+                        letterSpacing: -0.5,
+                      ),
                 ),
                 SizedBox(height: 6.sp),
                 Text(
                   currentStage.subtitle,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontFamily: 'HelveticaNeue',
-                    color: AppColors.gray500,
-                    fontWeight: FontWeight.normal,
-                    height: 1.3,
-                    fontSize: 14.sp,
-                    letterSpacing: -0.1,
-                  ),
+                        fontFamily: 'HelveticaNeue',
+                        color: AppColors.gray500,
+                        fontWeight: FontWeight.normal,
+                        height: 1.3,
+                        fontSize: 14.sp,
+                        letterSpacing: -0.1,
+                      ),
                 ),
                 SizedBox(height: 32.sp),
               ],

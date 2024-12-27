@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'core/utils/router.dart';
 import 'core/utils/utils.dart';
 import 'features/onboarding/bloc/onboarding_bloc.dart';
 
