@@ -1,0 +1,139 @@
+import 'package:flutter/material.dart';
+import '../../../../core/utils/utils.dart';
+import '../../../../core/widgets/button.dart';
+
+enum ProfileSetupStage {
+  personal,
+  preferences,
+  lifestyle,
+  finalTouches;
+
+  String get title {
+    switch (this) {
+      case ProfileSetupStage.personal:
+        return "Let's start with the basics";
+      case ProfileSetupStage.preferences:
+        return "What are you looking for?";
+      case ProfileSetupStage.lifestyle:
+        return "Let's personalize your experience";
+      case ProfileSetupStage.finalTouches:
+        return "You're almost done!";
+    }
+  }
+
+  String get subtitle {
+    switch (this) {
+      case ProfileSetupStage.personal:
+        return "Tell us about yourself so we can create your profile";
+      case ProfileSetupStage.preferences:
+        return "We'll use this to find the best matches for you";
+      case ProfileSetupStage.lifestyle:
+        return "What matters most to you in a home or investment?";
+      case ProfileSetupStage.finalTouches:
+        return "Add a finishing touch to your profile";
+    }
+  }
+}
+
+class ProfileStepper extends StatelessWidget {
+  final ProfileSetupStage currentStage;
+  final Widget child;
+  final VoidCallback onNext;
+  final VoidCallback? onBack;
+  final bool isLastStep;
+
+  const ProfileStepper({
+    Key? key,
+    required this.currentStage,
+    required this.child,
+    required this.onNext,
+    this.onBack,
+    this.isLastStep = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        leading: onBack != null ? IconButton(
+          
+          icon: Icon(Icons.arrow_left),
+          onPressed: onBack,
+        ) : null,
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.sp),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20.sp),
+                LinearProgressIndicator(
+                  value: (ProfileSetupStage.values.indexOf(currentStage) + 1) / 
+                         ProfileSetupStage.values.length,
+                  borderRadius: BorderRadius.circular(8.sp),
+                  backgroundColor: AppColors.gray300,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    AppColors.primary700,
+                  ),
+                ),
+                SizedBox(height: 24.sp),
+                Text(
+                  'Step ${ProfileSetupStage.values.indexOf(currentStage) + 1} of ${ProfileSetupStage.values.length}',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColors.gray500,
+                    fontSize: 14.sp,
+                  ),
+                ),
+                SizedBox(height: 12.sp),
+                Text(
+                  currentStage.title,
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    fontFamily: 'HelveticaNeue',
+                    color: AppColors.neutral500,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 24.5.sp,
+                    letterSpacing: -0.5,
+                  ),
+                ),
+                SizedBox(height: 6.sp),
+                Text(
+                  currentStage.subtitle,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontFamily: 'HelveticaNeue',
+                    color: AppColors.gray500,
+                    fontWeight: FontWeight.normal,
+                    height: 1.3,
+                    fontSize: 14.sp,
+                    letterSpacing: -0.1,
+                  ),
+                ),
+                SizedBox(height: 32.sp),
+              ],
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 24.sp),
+              child: child,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(24.sp),
+            child: CustomButton(
+              height: 48.sp,
+              width: double.infinity,
+              onPressed: onNext,
+              text: isLastStep ? 'Complete Profile' : 'Continue',
+              size: ButtonSize.medium,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
