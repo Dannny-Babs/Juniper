@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:juniper/features/authentication/presentation/widgets/signup_button.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/button.dart';
 import '../widgets/login_form.dart';
+import '../widgets/socialsignin_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -15,6 +15,7 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        toolbarHeight: 0,
       ),
       body: Padding(
         padding: EdgeInsets.all(24.sp),
@@ -22,7 +23,16 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 24.sp),
+            Center(
+              child: Image.asset(
+                'assets/images/try-auth.png',
+                width: double.infinity,
+                height: 170.sp,
+              
+                fit: BoxFit.contain,
+              ),
+            ),
+            SizedBox(height: 16.sp),
             Text(
               'Login',
               textAlign: TextAlign.start,
@@ -47,18 +57,19 @@ class LoginPage extends StatelessWidget {
                     letterSpacing: -0.1,
                   ),
             ),
-            SizedBox(height: 48.sp),
+            SizedBox(height: 32.sp),
             LoginForm(formKey: formKey),
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
                 onPressed: () {
                   // Do something
+                  context.push('/forgot-password');
                 },
                 child: Text(
                   'Forgot password?',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.primary500,
+                        color: AppColors.neutral500,
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w500,
                         letterSpacing: -0.1,
@@ -80,10 +91,10 @@ class LoginPage extends StatelessWidget {
                 }
               },
             ),
-            SizedBox(height: 24.sp),
+            SizedBox(height: 20.sp),
             _buildDivider(context),
-            SizedBox(height: 24.sp),
-            SignUpButtons(),
+            SizedBox(height: 20.sp),
+            SocialSignInButton(),
             SizedBox(height: 16.sp),
             // Add a tex row or inkwell to navigate to the sign up page
             Row(
@@ -94,20 +105,24 @@ class LoginPage extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: const Color.fromARGB(163, 80, 80, 101),
                         fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.normal,
+                        letterSpacing: 0,
                       ),
                 ),
                 InkWell(
                   onTap: () {
                     // Add navigation logic here
                     // Navigator.pushNamed(context, '/signup');
+                    context.push('/register');
                   },
+                  focusColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   borderRadius: BorderRadius.circular(4),
                   child: Padding(
                     padding:
                         EdgeInsets.symmetric(vertical: 4.sp, horizontal: 2.sp),
                     child: Text(
-                      "Let's get you started",
+                      "Create an account",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: AppColors.neutral500,
                             fontSize: 14.sp,
