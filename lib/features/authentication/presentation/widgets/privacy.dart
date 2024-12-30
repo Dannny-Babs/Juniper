@@ -8,10 +8,10 @@ class TermsAndPrivacyText extends StatelessWidget {
   final VoidCallback? onPrivacyTap;
   
   const TermsAndPrivacyText({
-    Key? key, 
+    super.key, 
     this.onTermsTap,
     this.onPrivacyTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

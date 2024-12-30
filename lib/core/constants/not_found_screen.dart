@@ -3,7 +3,7 @@ import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/button.dart';
 
 class NotFoundPage extends StatelessWidget {
-  const NotFoundPage({Key? key}) : super(key: key);
+  const NotFoundPage({super.key});
 
   @override
   Widget build(BuildContext context) {

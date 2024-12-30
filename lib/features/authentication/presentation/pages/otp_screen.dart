@@ -8,9 +8,9 @@ class EmailVerificationPage extends StatefulWidget {
   final String email;
 
   const EmailVerificationPage({
-    Key? key,
+    super.key,
     required this.email,
-  }) : super(key: key);
+  });
 
   @override
   State<EmailVerificationPage> createState() => _EmailVerificationPageState();
@@ -188,10 +188,6 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
               onPressed: _isOtpComplete()
                   ? () async {
                       String otp = _controllers.map((c) => c.text).join();
-                      print('OTP: $otp');
-
-                      
-
                       // Navigate to the next screen
                       context.push('/profile-setup');
                     }

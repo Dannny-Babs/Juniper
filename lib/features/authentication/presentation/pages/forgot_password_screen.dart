@@ -3,7 +3,7 @@ import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/button.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({Key? key});
+  const ForgotPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
