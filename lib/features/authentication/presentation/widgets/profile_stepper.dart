@@ -43,13 +43,13 @@ class ProfileStepper extends StatelessWidget {
   final bool isLastStep;
 
   const ProfileStepper({
-    Key? key,
+    super.key,
     required this.currentStage,
     required this.child,
     required this.onNext,
     this.onBack,
     this.isLastStep = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
