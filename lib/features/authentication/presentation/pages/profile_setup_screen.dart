@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/final_setup.dart';
-import '../widgets/third_setup.dart';
-import '../widgets/second_setup.dart';
-import '../widgets/first_setup.dart';
+import 'final_setup.dart';
+import 'third_setup.dart';
+import 'second_setup.dart';
+import 'first_setup.dart';
 import '../widgets/profile_stepper.dart';
 
 class ProfileSetupPage extends StatefulWidget {
@@ -95,9 +95,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
             _moveInTimeline = timeline;
           }),
         );
-      default:
-        return const SizedBox();
-    }
+      }
   }
 
   void _handleNext() {

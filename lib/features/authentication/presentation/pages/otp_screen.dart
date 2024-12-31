@@ -132,8 +132,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
                     maxLength: 1,
-                    
-                    decoration: InputDecoration(                      
+                    decoration: InputDecoration(
                       counterText: '',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -141,25 +140,23 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                       filled: true,
                       fillColor: Colors.white,
                       hintText: '0',
-                      hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.gray500,
-                      ),
-                      errorStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.error500
-                      ),
-
-
+                      hintStyle:
+                          Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: AppColors.gray500,
+                              ),
+                      errorStyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.copyWith(color: AppColors.error500),
                     ),
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
                     ],
-
                     onChanged: (value) => _onOtpDigitChanged(index, value),
                   ),
                 ),
               ),
             ),
-
             const SizedBox(height: 16),
             Center(
               child: TextButton(
@@ -185,13 +182,14 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
             CustomButton(
               height: 48.sp,
               width: double.infinity,
+              backgroundColor: AppColors.neutral500,
               onPressed: _isOtpComplete()
                   ? () async {
-                      String otp = _controllers.map((c) => c.text).join();
+                     // String otp = _controllers.map((c) => c.text).join();
                       // Navigate to the next screen
                       context.push('/profile-setup');
                     }
-                    : null,
+                  : null,
               text: 'Verify',
               size: ButtonSize.medium,
               isDisabled: !_isOtpComplete(),

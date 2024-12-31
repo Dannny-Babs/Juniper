@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/utils.dart';
+import '../widgets/section_title.dart';
 
 class PersonalInfoStep extends StatelessWidget {
   final TextEditingController firstNameController;
@@ -34,11 +35,8 @@ class PersonalInfoStep extends StatelessWidget {
           lastNameController,
         ),
         SizedBox(height: 16.sp),
-        Text(
-          'Date of Birth',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.neutral300,
-              ),
+        SectionTitle(
+          title: 'Date of Birth',
         ),
         SizedBox(height: 8.sp),
         InkWell(
@@ -79,12 +77,8 @@ class PersonalInfoStep extends StatelessWidget {
           ),
         ),
         SizedBox(height: 16.sp),
-        Text(
-          'Who are you?',
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: AppColors.neutral300, letterSpacing: 0),
+        SectionTitle(
+          title: 'Who are you?',
         ),
         SizedBox(height: 6.sp),
         Row(

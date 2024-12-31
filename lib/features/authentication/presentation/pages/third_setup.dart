@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/utils.dart';
+import '../widgets/section_title.dart';
 
 class LifestyleStep extends StatefulWidget {
   final List<String> selectedAmenities;
@@ -64,7 +65,7 @@ class _LifestyleStepState extends State<LifestyleStep> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle(context, 'Amenities Preferences'),
+     SectionTitle(title:'Amenities Preferences'),
         SizedBox(height: 6.sp),
         _buildMultiSelector(
           items: _amenities,
@@ -72,7 +73,7 @@ class _LifestyleStepState extends State<LifestyleStep> {
           onChanged: widget.onAmenitiesChanged,
         ),
         SizedBox(height: 24.sp),
-        _buildSectionTitle(context, 'Preferred Community Features'),
+       SectionTitle(title:'Preferred Community Features'),
         SizedBox(height: 6.sp),
         _buildMultiSelector(
           items: _communityFeatures,
@@ -80,7 +81,7 @@ class _LifestyleStepState extends State<LifestyleStep> {
           onChanged: widget.onCommunityFeaturesChanged,
         ),
         SizedBox(height: 24.sp),
-        _buildSectionTitle(context, 'Furnishing Preference'),
+      SectionTitle(title: 'Furnishing Preference'),
         SizedBox(height: 6.sp),
         _buildFurnishingSelector(),
         SizedBox(height: 32.sp),
@@ -88,15 +89,6 @@ class _LifestyleStepState extends State<LifestyleStep> {
     );
   }
 
-  Widget _buildSectionTitle(BuildContext context, String title) {
-    return Text(
-      title,
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AppColors.neutral300,
-            fontWeight: FontWeight.w500,
-          ),
-    );
-  }
 
   Widget _buildMultiSelector({
     required List<String> items,

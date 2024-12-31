@@ -86,6 +86,8 @@ class ForgotPasswordPage extends StatelessWidget {
                   CustomButton(
                     height: 48.sp,
                     width: double.infinity,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    textColor: Theme.of(context).scaffoldBackgroundColor,
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         // Do something

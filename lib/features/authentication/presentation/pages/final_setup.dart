@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:juniper/features/authentication/presentation/widgets/section_title.dart';
 import '../../../../core/utils/utils.dart';
 
 class FinalTouchesStep extends StatelessWidget {
@@ -24,31 +25,21 @@ class FinalTouchesStep extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle(context, 'Profile Picture (Optional)'),
+        SectionTitle(title: 'Profile Picture (Optional)'),
         SizedBox(height: 6.sp),
         _buildProfilePictureSelector(context),
         SizedBox(height: 24.sp),
-        
-        _buildSectionTitle(context, 'Move-In Timeline'),
+        SectionTitle(title: 'Move-In Timeline'),
         SizedBox(height: 6.sp),
         _buildMoveInTimelineSelector(context),
         SizedBox(height: 24.sp),
-        
-        _buildSectionTitle(context, 'Additional Preferences (Optional)'),
+        SectionTitle(
+          title: 'Additional Preferences (Optional)',
+        ),
         SizedBox(height: 6.sp),
         _buildAdditionalPreferencesInput(context),
         SizedBox(height: 32.sp),
       ],
-    );
-  }
-
-  Widget _buildSectionTitle(BuildContext context, String title) {
-    return Text(
-      title,
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-        color: AppColors.neutral300,
-        fontWeight: FontWeight.w500,
-      ),
     );
   }
 
@@ -62,8 +53,8 @@ class FinalTouchesStep extends StatelessWidget {
               onProfilePictureChanged("path/to/selected/image.png");
             },
             child: Container(
-              width: 120.sp,
-              height: 120.sp,
+              width: 100.sp,
+              height: 100.sp,
               decoration: BoxDecoration(
                 color: Colors.grey[100],
                 shape: BoxShape.circle,
@@ -81,7 +72,7 @@ class FinalTouchesStep extends StatelessWidget {
                       ),
                     )
                   : Icon(
-                      Icons.camera_alt_outlined,
+                      EneftyIcons.camera_bold,
                       size: 32.sp,
                       color: AppColors.neutral500,
                     ),
@@ -94,9 +85,9 @@ class FinalTouchesStep extends StatelessWidget {
               child: Text(
                 'Remove',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.red[400],
-                  fontWeight: FontWeight.w500,
-                ),
+                      color: Colors.red[400],
+                      fontWeight: FontWeight.w500,
+                    ),
               ),
             ),
         ],
@@ -113,32 +104,42 @@ class FinalTouchesStep extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.neutral100,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey[300]!),
+        border: Border.all(color: AppColors.gray300),
       ),
-      child: Column(
-        children: timelineOptions.map((option) {
-          return Column(
-            children: [
-              RadioListTile<String>(
-                value: option,
-                groupValue: moveInTimeline,
-                onChanged: (value) => onMoveInTimelineChanged(value!),
-                title: Text(
-                  option,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.neutral500,
-                  ),
+      padding: EdgeInsets.symmetric(horizontal: 16.sp),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          value: moveInTimeline,
+          isExpanded: true,
+          hint: Text(
+            'Select move-in timeline',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.neutral500,
                 ),
-                activeColor: AppColors.primary500,
-                contentPadding: EdgeInsets.symmetric(horizontal: 16.sp),
+          ),
+          items: timelineOptions.map((String option) {
+            return DropdownMenuItem<String>(
+              value: option,
+              child: Text(
+                option,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: AppColors.neutral500,
+                    ),
               ),
-              if (option != timelineOptions.last)
-                Divider(height: 1, color: Colors.grey[300]),
-            ],
-          );
-        }).toList(),
+            );
+          }).toList(),
+          onChanged: (String? newValue) {
+            if (newValue != null) {
+              onMoveInTimelineChanged(newValue);
+            }
+          },
+          icon: Icon(
+            Icons.keyboard_arrow_down_rounded,
+            color: AppColors.neutral500,
+          ),
+        ),
       ),
     );
   }
@@ -150,8 +151,8 @@ class FinalTouchesStep extends StatelessWidget {
       decoration: InputDecoration(
         hintText: "Tell us if there's anything specific you're looking for",
         hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: AppColors.gray500,
-        ),
+              color: AppColors.gray500,
+            ),
         filled: true,
         fillColor: Colors.white,
         focusColor: AppColors.neutral500,
@@ -162,8 +163,8 @@ class FinalTouchesStep extends StatelessWidget {
         contentPadding: EdgeInsets.all(16.sp),
       ),
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-        color: AppColors.neutral500,
-      ),
+            color: AppColors.neutral500,
+          ),
       onChanged: onAdditionalPreferencesChanged,
     );
   }

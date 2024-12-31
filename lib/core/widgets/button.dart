@@ -2,19 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:juniper/core/utils/utils.dart';
 
-enum ButtonVariant {
-  primary,
-  secondary,
-  outline,
-  error,
-  success
-}
+enum ButtonVariant { primary, secondary, outline, error, success }
 
-enum ButtonSize {
-  small,
-  medium,
-  large
-}
+enum ButtonSize { small, medium, large }
 
 class CustomButton extends StatefulWidget {
   final String text;
@@ -34,7 +24,6 @@ class CustomButton extends StatefulWidget {
   final Color? textColor;
   final Color? backgroundColor;
 
-
   const CustomButton({
     super.key,
     required this.text,
@@ -53,14 +42,14 @@ class CustomButton extends StatefulWidget {
     this.borderRadius,
     this.textColor,
     this.backgroundColor,
-
   });
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
 }
 
-class _CustomButtonState extends State<CustomButton> with SingleTickerProviderStateMixin {
+class _CustomButtonState extends State<CustomButton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<double> _shadowAnimation;
@@ -135,14 +124,17 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
   }
 
   TextStyle _getTextStyle(BuildContext context) {
-
     final baseStyle = Theme.of(context).textTheme.bodyMedium!;
 
     switch (widget.size) {
       case ButtonSize.small:
         return baseStyle.copyWith(fontSize: 14);
       case ButtonSize.medium:
-        return baseStyle.copyWith(fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: -0.1,);
+        return baseStyle.copyWith(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          letterSpacing: -0.1,
+        );
       case ButtonSize.large:
         return baseStyle.copyWith(fontSize: 18);
     }
@@ -160,25 +152,23 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
 
     switch (widget.variant) {
       case ButtonVariant.primary:
-        return _isHovered 
+        return _isHovered
             ? theme.colorScheme.primary.withOpacity(0.9)
             : theme.colorScheme.primary;
       case ButtonVariant.secondary:
-        return _isHovered 
+        return _isHovered
             ? theme.colorScheme.secondaryContainer.withOpacity(0.9)
             : theme.colorScheme.secondaryContainer;
       case ButtonVariant.outline:
-        return _isHovered 
+        return _isHovered
             ? theme.colorScheme.surface.withOpacity(0.1)
             : Colors.transparent;
       case ButtonVariant.error:
-        return _isHovered 
+        return _isHovered
             ? theme.colorScheme.error.withOpacity(0.9)
             : theme.colorScheme.error;
       case ButtonVariant.success:
-        return _isHovered 
-            ? Colors.green.withOpacity(0.9)
-            : Colors.green;
+        return _isHovered ? Colors.green.withOpacity(0.9) : Colors.green;
     }
   }
 
@@ -210,7 +200,7 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
     final theme = Theme.of(context);
     if (widget.variant == ButtonVariant.outline) {
       return Border.all(
-        color: widget.isDisabled 
+        color: widget.isDisabled
             ? theme.colorScheme.outline.withOpacity(0.12)
             : theme.colorScheme.primary,
         width: 1.5,
@@ -241,33 +231,40 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
                 height: buttonSize.height,
                 decoration: BoxDecoration(
                   color: _getBackgroundColor(context),
-                  borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
+                  borderRadius:
+                      widget.borderRadius ?? BorderRadius.circular(12),
                   border: _getBorder(context),
                   boxShadow: widget.isDisabled || widget.isLoading
                       ? []
                       : [
                           BoxShadow(
-                            color: theme.shadowColor.withOpacity(0.1 * _shadowAnimation.value),
+                            color: theme.shadowColor
+                                .withOpacity(0.1 * _shadowAnimation.value),
                             blurRadius: 10 * _shadowAnimation.value,
                             offset: Offset(0, 4 * _shadowAnimation.value),
                           ),
                         ],
                 ),
                 child: MaterialButton(
-                  onPressed: widget.isDisabled || widget.isLoading ? null : widget.onPressed,
+                  onPressed: widget.isDisabled || widget.isLoading
+                      ? null
+                      : widget.onPressed,
                   shape: RoundedRectangleBorder(
-                    borderRadius: widget.borderRadius ?? BorderRadius.circular(48),
+                    borderRadius:
+                        widget.borderRadius ?? BorderRadius.circular(48),
                   ),
-                  padding: widget.padding ?? EdgeInsets.symmetric(
-                    horizontal: widget.size == ButtonSize.small ? 16 : 24,
-                  ),
+                  padding: widget.padding ??
+                      EdgeInsets.symmetric(
+                        horizontal: widget.size == ButtonSize.small ? 16 : 24,
+                      ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       if (widget.prefixIcon != null) ...[
                         widget.prefixIcon!,
-                        SizedBox(width: widget.size == ButtonSize.small ? 6 : 8),
+                        SizedBox(
+                            width: widget.size == ButtonSize.small ? 6 : 8),
                       ],
                       if (widget.isLoading)
                         SizedBox(
@@ -275,7 +272,8 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
                           height: widget.size == ButtonSize.small ? 16 : 20,
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(_getTextColor(context)),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                _getTextColor(context)),
                           ),
                         )
                       else
@@ -286,7 +284,8 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
                           ),
                         ),
                       if (widget.suffixIcon != null) ...[
-                        SizedBox(width: widget.size == ButtonSize.small ? 6 : 8),
+                        SizedBox(
+                            width: widget.size == ButtonSize.small ? 6 : 8),
                         widget.suffixIcon!,
                       ],
                     ],

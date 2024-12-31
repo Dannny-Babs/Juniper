@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/features/authentication/presentation/widgets/budget_slider.dart';
 import '../../../../core/utils/utils.dart';
+import '../widgets/section_title.dart';
 
 class PreferencesStep extends StatefulWidget {
   final List<String> selectedHousingTypes;
@@ -35,13 +36,12 @@ class _PreferencesStepState extends State<PreferencesStep> {
     'Condo',
     'Duplex',
     'Room',
-    'Loft','Villa',
+    'Loft',
+    'Villa',
     'Real Estate',
-    'Terrace',    
+    'Terrace',
     'Penthouse',
     'Other',
-
-
   ];
 
   @override
@@ -57,17 +57,24 @@ class _PreferencesStepState extends State<PreferencesStep> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle(context, 'Housing Preferences'),
+        SectionTitle(title: 'Housing Preferences'),
         SizedBox(height: 6.sp),
         _buildHousingTypeSelector(),
         SizedBox(height: 24.sp),
-        
-        _buildSectionTitle(context, 'Monthly Budget'),
+        SectionTitle(title: 'Monthly Budget'),
         SizedBox(height: 6.sp),
-        BudgetRangeSlider(),
+        BudgetRangeSlider(
+          initialRange: RangeValues(1000, 5000),
+          minValue: 0,
+          maxValue: 10000,
+          divisions: 20,
+          onRangeChanged: (RangeValues range) {
+            // Handle range changes
+            print('New range: ${range.start} - ${range.end}');
+          },
+        ),
         SizedBox(height: 24.sp),
-        
-        _buildSectionTitle(context, 'Preferred Locations'),
+        SectionTitle(title: 'Preferred Locations'),
         SizedBox(height: 6.sp),
         _buildLocationSelector(context),
         SizedBox(height: 10.sp),
@@ -77,26 +84,16 @@ class _PreferencesStepState extends State<PreferencesStep> {
     );
   }
 
-  Widget _buildSectionTitle(BuildContext context, String title) {
-    return Text(
-      title,
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-        color: AppColors.neutral300,
-        fontWeight: FontWeight.w500,
-      ),
-    );
-  }
-
   Widget _buildHousingTypeSelector() {
-    return 
-    Wrap(
+    return Wrap(
       spacing: 8.sp,
       runSpacing: 8.sp,
       children: _housingTypes.map((type) {
         final isSelected = widget.selectedHousingTypes.contains(type);
         return InkWell(
           onTap: () {
-            final updatedSelection = List<String>.from(widget.selectedHousingTypes);
+            final updatedSelection =
+                List<String>.from(widget.selectedHousingTypes);
             if (isSelected) {
               updatedSelection.remove(type);
             } else {
@@ -113,17 +110,15 @@ class _PreferencesStepState extends State<PreferencesStep> {
               color: isSelected ? AppColors.primary500 : Colors.white,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: isSelected 
-                    ? AppColors.primary700
-                    : Colors.grey.shade300,
+                color: isSelected ? AppColors.primary700 : Colors.grey.shade300,
               ),
             ),
             child: Text(
               type,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: isSelected ? Colors.white : AppColors.neutral500,
-                fontSize: 12.5.sp,
-              ),
+                    color: isSelected ? Colors.white : AppColors.neutral500,
+                    fontSize: 12.5.sp,
+                  ),
             ),
           ),
         );
@@ -131,20 +126,16 @@ class _PreferencesStepState extends State<PreferencesStep> {
     );
   }
 
- 
   Widget _buildLocationSelector(BuildContext context) {
     return Column(
       children: [
         TextFormField(
           controller: _locationController,
           decoration: InputDecoration(
-
-
             hintText: 'Enter cities or zip codes',
             hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: AppColors.gray500,    
-            ),
-            
+                  color: AppColors.gray500,
+                ),
             filled: true,
             fillColor: Colors.white,
             focusColor: AppColors.neutral500,
@@ -199,15 +190,17 @@ class _PreferencesStepState extends State<PreferencesStep> {
               Text(
                 location,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.primary500,
-                  fontSize: 13.sp,
-                ),
+                      color: AppColors.primary500,
+                      fontSize: 13.sp,
+                    ),
               ),
               SizedBox(width: 4.sp),
               InkWell(
                 onTap: () {
                   widget.onLocationsChanged(
-                    widget.selectedLocations.where((l) => l != location).toList(),
+                    widget.selectedLocations
+                        .where((l) => l != location)
+                        .toList(),
                   );
                 },
                 child: Icon(
