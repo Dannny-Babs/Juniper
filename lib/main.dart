@@ -4,8 +4,12 @@ import 'features/onboarding/bloc/onboarding_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final prefs = await SharedPreferences.getInstance();
   
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  final isOnboardingCompleted = prefs.getBool('onboarding_complete') ?? false;
+  
+  final router = AppRouter.createRouter(isOnboardingCompleted);
+
   runApp(
     MultiBlocProvider(
       providers: [
@@ -13,13 +17,18 @@ void main() async {
           create: (context) => OnboardingBloc(prefs: prefs)..add(OnboardingStarted()),
         ),
       ],
-      child: const MainApp(),
+      child: MainApp(router: router),
     ),
   );
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final GoRouter router;
+  
+  const MainApp({
+    super.key, 
+    required this.router,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +36,11 @@ class MainApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       useInheritedMediaQuery: true,
-      builder: (context, child) => BlocBuilder<OnboardingBloc, OnboardingState>(
-        builder: (context, state) {
-          final router = AppRouter.createRouter(state.isCompleted);
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: ThemeMode.system,
-            routerConfig: router,
-          );
-        },
+      builder: (context, child) => MaterialApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
       ),
     );
   }

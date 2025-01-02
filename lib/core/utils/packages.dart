@@ -19,5 +19,6 @@ export 'package:flutter_native_splash/flutter_native_splash.dart';
 export 'package:permission_handler/permission_handler.dart';
 export 'package:go_router/go_router.dart';
 export 'package:intl/intl.dart';
+export 'package:image_picker/image_picker.dart';
 
 
