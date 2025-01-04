@@ -1,62 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:juniper/features/authentication/presentation/widgets/privacy.dart';
+import 'package:juniper/features/authentication/presentation/widgets/register_form.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/button.dart';
-import '../widgets/login_form.dart';
-import '../widgets/socialsignin_button.dart';
+import '../widgets/socialsignup_button.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    final bottom = MediaQuery.of(context).viewInsets.bottom;
-
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          toolbarHeight: 0,
+        leading: PlatformBackButton(
+          onPressed: () => Navigator.of(context).pop(),
+          color: AppColors.neutral500,
         ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            padding: EdgeInsets.only(
-              left: 24.sp,
-              right: 24.sp,
-              top: 24.sp,
-              bottom: bottom + 24.sp,
-            ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(24.sp),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Image.asset(
-                    'assets/images/try-auth.png',
-                    width: double.infinity,
-                    height: 170.sp,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                SizedBox(height: 16.sp),
+                SizedBox(height: 20.sp),
                 Text(
-                  'Login',
+                  'Create an account',
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.displayLarge?.copyWith(
                         fontFamily: 'HelveticaNeue',
                         color: AppColors.neutral500,
                         fontWeight: FontWeight.w500,
-                        fontSize: 24.sp,
+                        fontSize: 24.5.sp,
                         letterSpacing: -0.5,
                       ),
                 ),
                 SizedBox(height: 6.sp),
                 Text(
-                  'Access your curated properties and investment insights with ease',
+                  'Sign up to find your dream apartment or manage your property investments effortlessly.',
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontFamily: 'HelveticaNeue',
@@ -68,53 +55,34 @@ class LoginPage extends StatelessWidget {
                       ),
                 ),
                 SizedBox(height: 32.sp),
-                LoginForm(formKey: formKey),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () => context.push('/forgot-password'),
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 12.sp,
-                        vertical: 8.sp,
-                      ),
-                    ),
-                    child: Text(
-                      'Forgot password?',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppColors.neutral500,
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: -0.1,
-                          ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 12.sp),
+                RegisterForm(formKey: formKey),
+                const SizedBox(height: 16),
                 CustomButton(
                   height: 48.sp,
-                  text: 'Login',
+                  text: 'Create Account',
                   backgroundColor: AppColors.neutral500,
                   textColor: AppColors.neutral100,
                   size: ButtonSize.medium,
-                  isLoading: false,
+                  isLoading:
+                      false, // You may want to bind this to a state variable
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      // Handle login
-                    }
+                    //  if (formKey.currentState!.validate()) {
+                    // Do something
+                    context.push('/otp');
+                    //}
                   },
                 ),
-                SizedBox(height: 20.sp),
+                SizedBox(height: 24.sp),
                 _buildDivider(context),
-                SizedBox(height: 20.sp),
-                SocialSignInButton(),
+                SizedBox(height: 24.sp),
+                SocialSignUpButton(),
                 SizedBox(height: 16.sp),
                 // Add a tex row or inkwell to navigate to the sign up page
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'New to Juniper? ',
+                      'Already have an account?',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: const Color.fromARGB(163, 80, 80, 101),
                             fontSize: 14.sp,
@@ -126,16 +94,16 @@ class LoginPage extends StatelessWidget {
                       onTap: () {
                         // Add navigation logic here
                         // Navigator.pushNamed(context, '/signup');
-                        context.push('/register');
+                        context.go('/login');
                       },
-                      focusColor: Colors.transparent,
                       highlightColor: Colors.transparent,
+                      focusColor: Colors.transparent,
                       borderRadius: BorderRadius.circular(4),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             vertical: 4.sp, horizontal: 2.sp),
                         child: Text(
-                          "Create an account",
+                          "Log in here ",
                           style:
                               Theme.of(context).textTheme.bodyMedium?.copyWith(
                                     color: AppColors.neutral500,
@@ -148,6 +116,8 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 24.sp),
+
+                TermsAndPrivacyText()
               ],
             ),
           ),

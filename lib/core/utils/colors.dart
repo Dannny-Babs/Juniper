@@ -14,6 +14,7 @@ class AppColors {
 
   // Neutral Shades (Dark/Light Interchangeable)
   static const Color neutral100 = Color(0xFFFFFFFF); // White
+  static const Color neutral300 = Color(0xFF15172A); // Lighter shade of neutral  
   static const Color neutral500 = Color(0xFF0D0D12); // Dark
   static const Color neutral700 = Color(0xFF0A0A0E); // Slightly darker variant
   static const Color neutral900 = Color(0xFF08080A); // Deepest dark shade
