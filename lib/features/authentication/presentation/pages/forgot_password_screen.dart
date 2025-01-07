@@ -32,9 +32,11 @@ class ForgotPasswordPage extends StatelessWidget {
               textAlign: TextAlign.start,
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     fontFamily: 'HelveticaNeue',
-                    color: AppColors.neutral500,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.primary50
+                        : AppColors.neutral900,
                     fontWeight: FontWeight.w500,
-                    fontSize: 24.5.sp,
+                    fontSize: 26.sp,
                     letterSpacing: -0.5,
                   ),
             ),
@@ -44,10 +46,9 @@ class ForgotPasswordPage extends StatelessWidget {
               textAlign: TextAlign.start,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontFamily: 'HelveticaNeue',
-                    color: AppColors.gray500,
                     fontWeight: FontWeight.normal,
                     height: 1.3,
-                    fontSize: 14.sp,
+                    fontSize: 16.sp,
                     letterSpacing: -0.1,
                   ),
             ),
@@ -58,21 +59,17 @@ class ForgotPasswordPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Email',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: AppColors.neutral500,
+                            fontWeight: FontWeight.w500,
                           )),
                   const SizedBox(height: AppConstants.padding4),
                   TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
                       hintText: 'Enter your email',
-                      hintStyle:
-                          Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: AppColors.gray500,
-                              ),
+                      hintStyle: Theme.of(context).textTheme.bodyLarge,
                       filled: true,
-                      fillColor: Colors.white,
-                      focusColor: AppColors.neutral500,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         borderSide:
@@ -86,7 +83,10 @@ class ForgotPasswordPage extends StatelessWidget {
                   CustomButton(
                     height: 48.sp,
                     width: double.infinity,
-                    backgroundColor: Theme.of(context).primaryColor,
+                    backgroundColor:
+                        Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.backgroundLight
+                            : AppColors.neutral800,
                     textColor: Theme.of(context).scaffoldBackgroundColor,
                     onPressed: () {
                       if (formKey.currentState!.validate()) {

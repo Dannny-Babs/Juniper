@@ -134,7 +134,7 @@ class _PreferencesStepState extends State<PreferencesStep> {
           decoration: InputDecoration(
             hintText: 'Enter cities or zip codes',
             hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.gray500,
+                  color: AppColors.neutral500,
                 ),
             filled: true,
             fillColor: Colors.white,

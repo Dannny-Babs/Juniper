@@ -8,6 +8,7 @@ class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _OnboardingPageState createState() => _OnboardingPageState();
 }
 
@@ -41,9 +42,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     context.read<OnboardingBloc>().add(OnboardingStarted());
   }
 
-  void _onPageChanged(int index) {
-    context.read<OnboardingBloc>().add(OnboardingPageChanged(index));
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +98,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         physics: const NeverScrollableScrollPhysics(),
                         controller: _pageController,
                         itemCount: slides.length,
-                        onPageChanged: _onPageChanged,
+                        
                         itemBuilder: (context, index) {
                           return OnboardingSlideWidget(slide: slides[index]);
                         },
@@ -156,7 +155,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
       onPressed: () {
         if (state.currentPage == slides.length - 1) {
           context.read<OnboardingBloc>().add(OnboardingCompleted());
-          print('Onboarding Completed');
         } else {
           _pageController.nextPage(
             duration: const Duration(milliseconds: 300),

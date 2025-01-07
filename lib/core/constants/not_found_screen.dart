@@ -13,9 +13,9 @@ class NotFoundPage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         leading: PlatformBackButton(
-    onPressed: () => Navigator.of(context).pop(),
-    color: AppColors.neutral500,
-  ),
+          onPressed: () => Navigator.of(context).pop(),
+          color: AppColors.neutral500,
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(24.sp),
@@ -38,7 +38,7 @@ class NotFoundPage extends StatelessWidget {
                     fontFamily: 'HelveticaNeue',
                     color: AppColors.neutral500,
                     fontWeight: FontWeight.w500,
-                    fontSize: 24.5.sp,
+                    fontSize: 26.sp,
                     letterSpacing: -0.5,
                   ),
             ),
@@ -48,7 +48,7 @@ class NotFoundPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontFamily: 'HelveticaNeue',
-                    color: AppColors.gray500,
+                    color: AppColors.neutral900,
                     fontWeight: FontWeight.normal,
                     height: 1.3,
                     fontSize: 14.sp,

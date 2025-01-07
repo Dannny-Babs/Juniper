@@ -15,11 +15,16 @@ class SocialSignUpButton extends StatelessWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               elevation: 0,
-              backgroundColor: Colors.white,
-              foregroundColor: AppColors.gray500,
+              backgroundColor: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.surfaceDark100
+                  : AppColors.neutral100,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: AppColors.gray300),
+                side: BorderSide(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.surfaceDark400
+                      : AppColors.neutral200,
+                ),
               ),
             ),
             onPressed: () {
@@ -36,11 +41,12 @@ class SocialSignUpButton extends StatelessWidget {
                 SizedBox(width: 8),
                 Text(
                   'Sign up with Google',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: -0.1,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.neutral50
+                          : AppColors.neutral900,
+                      fontSize: 15.6.sp,
+                      fontWeight: FontWeight.w500),
                 ),
               ],
             ),

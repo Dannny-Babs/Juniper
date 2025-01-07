@@ -15,24 +15,20 @@ class LoginForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Email',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: AppColors.neutral500,
+                    fontWeight: FontWeight.w500,
                   )),
           const SizedBox(height: AppConstants.padding4),
           TextFormField(
             decoration: InputDecoration(
               hintText: 'Enter your email',
-              hintStyle:
-                  Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.gray500,
-                      ),
+              hintStyle: Theme.of(context).textTheme.bodyLarge,
               filled: true,
-              fillColor: Colors.white,
               focusColor: AppColors.neutral500,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
-                borderSide:
-                    BorderSide(color: Colors.grey.shade300, width: 1.0),
+                borderSide: BorderSide(color: Colors.grey.shade300, width: 1.0),
               ),
             ),
             validator: emailValidator.call,
@@ -40,19 +36,16 @@ class LoginForm extends StatelessWidget {
           ),
           const SizedBox(height: AppConstants.padding16),
           Text('Password',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: AppColors.neutral500,
+                    fontWeight: FontWeight.w500,
                   )),
           const SizedBox(height: AppConstants.padding4),
           TextFormField(
             decoration: InputDecoration(
               hintText: 'Enter your password',
-              hintStyle:
-                  Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.gray500,
-                      ),
+              hintStyle: Theme.of(context).textTheme.bodyLarge,
               filled: true,
-              fillColor: Colors.white,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: BorderSide(
@@ -69,7 +62,7 @@ class LoginForm extends StatelessWidget {
               ),
               suffixIcon: Icon(
                 Icons.visibility,
-                color: AppColors.gray700.withAlpha(200),
+                color: AppColors.neutral500,
               ),
             ),
             obscureText: true,

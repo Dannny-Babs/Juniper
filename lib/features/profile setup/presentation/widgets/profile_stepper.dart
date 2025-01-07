@@ -77,7 +77,7 @@ class ProfileStepper extends StatelessWidget {
                   value: (ProfileSetupStage.values.indexOf(currentStage) + 1) /
                       ProfileSetupStage.values.length,
                   borderRadius: BorderRadius.circular(8.sp),
-                  backgroundColor: AppColors.gray300,
+                  backgroundColor: AppColors.neutral200,
                   valueColor: AlwaysStoppedAnimation<Color>(
                     AppColors.primary700,
                   ),
@@ -86,7 +86,7 @@ class ProfileStepper extends StatelessWidget {
                 Text(
                   'Step ${ProfileSetupStage.values.indexOf(currentStage) + 1} of ${ProfileSetupStage.values.length}',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.gray500,
+                        color: AppColors.neutral400,
                         fontSize: 14.sp,
                       ),
                 ),
@@ -97,7 +97,7 @@ class ProfileStepper extends StatelessWidget {
                         fontFamily: 'HelveticaNeue',
                         color: AppColors.neutral500,
                         fontWeight: FontWeight.w500,
-                        fontSize: 24.5.sp,
+                        fontSize: 26.sp,
                         letterSpacing: -0.5,
                       ),
                 ),
@@ -106,7 +106,7 @@ class ProfileStepper extends StatelessWidget {
                   currentStage.subtitle,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontFamily: 'HelveticaNeue',
-                        color: AppColors.gray500,
+                        color: AppColors.neutral500,
                         fontWeight: FontWeight.normal,
                         height: 1.3,
                         fontSize: 14.sp,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:juniper/core/utils/utils.dart';
 
 import 'final_setup.dart';
 import 'third_setup.dart';
@@ -95,12 +96,13 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
             _moveInTimeline = timeline;
           }),
         );
-      }
+    }
   }
 
   void _handleNext() {
     if (_currentStage == ProfileSetupStage.finalTouches) {
       // Handle completion
+      context.go('/home');
       return;
     }
 

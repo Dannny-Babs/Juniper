@@ -2,268 +2,281 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 class AppTheme {
+  // Base text style
   static final TextStyle _baseTextStyle = TextStyle(
     fontFamily: 'HelveticaNeue',
     letterSpacing: -0.24,
   );
 
-  // Common theme elements
-  static final _commonButtonTheme = ButtonThemeData(
-    buttonColor: AppColors.primary500,
-    textTheme: ButtonTextTheme.primary,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-    ),
-    padding: const EdgeInsets.symmetric(
-      horizontal: 24,
-      vertical: 16,
-    ),
-    height: 52,
-    minWidth: double.infinity,
-    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-  );
+  // Common elevation values
+  static final _elevations = {
+    'none': 0.0,
+    'low': 2.0,
+    'medium': 4.0,
+    'high': 8.0,
+  };
 
-  static final _commonInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10.0),
-    borderSide: BorderSide(
-      color: const Color(0xFFEAECF0),
-      width: 1.0,
-    ),
-  );
+  // Helper method to build text theme
+  static TextTheme _buildTextTheme(ColorScheme colorScheme) {
+    final textColor = colorScheme.onSurface;
 
-  static final _commonInputDecoration = InputDecorationTheme(
-    hintStyle: _baseTextStyle.copyWith(
-      color: AppColors.gray700,
-    ),
-  
-    filled: true,
-    border: _commonInputBorder,
-    enabledBorder: _commonInputBorder,
-    focusedBorder: _commonInputBorder.copyWith(
-      borderSide: BorderSide(
-        color: AppColors.neutral300,
-        width: 1.5,
+    return TextTheme(
+      // Display styles
+      displayLarge: _baseTextStyle.copyWith(
+        fontSize: 32,
+        fontWeight: FontWeight.w800,
+        color: textColor,
+        height: 1.2,
       ),
-    ),
-    labelStyle: TextStyle(
-      fontFamily: 'HelveticaNeue',
-      color: AppColors.neutral500,
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      letterSpacing: -0.1,
-    ),
-    floatingLabelStyle: TextStyle(
-      color: AppColors.neutral500,
-      fontFamily: 'HelveticaNeue',
-      fontSize: 14,
-      fontWeight: FontWeight.normal,
-    
-    ),
-    contentPadding: const EdgeInsets.symmetric(
-      vertical: 14.0,
-      horizontal: 16.0,
-    ),
-    alignLabelWithHint: true,
+      displayMedium: _baseTextStyle.copyWith(
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        color: textColor,
+        height: 1.2,
+      ),
+      displaySmall: _baseTextStyle.copyWith(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: textColor,
+        height: 1.2,
+      ),
 
-  );
+      // Headline styles
+      headlineLarge: _baseTextStyle.copyWith(
+        fontSize: 22,
+        fontWeight: FontWeight.w600,
+        color: textColor,
+        height: 1.3,
+      ),
+      headlineMedium: _baseTextStyle.copyWith(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        color: textColor,
+        height: 1.3,
+      ),
+      headlineSmall: _baseTextStyle.copyWith(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: textColor,
+        height: 1.3,
+      ),
 
+      // Title styles
+      titleLarge: _baseTextStyle.copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: textColor,
+        height: 1.4,
+      ),
+      titleMedium: _baseTextStyle.copyWith(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: textColor,
+        height: 1.4,
+      ),
+      titleSmall: _baseTextStyle.copyWith(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        color: textColor,
+        height: 1.4,
+      ),
+
+      // Body styles
+      bodyLarge: _baseTextStyle.copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: textColor,
+        height: 1.5,
+      ),
+      bodyMedium: _baseTextStyle.copyWith(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: textColor,
+        height: 1.5,
+      ),
+      bodySmall: _baseTextStyle.copyWith(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: textColor,
+        height: 1.5,
+      ),
+    );
+  }
+
+  // Helper method to build input decoration theme
+  static InputDecorationTheme _buildInputDecorationTheme(
+      ColorScheme colorScheme, bool isDark) {
+    final borderRadius = BorderRadius.circular(12.0);
+    final fillColor =
+        isDark ? AppColors.surfaceDark100 : AppColors.surfaceLight;
+    final borderColor =
+        isDark ? AppColors.surfaceDark300 : AppColors.borderLight;
+
+    return InputDecorationTheme(
+      filled: true,
+      fillColor: fillColor,
+
+      // Border styling
+      border: OutlineInputBorder(
+        borderRadius: borderRadius,
+        borderSide: BorderSide(color: borderColor, width: 1.0),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: borderRadius,
+        borderSide: BorderSide(color: borderColor, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: borderRadius,
+        borderSide: BorderSide(color: AppColors.primary500, width: 2.0),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: borderRadius,
+        borderSide: BorderSide(color: AppColors.error, width: 1.0),
+      ),
+
+      // Text styling
+      labelStyle: TextStyle(
+        fontFamily: 'HelveticaNeue',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color:
+            isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+      ),
+      floatingLabelStyle: TextStyle(
+        fontFamily: 'HelveticaNeue',
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: colorScheme.primary,
+      ),
+      hintStyle: TextStyle(
+        fontFamily: 'HelveticaNeue',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color:
+            isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+      ),
+
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      alignLabelWithHint: true,
+      isDense: true,
+    );
+  }
+
+  // Helper method to build card theme
+  static CardTheme _buildCardTheme(ColorScheme colorScheme, bool isDark) {
+    return CardTheme(
+      color: isDark ? AppColors.surfaceDark100 : AppColors.surfaceLight,
+      elevation: _elevations['low'],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: isDark ? AppColors.surfaceDark300 : AppColors.borderLight,
+          width: 1,
+        ),
+      ),
+      shadowColor: isDark ? AppColors.shadowDark : AppColors.shadowLight,
+      margin: const EdgeInsets.all(0),
+    );
+  }
+
+  // Light Theme
   static final ThemeData lightTheme = ThemeData(
-    primaryColor: AppColors.neutral500,
-    highlightColor: AppColors.primary500,
-    primaryColorDark: AppColors.neutral100,
-    primaryColorLight: AppColors.neutral500,
-    primarySwatch: Colors.blueGrey,
+    useMaterial3: true,
+    brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-      primary: AppColors.neutral500,
-      secondary: AppColors.primary500,
-      surface: AppColors.neutral100,
-      error: AppColors.error500,
-      onPrimary: AppColors.neutral100,
-      onSecondary: AppColors.neutral100,
-      onSurface: AppColors.neutral900,
-      onError: AppColors.neutral100,
-      brightness: Brightness.light,
+      primary: AppColors.primary500,
+      onPrimary: Colors.white,
+      primaryContainer: AppColors.primary100,
+      onPrimaryContainer: AppColors.primary900,
+      secondary: AppColors.neutral500,
+      onSecondary: Colors.white,
+      secondaryContainer: AppColors.neutral100,
+      onSecondaryContainer: AppColors.neutral900,
+      surface: AppColors.surfaceLight,
+      onSurface: AppColors.textPrimaryLight,
+      surfaceContainerHighest: AppColors.neutral100,
+      onSurfaceVariant: AppColors.textSecondaryLight,
+      error: AppColors.error,
+      onError: Colors.white,
+      errorContainer: AppColors.error100,
+      onErrorContainer: AppColors.error900,
+      outline: AppColors.borderLight,
+      shadow: AppColors.shadowLight,
     ),
-    scaffoldBackgroundColor: AppColors.neutral100,
-    fontFamily: 'HelveticaNeue',
-    
-    textTheme: TextTheme(
-      displayLarge: _baseTextStyle.copyWith(
-        fontSize: 32,
-        fontWeight: FontWeight.w800,
-        color: AppColors.gray300,
-      ),
-      displayMedium: _baseTextStyle.copyWith(
-        fontSize: 28,
-        fontWeight: FontWeight.w700,
-        color: AppColors.gray300,
-      ),
-      displaySmall: _baseTextStyle.copyWith(
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-        color: AppColors.gray300,
-      ),
-      headlineLarge: _baseTextStyle.copyWith(
-        fontSize: 22,
-        fontWeight: FontWeight.w500,
-        color: AppColors.gray300,
-      ),
-      headlineMedium: _baseTextStyle.copyWith(
-        fontSize: 20,
-        fontWeight: FontWeight.w400,
-        color: AppColors.gray300,
-      ),
-      headlineSmall: _baseTextStyle.copyWith(
-        fontSize: 18,
-        fontWeight: FontWeight.w300,
-        color: AppColors.gray300,
-      ),
-      titleLarge: _baseTextStyle.copyWith(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: AppColors.gray300,
-      ),
-      titleMedium: _baseTextStyle.copyWith(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-        color: AppColors.gray300,
-      ),
-      titleSmall: _baseTextStyle.copyWith(
-        fontSize: 12,
-        fontWeight: FontWeight.w300,
-        color: AppColors.gray300,
-      ),
-      bodyLarge: _baseTextStyle.copyWith(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: AppColors.neutral500,  // Updated for input text
-      ),
-      bodyMedium: _baseTextStyle.copyWith(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: AppColors.neutral500,  // Updated for input text
-      ),
-      bodySmall: _baseTextStyle.copyWith(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: AppColors.gray300,
-      ),
-    ),
-    buttonTheme: _commonButtonTheme.copyWith(
-      colorScheme: ColorScheme(
-        primary: AppColors.neutral500,
-        onPrimary: Colors.white,
-        secondary: AppColors.gray500,
-        onSecondary: AppColors.neutral100,
-        surface: AppColors.gray900,
-        onSurface: AppColors.neutral100,
-        error: AppColors.error500,
-        onError: Colors.white,
-        brightness: Brightness.light,
-      ),
-    ),
-    inputDecorationTheme: _commonInputDecoration.copyWith(
-      fillColor: Colors.white,
-      activeIndicatorBorder: BorderSide(
-        color: AppColors.neutral500,
-        width: 1.5,
+    scaffoldBackgroundColor: AppColors.backgroundLight,
+    cardTheme: _buildCardTheme(ColorScheme.light(), false),
+    inputDecorationTheme:
+        _buildInputDecorationTheme(ColorScheme.light(), false),
+    textTheme: _buildTextTheme(ColorScheme.light()),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        elevation: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.pressed)) return _elevations['none'];
+          if (states.contains(WidgetState.hovered))
+            return _elevations['medium'];
+          return _elevations['low'];
+        }),
+        backgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.disabled))
+            return AppColors.neutral200;
+          return AppColors.primary500;
+        }),
+        foregroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.disabled))
+            return AppColors.neutral500;
+          return Colors.white;
+        }),
       ),
     ),
   );
 
+  // Dark Theme
   static final ThemeData darkTheme = ThemeData(
-    primaryColor: AppColors.primary500,
-    scaffoldBackgroundColor: AppColors.neutral900,
-    fontFamily: 'HelveticaNeue',
-    appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.neutral500,
-      elevation: 0,
-      titleTextStyle: _baseTextStyle.copyWith(
-        fontSize: 20,
-        fontWeight: FontWeight.w700,
-        color: AppColors.neutral100,
-      ),
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    colorScheme: ColorScheme.dark(
+      primary: AppColors.primary500,
+      onPrimary: Colors.white,
+      primaryContainer: AppColors.primary900,
+      onPrimaryContainer: AppColors.primary100,
+      secondary: AppColors.neutral900,
+      onSecondary: Colors.white,
+      secondaryContainer: AppColors.surfaceDark100,
+      onSecondaryContainer: AppColors.textPrimaryDark,
+      surface: AppColors.surfaceDark100,
+      onSurface: AppColors.textPrimaryDark,
+      surfaceContainerHighest: AppColors.surfaceDark300,
+      onSurfaceVariant: AppColors.textSecondaryDark,
+      outlineVariant: AppColors.borderDark,
+      error: AppColors.error,
+      onError: Colors.white,
+      errorContainer: AppColors.error900,
+      onErrorContainer: AppColors.error100,
+      outline: AppColors.borderDark,
+      shadow: AppColors.shadowDark,
     ),
-    textTheme: TextTheme(
-      displayLarge: _baseTextStyle.copyWith(
-        fontSize: 32,
-        fontWeight: FontWeight.w800,
-        color: AppColors.neutral100,
-      ),
-      displayMedium: _baseTextStyle.copyWith(
-        fontSize: 28,
-        fontWeight: FontWeight.w700,
-        color: AppColors.neutral100,
-      ),
-      displaySmall: _baseTextStyle.copyWith(
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-        color: AppColors.neutral100,
-      ),
-      headlineLarge: _baseTextStyle.copyWith(
-        fontSize: 22,
-        fontWeight: FontWeight.w500,
-        color: AppColors.neutral100,
-      ),
-      headlineMedium: _baseTextStyle.copyWith(
-        fontSize: 20,
-        fontWeight: FontWeight.w400,
-        color: AppColors.neutral100,
-      ),
-      headlineSmall: _baseTextStyle.copyWith(
-        fontSize: 18,
-        fontWeight: FontWeight.w300,
-        color: AppColors.neutral100,
-      ),
-      bodyLarge: _baseTextStyle.copyWith(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: AppColors.neutral500,  // Updated for input text
-      ),
-      bodyMedium: _baseTextStyle.copyWith(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: AppColors.neutral500,  // Updated for input text
-      ),
-      bodySmall: _baseTextStyle.copyWith(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: AppColors.neutral100,
-      ),
-      titleLarge: _baseTextStyle.copyWith(
-        fontSize: 28,
-        fontWeight: FontWeight.w700,
-        color: AppColors.neutral100,
-      ),
-      titleMedium: _baseTextStyle.copyWith(
-        fontSize: 20,
-        fontWeight: FontWeight.w700,
-        color: AppColors.primary300,
-      ),
-      titleSmall: _baseTextStyle.copyWith(
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-        color: AppColors.neutral100,
-      ),
-    ),
-    buttonTheme: _commonButtonTheme.copyWith(
-      colorScheme: ColorScheme(
-        primary: AppColors.neutral500,
-        onPrimary: Colors.white,
-        secondary: AppColors.gray500,
-        onSecondary: AppColors.neutral100,
-        surface: AppColors.gray900,
-        onSurface: AppColors.neutral100,
-        error: AppColors.error500,
-        onError: Colors.white,
-        brightness: Brightness.dark,
-      ),
-    ),
-    inputDecorationTheme: _commonInputDecoration.copyWith(
-      fillColor: AppColors.neutral700,
-      activeIndicatorBorder: BorderSide(
-        color: AppColors.neutral100,
-        width: 1.5,
+    scaffoldBackgroundColor: AppColors.backgroundDark,
+    cardTheme: _buildCardTheme(ColorScheme.dark(), true),
+    inputDecorationTheme: _buildInputDecorationTheme(ColorScheme.dark(), true),
+    textTheme: _buildTextTheme(ColorScheme.dark()),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        elevation: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.pressed)) return _elevations['none'];
+          if (states.contains(WidgetState.hovered))
+            return _elevations['medium'];
+          return _elevations['low'];
+        }),
+        backgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.disabled))
+            return AppColors.surfaceDark200;
+          return AppColors.primary500;
+        }),
+        foregroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.disabled))
+            return AppColors.textSecondaryDark;
+          return Colors.white;
+        }),
       ),
     ),
   );

@@ -109,7 +109,7 @@ class FinalTouchesStep extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.neutral100,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.gray300),
+        border: Border.all(color:  Theme.of(context).colorScheme.onSurface.withOpacity(0.3),),
       ),
       padding: EdgeInsets.symmetric(horizontal: 16.sp),
       child: DropdownButtonHideUnderline(
@@ -154,7 +154,7 @@ class FinalTouchesStep extends StatelessWidget {
       decoration: InputDecoration(
         hintText: "Tell us if there's anything specific you're looking for",
         hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: AppColors.gray500,
+              color: AppColors.neutral500,
             ),
         filled: true,
         fillColor: Colors.white,
