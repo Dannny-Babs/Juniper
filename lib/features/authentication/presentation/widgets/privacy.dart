@@ -2,13 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 
-
 class TermsAndPrivacyText extends StatelessWidget {
   final VoidCallback? onTermsTap;
   final VoidCallback? onPrivacyTap;
-  
+
   const TermsAndPrivacyText({
-    super.key, 
+    super.key,
     this.onTermsTap,
     this.onPrivacyTap,
   });
@@ -19,15 +18,15 @@ class TermsAndPrivacyText extends StatelessWidget {
       textAlign: TextAlign.center,
       text: TextSpan(
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: AppColors.neutral500,
-          fontSize: 12.sp,
-          letterSpacing: 0,
-        ),
+              color: AppColors.neutral500,
+              fontSize: 11.sp,
+              letterSpacing: 0,
+            ),
         children: [
           const TextSpan(
             text: 'By signing up, you agree to our ',
             style: TextStyle(
-              color: AppColors.gray500,
+              color: AppColors.neutral500,
             ),
           ),
           TextSpan(
@@ -36,13 +35,12 @@ class TermsAndPrivacyText extends StatelessWidget {
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.underline,
             ),
-            recognizer: TapGestureRecognizer()
-              ..onTap = onTermsTap,
+            recognizer: TapGestureRecognizer()..onTap = onTermsTap,
           ),
           const TextSpan(
             text: ' and ',
-             style: TextStyle(
-              color: AppColors.gray500,
+            style: TextStyle(
+              color: AppColors.neutral500,
             ),
           ),
           TextSpan(
@@ -51,8 +49,7 @@ class TermsAndPrivacyText extends StatelessWidget {
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.underline,
             ),
-            recognizer: TapGestureRecognizer()
-              ..onTap = onPrivacyTap,
+            recognizer: TapGestureRecognizer()..onTap = onPrivacyTap,
           ),
           const TextSpan(
             text: '.',

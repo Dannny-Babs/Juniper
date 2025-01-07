@@ -50,7 +50,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return BlocConsumer<OnboardingBloc, OnboardingState>(
       listener: (context, state) {
         if (state.isCompleted) {
-          GoRouter.of(context).go('/login');
+          Navigator.pushReplacementNamed(context, '/login');
         }
         if (state.error != null) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -60,7 +60,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: Stack(
             children: [
               Padding(
@@ -96,7 +95,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     const SizedBox(height: 20),
                     Expanded(
                       child: PageView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
                         controller: _pageController,
                         itemCount: slides.length,
                         onPageChanged: _onPageChanged,

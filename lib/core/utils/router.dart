@@ -1,14 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:juniper/core/constants/not_found_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:juniper/core/utils/utils.dart';
 
 class AppRouter {
-  // Keep track of navigationKey to maintain state
-  static final _rootNavigatorKey = GlobalKey<NavigatorState>();
-  static late final GoRouter _router;
-  static bool _initialized = false;
-
   static GoRouter createRouter(bool isOnboardingCompleted) {
+<<<<<<< Updated upstream
+    return GoRouter(
+      initialLocation: isOnboardingCompleted ? '/login' : '/onboarding',
+      routes: [
+        GoRoute(
+          path: '/onboarding',
+          builder: (context, state) => const OnboardingPage(),
+        ),
+        GoRoute(
+          path: '/login',
+          builder: (context, state) => const LoginPage(),
+        ),
+      ],
+    );
+=======
     if (!_initialized) {
       _router = GoRouter(
         navigatorKey: _rootNavigatorKey,
@@ -59,6 +68,11 @@ class AppRouter {
             name: 'profile-setup',
             builder: (context, state) =>  ProfileSetupPage(),
           ),
+          GoRoute(
+            path: '/home',
+            name: 'home',
+            builder: (context, state) => const HomePage(),
+          ),
 
 
 
@@ -74,10 +88,6 @@ class AppRouter {
   // Helper method to navigate with parameters
   static void navigateToOtp(BuildContext context, String email) {
     context.pushNamed('otp', extra: {'email': email});
+>>>>>>> Stashed changes
   }
-}
-
-// Extension for type-safe route parameters
-extension GoRouterStateExtensions on GoRouterState {
-  Map<String, dynamic>? get params => extra as Map<String, dynamic>?;
 }

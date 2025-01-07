@@ -18,10 +18,11 @@ class EmailVerificationPage extends StatefulWidget {
 
 class _EmailVerificationPageState extends State<EmailVerificationPage> {
   final int otpLength = 6;
+  Timer? _timer;
   late List<TextEditingController> _controllers;
   late List<FocusNode> _focusNodes;
-  bool _canResendCode = false;
   int _remainingTime = 30;
+  bool _canResendCode = false;
 
   @override
   void initState() {
@@ -38,12 +39,20 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
   }
 
   void _startResendTimer() {
+    if (!mounted) return;
+
     setState(() {
       _remainingTime = 30;
       _canResendCode = false;
     });
 
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
+
       if (_remainingTime == 0) {
         setState(() {
           _canResendCode = true;
@@ -59,6 +68,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
 
   @override
   void dispose() {
+    _timer?.cancel();
     for (var controller in _controllers) {
       controller.dispose();
     }
@@ -80,6 +90,8 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -100,9 +112,10 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
               textAlign: TextAlign.start,
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     fontFamily: 'HelveticaNeue',
-                    color: AppColors.neutral500,
+                    color:
+                        isDarkMode ? AppColors.neutral50 : AppColors.neutral900,
                     fontWeight: FontWeight.w500,
-                    fontSize: 24.5.sp,
+                    fontSize: 26.sp,
                     letterSpacing: -0.5,
                   ),
             ),
@@ -112,11 +125,13 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
               textAlign: TextAlign.start,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontFamily: 'HelveticaNeue',
-                    color: AppColors.gray500,
                     fontWeight: FontWeight.normal,
                     height: 1.3,
-                    fontSize: 14.sp,
+                    fontSize: 16.sp,
                     letterSpacing: -0.1,
+                    color: isDarkMode
+                        ? AppColors.neutral200
+                        : AppColors.neutral800,
                   ),
             ),
             SizedBox(height: 32.sp),
@@ -138,12 +153,8 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       filled: true,
-                      fillColor: Colors.white,
                       hintText: '0',
-                      hintStyle:
-                          Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: AppColors.gray500,
-                              ),
+                      hintStyle: Theme.of(context).textTheme.bodyMedium,
                       errorStyle: Theme.of(context)
                           .textTheme
                           .bodyMedium
@@ -172,7 +183,6 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                       : 'Resend code in $_remainingTime seconds',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.gray500,
                         fontSize: 14.sp,
                       ),
                 ),
@@ -182,17 +192,24 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
             CustomButton(
               height: 48.sp,
               width: double.infinity,
-              backgroundColor: AppColors.neutral500,
-              onPressed: _isOtpComplete()
-                  ? () async {
-                     // String otp = _controllers.map((c) => c.text).join();
-                      // Navigate to the next screen
-                      context.push('/profile-setup');
-                    }
-                  : null,
+              isDisabled: !_isOtpComplete(),
+              backgroundColor: _isOtpComplete()
+                  ? (isDarkMode
+                      ? AppColors.backgroundLight
+                      : AppColors.neutral800)
+                  : isDarkMode
+                      ? AppColors.neutral700
+                      : AppColors.neutral200,
+              textColor: _isOtpComplete()
+                  ? (isDarkMode
+                      ? AppColors.neutral900
+                      : AppColors.backgroundLight)
+                  : (isDarkMode ? AppColors.neutral200 : AppColors.neutral500),
+              onPressed: !_isOtpComplete()
+                  ? null
+                  : () => context.push('/profile-setup'),
               text: 'Verify',
               size: ButtonSize.medium,
-              isDisabled: !_isOtpComplete(),
             ),
             SizedBox(height: 24.sp),
           ],

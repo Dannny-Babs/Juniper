@@ -18,6 +18,7 @@ class PersonalInfoStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,6 +38,7 @@ class PersonalInfoStep extends StatelessWidget {
         SizedBox(height: 16.sp),
         SectionTitle(
           title: 'Date of Birth',
+          
         ),
         SizedBox(height: 8.sp),
         InkWell(
@@ -52,11 +54,14 @@ class PersonalInfoStep extends StatelessWidget {
             }
           },
           child: Container(
-            padding: EdgeInsets.all(16.sp),
+            padding: EdgeInsets.symmetric(horizontal: 16.sp, vertical: 12.sp),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? AppColors.surfaceDark100 : AppColors.surfaceLight,
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey.shade300),
+              border: Border.all(
+                  color: isDark
+                      ? AppColors.surfaceDark300
+                      : AppColors.borderLight),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,13 +70,14 @@ class PersonalInfoStep extends StatelessWidget {
                   dateOfBirth != null
                       ? DateFormat('MM/dd/yyyy').format(dateOfBirth!)
                       : 'MM/DD/YYYY',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: dateOfBirth != null
-                            ? AppColors.neutral500
-                            : AppColors.gray500,
+                            ? AppColors.neutral300
+                            : AppColors.neutral700,
                       ),
                 ),
-                Icon(EneftyIcons.calendar_2_outline, color: AppColors.gray500),
+                Icon(EneftyIcons.calendar_2_outline,
+                    color: AppColors.neutral500),
               ],
             ),
           ),
@@ -122,8 +128,8 @@ class PersonalInfoStep extends StatelessWidget {
       children: [
         Text(
           label,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.neutral300,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: AppColors.neutral500,
               ),
         ),
         SizedBox(height: 6.sp),
@@ -131,11 +137,10 @@ class PersonalInfoStep extends StatelessWidget {
           controller: controller,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.gray500,
+            hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: AppColors.neutral400,
                 ),
             filled: true,
-            fillColor: Colors.white,
             focusColor: AppColors.neutral500,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),

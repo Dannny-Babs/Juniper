@@ -11,6 +11,8 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -35,9 +37,11 @@ class RegisterPage extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.displayLarge?.copyWith(
                         fontFamily: 'HelveticaNeue',
-                        color: AppColors.neutral500,
+                        color: isDarkMode
+                            ? AppColors.neutral50
+                            : AppColors.neutral900,
                         fontWeight: FontWeight.w500,
-                        fontSize: 24.5.sp,
+                        fontSize: 26.sp,
                         letterSpacing: -0.5,
                       ),
                 ),
@@ -47,10 +51,12 @@ class RegisterPage extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontFamily: 'HelveticaNeue',
-                        color: AppColors.gray500,
                         fontWeight: FontWeight.normal,
+                        color: isDarkMode
+                            ? AppColors.neutral200
+                            : AppColors.neutral800,
                         height: 1.3,
-                        fontSize: 14.sp,
+                        fontSize: 16.sp,
                         letterSpacing: -0.1,
                       ),
                 ),
@@ -60,8 +66,12 @@ class RegisterPage extends StatelessWidget {
                 CustomButton(
                   height: 48.sp,
                   text: 'Create Account',
-                  backgroundColor: AppColors.neutral500,
-                  textColor: AppColors.neutral100,
+                  backgroundColor: isDarkMode
+                      ? AppColors.backgroundLight
+                      : AppColors.neutral800,
+                  textColor: isDarkMode
+                      ? AppColors.neutral900
+                      : AppColors.backgroundLight,
                   size: ButtonSize.medium,
                   isLoading:
                       false, // You may want to bind this to a state variable
@@ -84,8 +94,10 @@ class RegisterPage extends StatelessWidget {
                     Text(
                       'Already have an account?',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: const Color.fromARGB(163, 80, 80, 101),
-                            fontSize: 14.sp,
+                            color: isDarkMode
+                                ? AppColors.neutral600
+                                : AppColors.neutral700,
+                            fontSize: 14.5.sp,
                             fontWeight: FontWeight.normal,
                             letterSpacing: 0,
                           ),
@@ -101,21 +113,23 @@ class RegisterPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                            vertical: 4.sp, horizontal: 2.sp),
+                            vertical: 4.sp, horizontal: 3.sp),
                         child: Text(
                           "Log in here ",
                           style:
                               Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: AppColors.neutral500,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w500,
+                                    color: isDarkMode
+                                        ? AppColors.neutral50
+                                        : AppColors.neutral500,
+                                    fontSize: 14.5.sp,
+                                    fontWeight: FontWeight.w600,
                                   ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 24.sp),
+                SizedBox(height: 36.sp),
 
                 TermsAndPrivacyText()
               ],
@@ -132,7 +146,7 @@ class RegisterPage extends StatelessWidget {
         Expanded(
           child: Container(
             height: 1,
-            color: AppColors.gray300,
+            color: AppColors.neutral300,
           ),
         ),
         Padding(
@@ -140,7 +154,7 @@ class RegisterPage extends StatelessWidget {
           child: Text(
             'or',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.gray500,
+                  color: AppColors.neutral500,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                   letterSpacing: -0.1,
@@ -150,7 +164,7 @@ class RegisterPage extends StatelessWidget {
         Expanded(
           child: Container(
             height: 1,
-            color: AppColors.gray300,
+            color: AppColors.neutral300,
           ),
         ),
       ],

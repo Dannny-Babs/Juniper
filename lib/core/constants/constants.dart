@@ -120,4 +120,3 @@ final descriptionValidator = MultiValidator([
       errorText:
           'Description must be less than ${AppConstants.maxDescriptionCharacters} characters long'),
 ]);
-
