@@ -198,13 +198,13 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                       ? AppColors.backgroundLight
                       : AppColors.neutral800)
                   : isDarkMode
-                      ? AppColors.neutral700
+                      ? AppColors.neutral800.withAlpha(50)
                       : AppColors.neutral200,
               textColor: _isOtpComplete()
                   ? (isDarkMode
                       ? AppColors.neutral900
                       : AppColors.backgroundLight)
-                  : (isDarkMode ? AppColors.neutral200 : AppColors.neutral500),
+                  : (isDarkMode ? AppColors.neutral600 : AppColors.neutral500),
               onPressed: !_isOtpComplete()
                   ? null
                   : () => context.push('/profile-setup'),

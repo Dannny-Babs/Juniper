@@ -38,7 +38,6 @@ class PersonalInfoStep extends StatelessWidget {
         SizedBox(height: 16.sp),
         SectionTitle(
           title: 'Date of Birth',
-          
         ),
         SizedBox(height: 8.sp),
         InkWell(
@@ -73,7 +72,8 @@ class PersonalInfoStep extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: dateOfBirth != null
                             ? AppColors.neutral300
-                            : AppColors.neutral700,
+                            : AppColors.neutral400,
+                        fontWeight: FontWeight.w500,
                       ),
                 ),
                 Icon(EneftyIcons.calendar_2_outline,
@@ -99,18 +99,21 @@ class PersonalInfoStep extends StatelessWidget {
   }
 
   Widget _buildGenderButton(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Expanded(
       child: Container(
         padding: EdgeInsets.all(16.sp),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isDark ? AppColors.surfaceDark100 : AppColors.surfaceLight,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey.shade300),
+          border: Border.all(
+            color: isDark ? AppColors.surfaceDark300 : AppColors.borderLight,
+          ),
         ),
         child: Center(
           child: Text(
             'Student', // You might want to make this dynamic
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
       ),
@@ -130,6 +133,7 @@ class PersonalInfoStep extends StatelessWidget {
           label,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: AppColors.neutral500,
+                fontWeight: FontWeight.w500,
               ),
         ),
         SizedBox(height: 6.sp),

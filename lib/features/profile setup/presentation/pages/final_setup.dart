@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/features/profile%20setup/presentation/widgets/section_title.dart';
 import '../../../../core/utils/utils.dart';
+import '../widgets/picture_selector.dart';
 
 class FinalTouchesStep extends StatelessWidget {
   final String? profilePictureUrl;
@@ -27,7 +28,14 @@ class FinalTouchesStep extends StatelessWidget {
       children: [
         SectionTitle(title: 'Profile Picture (Optional)'),
         SizedBox(height: 6.sp),
-        _buildProfilePictureSelector(context),
+        ProfilePictureSelector(
+          // Optional
+          onImageSelected: (String path) {
+            // Handle the selected image path
+            print('Selected image path: $path');
+          },
+          size: 120, // Optional: customize size
+        ),
         SizedBox(height: 24.sp),
         SectionTitle(title: 'Move-In Timeline'),
         SizedBox(height: 6.sp),
@@ -43,73 +51,21 @@ class FinalTouchesStep extends StatelessWidget {
     );
   }
 
-  Widget _buildProfilePictureSelector(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: () async {
-              final image =
-                  await ImagePicker().pickImage(source: ImageSource.gallery);
-              if (image != null) {
-                onProfilePictureChanged(image.path);
-              }
-            },
-            child: Container(
-              width: 100.sp,
-              height: 100.sp,
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.grey[300]!,
-                  width: 1,
-                ),
-              ),
-              child: profilePictureUrl != null
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(60.sp),
-                      child: Image.network(
-                        profilePictureUrl!,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  : Icon(
-                      EneftyIcons.camera_bold,
-                      size: 32.sp,
-                      color: AppColors.neutral500,
-                    ),
-            ),
-          ),
-          SizedBox(height: 12.sp),
-          if (profilePictureUrl != null)
-            TextButton(
-              onPressed: () => onProfilePictureChanged(null),
-              child: Text(
-                'Remove',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.red[400],
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildMoveInTimelineSelector(BuildContext context) {
     final timelineOptions = [
       "Immediately",
       "Within 1 month",
       "In 3+ months",
     ];
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.neutral100,
+        color: isDark ? AppColors.surfaceDark100 : AppColors.surfaceLight,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color:  Theme.of(context).colorScheme.onSurface.withOpacity(0.3),),
+        border: Border.all(
+          color: isDark ? AppColors.surfaceDark300 : AppColors.borderLight,
+        ),
       ),
       padding: EdgeInsets.symmetric(horizontal: 16.sp),
       child: DropdownButtonHideUnderline(
@@ -119,8 +75,9 @@ class FinalTouchesStep extends StatelessWidget {
           hint: Text(
             'Select move-in timeline',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.neutral500,
-                ),
+                color: AppColors.neutral500,
+                fontWeight: FontWeight.w500,
+                fontSize: 16.sp),
           ),
           items: timelineOptions.map((String option) {
             return DropdownMenuItem<String>(
@@ -128,7 +85,10 @@ class FinalTouchesStep extends StatelessWidget {
               child: Text(
                 option,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.neutral500,
+                      color:
+                          isDark ? AppColors.neutral300 : AppColors.neutral400,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0,
                     ),
               ),
             );
@@ -153,11 +113,11 @@ class FinalTouchesStep extends StatelessWidget {
       maxLines: 3,
       decoration: InputDecoration(
         hintText: "Tell us if there's anything specific you're looking for",
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+        hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: AppColors.neutral500,
+              fontWeight: FontWeight.w500,
             ),
         filled: true,
-        fillColor: Colors.white,
         focusColor: AppColors.neutral500,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),

@@ -94,6 +94,7 @@ class _LifestyleStepState extends State<LifestyleStep> {
     required List<String> selectedItems,
     required Function(List<String>) onChanged,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Wrap(
       spacing: 8.sp,
       runSpacing: 8.sp,
@@ -115,17 +116,22 @@ class _LifestyleStepState extends State<LifestyleStep> {
               vertical: 4.sp,
             ),
             decoration: BoxDecoration(
-              color: isSelected ? AppColors.primary500 : Colors.white,
+              color: isSelected ? AppColors.primary600 : Colors.transparent,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: isSelected ? AppColors.primary700 : Colors.grey.shade300,
+                color: isSelected
+                    ? AppColors.primary700
+                    : isDark
+                        ? AppColors.surfaceDark300
+                        : AppColors.borderLight,
               ),
             ),
             child: Text(
               item,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: isSelected ? Colors.white : AppColors.neutral500,
-                    fontSize: 13.sp,
+                    fontSize: 14.sp,
+                    fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
                   ),
             ),
           ),
@@ -135,6 +141,7 @@ class _LifestyleStepState extends State<LifestyleStep> {
   }
 
   Widget _buildFurnishingSelector() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Row(
       children: _furnishingOptions.map((option) {
         final isSelected = widget.furnishingPreference == option;
@@ -149,12 +156,14 @@ class _LifestyleStepState extends State<LifestyleStep> {
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12.sp),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.primary500 : Colors.white,
+                  color: isSelected ? AppColors.primary600 : Colors.transparent,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color: isSelected
                         ? AppColors.primary700
-                        : Colors.grey.shade300,
+                        : isDark
+                            ? AppColors.surfaceDark300
+                            : AppColors.borderLight,
                   ),
                 ),
                 child: Center(
@@ -162,7 +171,9 @@ class _LifestyleStepState extends State<LifestyleStep> {
                     option,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color:
-                              isSelected ? Colors.white : AppColors.neutral500,
+                              isSelected ? Colors.white : AppColors.neutral400,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
                         ),
                   ),
                 ),

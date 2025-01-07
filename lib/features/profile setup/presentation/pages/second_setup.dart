@@ -85,6 +85,7 @@ class _PreferencesStepState extends State<PreferencesStep> {
   }
 
   Widget _buildHousingTypeSelector() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Wrap(
       spacing: 8.sp,
       runSpacing: 8.sp,
@@ -107,17 +108,22 @@ class _PreferencesStepState extends State<PreferencesStep> {
               vertical: 4.sp,
             ),
             decoration: BoxDecoration(
-              color: isSelected ? AppColors.primary500 : Colors.white,
+              color: isSelected ? AppColors.primary700 : Colors.transparent,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: isSelected ? AppColors.primary700 : Colors.grey.shade300,
+                color: isSelected
+                    ? AppColors.primary700
+                    : isDark
+                        ? AppColors.surfaceDark300
+                        : AppColors.borderLight,
               ),
             ),
             child: Text(
               type,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: isSelected ? Colors.white : AppColors.neutral500,
-                    fontSize: 13.sp,
+                    fontSize: 14.sp,
+                    fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
                   ),
             ),
           ),
@@ -135,16 +141,17 @@ class _PreferencesStepState extends State<PreferencesStep> {
             hintText: 'Enter cities or zip codes',
             hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.neutral500,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14.sp,
                 ),
             filled: true,
-            fillColor: Colors.white,
             focusColor: AppColors.neutral500,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(color: Colors.grey.shade300, width: 1.0),
             ),
             suffixIcon: IconButton(
-              icon: Icon(Icons.add, color: Theme.of(context).primaryColor),
+              icon: Icon(Icons.add, color: AppColors.primary500),
               onPressed: () {
                 if (_locationController.text.isNotEmpty) {
                   widget.onLocationsChanged([
