@@ -7,10 +7,10 @@ class PlatformBackButton extends StatelessWidget {
   final Color? color;
 
   const PlatformBackButton({
-    Key? key,
+    super.key,
     this.onPressed,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

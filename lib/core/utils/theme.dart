@@ -212,18 +212,21 @@ class AppTheme {
       style: ButtonStyle(
         elevation: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.pressed)) return _elevations['none'];
-          if (states.contains(WidgetState.hovered))
+          if (states.contains(WidgetState.hovered)) {
             return _elevations['medium'];
+          }
           return _elevations['low'];
         }),
         backgroundColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled))
+          if (states.contains(WidgetState.disabled)) {
             return AppColors.neutral200;
+          }
           return AppColors.primary500;
         }),
         foregroundColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled))
+          if (states.contains(WidgetState.disabled)) {
             return AppColors.neutral500;
+          }
           return Colors.white;
         }),
       ),
@@ -263,18 +266,21 @@ class AppTheme {
       style: ButtonStyle(
         elevation: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.pressed)) return _elevations['none'];
-          if (states.contains(WidgetState.hovered))
+          if (states.contains(WidgetState.hovered)) {
             return _elevations['medium'];
+          }
           return _elevations['low'];
         }),
         backgroundColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled))
+          if (states.contains(WidgetState.disabled)) {
             return AppColors.surfaceDark200;
+          }
           return AppColors.primary500;
         }),
         foregroundColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled))
+          if (states.contains(WidgetState.disabled)) {
             return AppColors.textSecondaryDark;
+          }
           return Colors.white;
         }),
       ),
