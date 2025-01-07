@@ -53,6 +53,7 @@ class ProfileStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -79,14 +80,16 @@ class ProfileStepper extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.sp),
                   backgroundColor: AppColors.neutral200,
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    AppColors.primary700,
+                    AppColors.primary500,
                   ),
                 ),
                 SizedBox(height: 24.sp),
                 Text(
                   'Step ${ProfileSetupStage.values.indexOf(currentStage) + 1} of ${ProfileSetupStage.values.length}',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.neutral400,
+                        color: isDark
+                            ? AppColors.neutral500
+                            : AppColors.neutral500,
                         fontSize: 14.sp,
                       ),
                 ),
@@ -95,21 +98,23 @@ class ProfileStepper extends StatelessWidget {
                   currentStage.title,
                   style: Theme.of(context).textTheme.displayLarge?.copyWith(
                         fontFamily: 'HelveticaNeue',
-                        color: AppColors.neutral500,
+                        color: isDark
+                            ? AppColors.neutral300
+                            : AppColors.neutral900,
                         fontWeight: FontWeight.w500,
                         fontSize: 26.sp,
                         letterSpacing: -0.5,
                       ),
                 ),
-                SizedBox(height: 6.sp),
+                SizedBox(height: 4.sp),
                 Text(
                   currentStage.subtitle,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontFamily: 'HelveticaNeue',
                         color: AppColors.neutral500,
-                        fontWeight: FontWeight.normal,
+                        fontWeight: FontWeight.w500,
                         height: 1.3,
-                        fontSize: 14.sp,
+                        fontSize: 16.sp,
                         letterSpacing: -0.1,
                       ),
                 ),
@@ -126,6 +131,8 @@ class ProfileStepper extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(24.sp),
             child: CustomButton(
+              backgroundColor:
+                  isDark ? AppColors.neutral800 : AppColors.neutral700,
               height: 48.sp,
               width: double.infinity,
               onPressed: onNext,
