@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/button.dart';
+import '../../../navigation/presentation/bloc/navigation_bloc.dart';
 
 class EmailVerificationPage extends StatefulWidget {
   final String email;
@@ -207,7 +208,16 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                   : (isDarkMode ? AppColors.neutral600 : AppColors.neutral500),
               onPressed: !_isOtpComplete()
                   ? null
-                  : () => context.push('/profile-setup'),
+                  : () {
+                      // Implement verification logic here
+                      context
+                          .read<NavigationBloc>()
+                          .add(AuthenticationStatusChanged(true));
+                       
+
+                      // Navigate to home
+                      context.go('/home');
+                    },
               text: 'Verify',
               size: ButtonSize.medium,
             ),

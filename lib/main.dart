@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/utils/utils.dart';
+import 'features/navigation/presentation/bloc/navigation_bloc.dart';
 import 'features/onboarding/bloc/onboarding_bloc.dart';
 
 void main() async {
@@ -14,7 +15,11 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => OnboardingBloc(prefs: prefs)..add(OnboardingStarted()),
+          create: (context) => OnboardingBloc(prefs: prefs)
+            ..add(OnboardingStarted()),
+        ),
+        BlocProvider(
+          create: (context) => NavigationBloc(prefs),
         ),
       ],
       child: MainApp(router: router),

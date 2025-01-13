@@ -11,11 +11,11 @@ class ProfilePictureSelector extends StatefulWidget {
   final double size;
 
   const ProfilePictureSelector({
-    Key? key,
+    super.key,
     this.initialImage,
     required this.onImageSelected,
     this.size = 100,
-  }) : super(key: key);
+  });
 
   @override
   State<ProfilePictureSelector> createState() => _ProfilePictureSelectorState();

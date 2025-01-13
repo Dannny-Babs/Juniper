@@ -32,7 +32,6 @@ class FinalTouchesStep extends StatelessWidget {
           // Optional
           onImageSelected: (String path) {
             // Handle the selected image path
-            print('Selected image path: $path');
           },
           size: 120, // Optional: customize size
         ),

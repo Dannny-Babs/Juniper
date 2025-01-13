@@ -65,6 +65,15 @@ class ProfileStepper extends StatelessWidget {
                 color: AppColors.neutral500,
               )
             : null,
+       actions: [
+          if (!isLastStep)
+            TextButton(
+              onPressed: () => _showSkipDialog(context),
+              child: Text('Skip',
+                style: TextStyle(color: AppColors.neutral500),
+              ),
+            ),
+        ],
       ),
       body: Column(
         children: [
@@ -139,6 +148,29 @@ class ProfileStepper extends StatelessWidget {
               text: isLastStep ? 'Complete Profile' : 'Continue',
               size: ButtonSize.medium,
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+   void _showSkipDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Skip Profile Setup?'),
+        content: Text('You can always complete your profile later.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Continue Setup'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              AppRouter.skipProfileSetup(context);
+            },
+            child: Text('Skip'),
           ),
         ],
       ),

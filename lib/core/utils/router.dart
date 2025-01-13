@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:juniper/core/constants/not_found_screen.dart';
 import 'package:juniper/core/utils/utils.dart';
+import '../../features/navigation/presentation/bloc/navigation_bloc.dart';
+import '../../features/navigation/presentation/widgets/bottom_bar.dart';
+import '../constants/not_found_screen.dart';
 
 class AppRouter {
-  // Keep track of navigationKey to maintain state
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
+  static final _shellNavigatorKey = GlobalKey<NavigatorState>();
   static late final GoRouter _router;
   static bool _initialized = false;
 
@@ -12,18 +14,42 @@ class AppRouter {
     if (!_initialized) {
       _router = GoRouter(
         navigatorKey: _rootNavigatorKey,
-        initialLocation: isOnboardingCompleted ? '/login' : '/onboarding',
-        
-        // Redirect logic that only applies on first launch
+        initialLocation: isOnboardingCompleted ? '/home' : '/onboarding',
         redirect: (context, state) {
-          if (!_initialized) {
-            _initialized = true;
-            return isOnboardingCompleted ? '/login' : '/onboarding';
+          final navigationBloc = context.read<NavigationBloc>();
+          final navState = navigationBloc.state;
+          
+          final isAuthenticated = navState.isAuthenticated;
+          final isProfileSetupComplete = navState.isProfileSetupComplete;
+          
+          final isAuthRoute = ['/login', '/register', '/forgot-password', '/otp']
+              .contains(state.matchedLocation);
+          final isOnboardingRoute = state.matchedLocation == '/onboarding';
+          final isProfileSetupRoute = state.matchedLocation == '/profile-setup';
+          
+          // Store current location for navigation history
+          if (!isAuthRoute && !isOnboardingRoute) {
+            navigationBloc.add(LocationChanged(state.matchedLocation));
           }
-          return null; // Return null to prevent redirects after initialization
-        },
 
+          // Handle authentication redirects
+          if (!isAuthenticated && !isAuthRoute && !isOnboardingRoute) {
+            return '/login';
+          }
+
+          if (isAuthenticated && !isProfileSetupComplete && 
+              !isProfileSetupRoute && !isAuthRoute) {
+            return '/profile-setup';
+          }
+
+          if (isAuthenticated && isAuthRoute) {
+            return isProfileSetupComplete ? '/home' : '/profile-setup';
+          }
+
+          return null;
+        },
         routes: [
+          // Auth routes (outside shell)
           GoRoute(
             path: '/onboarding',
             name: 'onboarding',
@@ -48,41 +74,79 @@ class AppRouter {
             path: '/otp',
             name: 'otp',
             builder: (context, state) {
-              // Get email from state.extra or params
               final email = (state.extra as Map<String, dynamic>?)?['email'] as String? ?? 
-                          'user@example.com';
+                  'user@example.com';
               return EmailVerificationPage(email: email);
             },
           ),
           GoRoute(
             path: '/profile-setup',
             name: 'profile-setup',
-            builder: (context, state) =>  ProfileSetupPage(),
-          ),
-          GoRoute(
-            path: '/home',
-            name: 'home',
-            builder: (context, state) => const HomePage(),
+            builder: (context, state) => const ProfileSetupPage(),
           ),
 
-
-
+          // Shell route for bottom navigation
+          ShellRoute(
+            navigatorKey: _shellNavigatorKey,
+            builder: (context, state, child) {
+              // Only show bottom nav if authenticated
+              return BlocBuilder<NavigationBloc, NavigationState>(
+                builder: (context, navState) {
+                  if (!navState.isAuthenticated) {
+                    return child;
+                  }
+                  return ScaffoldWithBottomNavBar(child: child);
+                },
+              );
+            },
+            routes: [
+              GoRoute(
+                path: '/home',
+                name: 'home',
+                builder: (context, state) => const HomePage(),
+                
+              ),
+              GoRoute(
+                path: '/portfolio',
+                name: 'portfolio',
+                builder: (context, state) => const LoginPage(), //PortfolioPage(), 
+              ),
+              GoRoute(
+                path: '/chat',
+                name: 'chat',
+                builder: (context, state) => const LoginPage(), //ChatPage(),
+              ),
+              GoRoute(
+                path: '/profile',
+                name: 'profile',
+                builder: (context, state) => const LoginPage(), //ProfilePage(),
+              ),
+            ],
+          ),
         ],
-        
-        // Optional: Error handling for unknown routes
         errorBuilder: (context, state) => const NotFoundPage(),
       );
+      _initialized = true;
     }
     return _router;
   }
 
-  // Helper method to navigate with parameters
+  // Helper methods
   static void navigateToOtp(BuildContext context, String email) {
     context.pushNamed('otp', extra: {'email': email});
   }
-}
 
-// Extension for type-safe route parameters
-extension GoRouterStateExtensions on GoRouterState {
-  Map<String, dynamic>? get params => extra as Map<String, dynamic>?;
+  static void navigateAfterAuth(BuildContext context, bool isProfileComplete) {
+    if (!isProfileComplete) {
+      context.go('/profile-setup');
+    } else {
+      context.go('/home');
+    }
+
+
+  }
+  static void skipProfileSetup(BuildContext context) {
+    context.read<NavigationBloc>().add(ProfileSetupSkipped());
+    context.go('/home');
+  }
 }

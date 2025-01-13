@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/utils.dart';
+import '../../../navigation/presentation/bloc/navigation_bloc.dart';
 
 class SocialSignInButton extends StatelessWidget {
   const SocialSignInButton({super.key});
@@ -29,6 +30,10 @@ class SocialSignInButton extends StatelessWidget {
             ),
             onPressed: () {
               // Handle Google sign in
+              context
+                  .read<NavigationBloc>()
+                  .add(AuthenticationStatusChanged(true));
+              context.go('/home');
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

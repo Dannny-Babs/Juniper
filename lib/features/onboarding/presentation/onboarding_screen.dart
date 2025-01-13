@@ -42,8 +42,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
     context.read<OnboardingBloc>().add(OnboardingStarted());
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<OnboardingBloc, OnboardingState>(
@@ -71,15 +69,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       children: [
                         _buildPagination(state.currentPage),
                         TextButton(
-                          onPressed: () => context.read<OnboardingBloc>().add(OnboardingSkipped()),
+                          onPressed: () => context
+                              .read<OnboardingBloc>()
+                              .add(OnboardingSkipped()),
                           child: Row(
                             children: [
                               Text(
                                 'Skip',
-                                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                  color: AppColors.neutral500.withAlpha(230),
-                                  fontSize: 14.sp,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      color: AppColors.neutral500,
+                                      fontSize: 14.sp,
+                                    ),
                               ),
                               const SizedBox(width: 3),
                               const Icon(
@@ -98,7 +101,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         physics: const NeverScrollableScrollPhysics(),
                         controller: _pageController,
                         itemCount: slides.length,
-                        
                         itemBuilder: (context, index) {
                           return OnboardingSlideWidget(slide: slides[index]);
                         },
@@ -145,11 +147,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   Widget _buildButtons(OnboardingState state) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomButton(
       height: 48.sp,
       text: state.currentPage == slides.length - 1 ? 'Get Started' : 'Continue',
-      backgroundColor: AppColors.neutral500,
-      textColor: AppColors.neutral100,
+      backgroundColor:
+          isDark ? AppColors.backgroundLight : AppColors.neutral800,
+      textColor: isDark ? AppColors.neutral900 : AppColors.backgroundLight,
       size: ButtonSize.medium,
       isLoading: state.isLoading,
       onPressed: () {

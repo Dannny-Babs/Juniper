@@ -21,6 +21,7 @@ class OnboardingSlideWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 64.h),
       child: Column(
@@ -33,7 +34,7 @@ class OnboardingSlideWidget extends StatelessWidget {
                 fontSize: 26.sp,
                 height: 1,
                 fontWeight: FontWeight.w500,
-                color: AppColors.neutral500,
+                color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
                 letterSpacing: -0.5),
           ),
           const SizedBox(height: 8),
@@ -44,7 +45,7 @@ class OnboardingSlideWidget extends StatelessWidget {
                   fontSize: 15.sp,
                   fontWeight: FontWeight.w400,
                   letterSpacing: -0.3,
-                  color: Color(0xFF44445F),
+                  color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
                 ),
           ),
           const SizedBox(height: 20),

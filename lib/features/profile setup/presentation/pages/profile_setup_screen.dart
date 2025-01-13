@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 
+import '../../../navigation/presentation/bloc/navigation_bloc.dart';
 import 'final_setup.dart';
 import 'third_setup.dart';
 import 'second_setup.dart';
@@ -100,9 +101,10 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
   }
 
   void _handleNext() {
+    if (!_validateCurrentStep()) return;
+
     if (_currentStage == ProfileSetupStage.finalTouches) {
-      // Handle completion
-      context.go('/home');
+      _completeProfileSetup();
       return;
     }
 
@@ -110,6 +112,57 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
       _currentStage = ProfileSetupStage
           .values[ProfileSetupStage.values.indexOf(_currentStage) + 1];
     });
+  }
+
+  bool _validateCurrentStep() {
+    switch (_currentStage) {
+      case ProfileSetupStage.personal:
+        return _firstNameController.text.isNotEmpty &&
+            _lastNameController.text.isNotEmpty;
+      case ProfileSetupStage.preferences:
+        return _selectedHousingTypes.isNotEmpty &&
+            _selectedLocations.isNotEmpty;
+      case ProfileSetupStage.lifestyle:
+        return true; // Optional step
+      case ProfileSetupStage.finalTouches:
+        return _moveInTimeline.isNotEmpty;
+    }
+  }
+
+  void _completeProfileSetup() {
+    final navigationBloc = context.read<NavigationBloc>();
+
+    // Save profile data
+    final profileData = {
+      'firstName': _firstNameController.text,
+      'lastName': _lastNameController.text,
+      'dateOfBirth': _dateOfBirth?.toIso8601String(),
+      'housingTypes': _selectedHousingTypes,
+      'budget': _budget,
+      'locations': _selectedLocations,
+      'amenities': _selectedAmenities,
+      'communityFeatures': _selectedCommunityFeatures,
+      'furnishingPreference': _furnishingPreference,
+      'otherRequirements': _otherRequirements,
+      'moveInTimeline': _moveInTimeline,
+      'profilePictureUrl': _profilePictureUrl,
+      'additionalPreferences': _additionalPreferences,
+    };
+
+    // Update navigation state
+    navigationBloc.add(ProfileSetupCompleted());
+
+    // Navigate to home
+    context.go('/home');
+
+    print(profileData);
+  }
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    super.dispose();
   }
 
   @override
