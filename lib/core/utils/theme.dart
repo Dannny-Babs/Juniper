@@ -166,7 +166,6 @@ class AppTheme {
   static NavigationBarThemeData _buildNavigationBarTheme(
       ColorScheme colorScheme, bool isDark) {
     return NavigationBarThemeData(
-
       height: 165.h,
       elevation: 0,
       backgroundColor: isDark ? AppColors.surfaceDark100 : Colors.white,
@@ -174,22 +173,20 @@ class AppTheme {
       labelTextStyle: WidgetStateProperty.resolveWith((states) {
         final TextStyle baseStyle = TextStyle(
           fontFamily: 'HelveticaNeue',
-          letterSpacing: -0.5,
+          letterSpacing: -0.1,
         );
 
         if (states.contains(WidgetState.selected)) {
           return baseStyle.copyWith(
             fontSize: 15.sp,
             fontWeight: FontWeight.w600,
-            letterSpacing: 0.1,
             color: AppColors.primary500,
           );
         }
 
         return baseStyle.copyWith(
             fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 0.1,
+            fontWeight: FontWeight.normal,
             color: isDark ? AppColors.textSecondaryDark : AppColors.neutral500);
       }),
       iconTheme: WidgetStateProperty.resolveWith((states) {

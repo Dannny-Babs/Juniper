@@ -31,8 +31,8 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
                   isDarkMode ? AppColors.surfaceDark : AppColors.surfaceLight,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.09),
-                  blurRadius: 10,
+                  color: AppColors.backgroundDark.withAlpha(20),
+                  blurRadius: 4,
                   offset: const Offset(0, -1),
                 ),
               ],
