@@ -22,4 +22,7 @@ export 'package:intl/intl.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:firebase_core/firebase_core.dart';
-export 'package:cloud_firestore/cloud_firestore.dart';
+//export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:shimmer/shimmer.dart';
+export 'package:cached_network_image/cached_network_image.dart';
+export 'package:sqflite/sqflite.dart';
