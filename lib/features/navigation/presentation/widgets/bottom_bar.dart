@@ -38,7 +38,7 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
               ],
             ),
             child: NavigationBar(
-              height: 65,
+              height: 53,
               elevation: 0,
               selectedIndex: state.currentIndex,
               backgroundColor:
