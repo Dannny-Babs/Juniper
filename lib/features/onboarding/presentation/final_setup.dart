@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:juniper/features/profile%20setup/presentation/widgets/section_title.dart';
-import '../../../../core/utils/utils.dart';
+import 'package:juniper/features/onboarding/widgets/section_title.dart';
+import '../../../core/utils/utils.dart';
 import '../widgets/picture_selector.dart';
 
 class FinalTouchesStep extends StatelessWidget {

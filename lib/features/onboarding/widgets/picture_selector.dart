@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/utils.dart';
+import '../../../core/utils/utils.dart';
 
 
 class ProfilePictureSelector extends StatefulWidget {

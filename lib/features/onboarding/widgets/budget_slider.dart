@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../../core/utils/utils.dart';
+import '../../../core/utils/utils.dart';
 
 class BudgetRangeSlider extends StatefulWidget {
   const BudgetRangeSlider({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/button.dart';
+import '../../../core/utils/utils.dart';
+import '../../../core/widgets/button.dart';
 
 enum ProfileSetupStage {
   personal,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:juniper/features/profile%20setup/presentation/widgets/budget_slider.dart';
-import '../../../../core/utils/utils.dart';
+import 'package:juniper/features/onboarding/widgets/budget_slider.dart';
+import '../../../core/utils/utils.dart';
 import '../widgets/section_title.dart';
 
 class PreferencesStep extends StatefulWidget {
