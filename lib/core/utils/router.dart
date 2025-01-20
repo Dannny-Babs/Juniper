@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
+import 'package:juniper/features/profile/presentation/pages/profile_screen.dart';
 import '../../features/navigation/presentation/bloc/navigation_bloc.dart';
 import '../../features/navigation/presentation/widgets/bottom_bar.dart';
 import '../constants/not_found_screen.dart';
@@ -18,15 +19,19 @@ class AppRouter {
         redirect: (context, state) {
           final navigationBloc = context.read<NavigationBloc>();
           final navState = navigationBloc.state;
-          
+
           final isAuthenticated = navState.isAuthenticated;
           final isProfileSetupComplete = navState.isProfileSetupComplete;
-          
-          final isAuthRoute = ['/login', '/register', '/forgot-password', '/otp']
-              .contains(state.matchedLocation);
+
+          final isAuthRoute = [
+            '/login',
+            '/register',
+            '/forgot-password',
+            '/otp'
+          ].contains(state.matchedLocation);
           final isOnboardingRoute = state.matchedLocation == '/onboarding';
           final isProfileSetupRoute = state.matchedLocation == '/profile-setup';
-          
+
           // Store current location for navigation history
           if (!isAuthRoute && !isOnboardingRoute) {
             navigationBloc.add(LocationChanged(state.matchedLocation));
@@ -37,8 +42,10 @@ class AppRouter {
             return '/login';
           }
 
-          if (isAuthenticated && !isProfileSetupComplete && 
-              !isProfileSetupRoute && !isAuthRoute) {
+          if (isAuthenticated &&
+              !isProfileSetupComplete &&
+              !isProfileSetupRoute &&
+              !isAuthRoute) {
             return '/profile-setup';
           }
 
@@ -74,8 +81,9 @@ class AppRouter {
             path: '/otp',
             name: 'otp',
             builder: (context, state) {
-              final email = (state.extra as Map<String, dynamic>?)?['email'] as String? ?? 
-                  'user@example.com';
+              final email =
+                  (state.extra as Map<String, dynamic>?)?['email'] as String? ??
+                      'user@example.com';
               return EmailVerificationPage(email: email);
             },
           ),
@@ -104,12 +112,12 @@ class AppRouter {
                 path: '/home',
                 name: 'home',
                 builder: (context, state) => const HomePage(),
-                
               ),
               GoRoute(
                 path: '/portfolio',
                 name: 'portfolio',
-                builder: (context, state) => const LoginPage(), //PortfolioPage(), 
+                builder: (context, state) =>
+                    const LoginPage(), //PortfolioPage(),
               ),
               GoRoute(
                 path: '/chat',
@@ -119,7 +127,8 @@ class AppRouter {
               GoRoute(
                 path: '/profile',
                 name: 'profile',
-                builder: (context, state) => const LoginPage(), //ProfilePage(),
+                builder: (context, state) =>
+                    const ProfileScreen(), //ProfilePage(),
               ),
             ],
           ),
@@ -142,9 +151,8 @@ class AppRouter {
     } else {
       context.go('/home');
     }
-
-
   }
+
   static void skipProfileSetup(BuildContext context) {
     context.read<NavigationBloc>().add(ProfileSetupSkipped());
     context.go('/home');
