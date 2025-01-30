@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
+import 'package:juniper/features/portfolio/presentation/pages/portfolio_screen.dart';
 import 'package:juniper/features/profile/presentation/pages/profile_screen.dart';
 import '../../features/navigation/presentation/bloc/navigation_bloc.dart';
 import '../../features/navigation/presentation/widgets/bottom_bar.dart';
@@ -117,7 +118,7 @@ class AppRouter {
                 path: '/portfolio',
                 name: 'portfolio',
                 builder: (context, state) =>
-                    const LoginPage(), //PortfolioPage(),
+                    const PortfolioScreen(), //PortfolioPage(),
               ),
               GoRoute(
                 path: '/chat',

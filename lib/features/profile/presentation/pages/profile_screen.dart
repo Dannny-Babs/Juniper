@@ -8,9 +8,9 @@ class ProfileScreen extends StatelessWidget {
   final Function(int)? onNavigate;
 
   const ProfileScreen({
-    Key? key,
+    super.key,
     this.onNavigate,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

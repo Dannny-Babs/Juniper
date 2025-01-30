@@ -7,10 +7,10 @@ class PropertyMetricsCard extends StatelessWidget {
   final TextStyle? supportingTextStyle;
 
   const PropertyMetricsCard({
-    Key? key,
+    super.key,
     this.valueTextStyle,
     this.supportingTextStyle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
