@@ -14,29 +14,25 @@ class PropertyMetricsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final defaultValueStyle = Theme.of(context).textTheme.titleLarge?.copyWith(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? AppColors.textPrimaryDark
-              : AppColors.neutral800,
-          fontWeight: FontWeight.w500,
-          fontSize: 17,
-        );
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+    final defaultValueStyle = theme.textTheme.titleLarge?.copyWith(
+      color: isDarkMode ? AppColors.textPrimaryDark : AppColors.neutral800,
+      fontWeight: FontWeight.w500,
+      fontSize: 17,
+    );
 
-    final defaultSupportingStyle = Theme.of(context)
-        .textTheme
-        .bodyMedium
-        ?.copyWith(
-          color: isDarkMode ? AppColors.textPrimaryDark : AppColors.neutral800,
-          fontSize: 13.sp,
-        );
+    final defaultSupportingStyle = theme.textTheme.bodyMedium?.copyWith(
+      color: isDarkMode ? AppColors.textPrimaryDark : AppColors.neutral800,
+      fontSize: 13,
+    );
 
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: theme.cardColor,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: Theme.of(context).dividerColor,
+          color: theme.dividerColor,
           width: 1,
         ),
       ),
@@ -59,7 +55,7 @@ class PropertyMetricsCard extends StatelessWidget {
                 ),
               ),
               VerticalDivider(
-                color: Theme.of(context).dividerColor,
+                color: theme.dividerColor,
                 width: 32,
                 thickness: 1,
               ),
@@ -77,7 +73,7 @@ class PropertyMetricsCard extends StatelessWidget {
                 ),
               ),
               VerticalDivider(
-                color: Theme.of(context).dividerColor,
+                color: theme.dividerColor,
                 width: 32,
                 thickness: 1,
               ),
@@ -89,20 +85,19 @@ class PropertyMetricsCard extends StatelessWidget {
                   percentage: '↑ 6,82%',
                   isPositive: true,
                   context: context,
-                  valueStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: isDarkMode
-                            ? AppColors.neutral600
-                            : AppColors.neutral400,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  supportingStyle:
-                      Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: isDarkMode
-                                ? AppColors.neutral100
-                                : AppColors.neutral800,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                          ),
+                  valueStyle: theme.textTheme.bodyMedium?.copyWith(
+                    color: isDarkMode
+                        ? AppColors.neutral600
+                        : AppColors.neutral400,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  supportingStyle: theme.textTheme.titleLarge?.copyWith(
+                    color: isDarkMode
+                        ? AppColors.neutral100
+                        : AppColors.neutral800,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ],
@@ -122,7 +117,8 @@ class PropertyMetricsCard extends StatelessWidget {
     required TextStyle? valueStyle,
     required TextStyle? supportingStyle,
   }) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -141,13 +137,11 @@ class PropertyMetricsCard extends StatelessWidget {
             const SizedBox(width: 4),
             Text(
               label,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: isDarkMode
-                        ? AppColors.neutral600
-                        : AppColors.neutral500,
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: isDarkMode ? AppColors.neutral600 : AppColors.neutral500,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ],
         ),
@@ -175,11 +169,11 @@ class PropertyMetricsCard extends StatelessWidget {
         const SizedBox(height: 2),
         Text(
           percentage,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: isPositive ? AppColors.success500 : AppColors.error500,
-                fontWeight: FontWeight.w600,
-                fontSize: 13.sp,
-              ),
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: isPositive ? AppColors.success500 : AppColors.error500,
+            fontWeight: FontWeight.w600,
+            fontSize: 13,
+          ),
         ),
       ],
     );

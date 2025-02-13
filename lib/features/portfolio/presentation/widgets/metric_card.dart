@@ -20,13 +20,14 @@ class MetricCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = theme.brightness == Brightness.dark;
     return Container(
-      width: 150,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      margin: EdgeInsets.only(right: 8.w),
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(12),
+        color: theme.cardColor,
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
           color: isDark ? AppColors.surfaceDark200 : AppColors.neutral200,
           width: 1,
@@ -41,25 +42,30 @@ class MetricCard extends StatelessWidget {
             style: theme.textTheme.bodyMedium?.copyWith(
               color: isDark ? AppColors.textPrimaryDark : AppColors.neutral500,
               fontWeight: FontWeight.w500,
-              fontSize: 15,
+              fontSize: 14.sp,
+              height: 1.2,
             ),
           ),
-          SizedBox(height: 8.sp),
+          SizedBox(height: 6.h),
           Text(
             value,
             style: theme.textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w500,
-              fontSize: 23,
+              fontSize: 20.sp,
+              height: 1.2,
             ),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h),
           Text(
             description,
             style: theme.textTheme.bodyMedium?.copyWith(
               color: isDark ? AppColors.textPrimaryDark : AppColors.neutral500,
               fontWeight: FontWeight.normal,
-              fontSize: 15,
+              fontSize: 13.sp,
+              height: 1.2,
             ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
+import 'package:juniper/features/portfolio/presentation/widgets/portfolio_chart.dart';
+import '../../../home/data/repositories/property.dart';
+import '../../domain/models/portfolio_property.dart';
 import '../widgets/metric_card.dart';
-import '../widgets/portfolio_chart.dart';
+import '../widgets/property_card.dart';
 
 class PortfolioScreen extends StatefulWidget {
   const PortfolioScreen({super.key});
@@ -14,6 +17,11 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   int selectedTimeframe = 1; // 1M selected by default
   int selectedCardIndex = 0;
   final List<String> timeframes = ['1D', '1M', '3M', '1Y', '3Y', '5Y'];
+  late final PageController _pageController = PageController(
+    initialPage: selectedCardIndex,
+  );
+  List<PortfolioProperty> properties = [];
+  bool isLoading = true;
 
   final List<Map<String, String>> summaryCards = [
     {
@@ -43,43 +51,148 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     },
   ];
 
+  Future<void> _loadProperties() async {
+    if (mounted) {
+      setState(() => isLoading = true);
+    }
+
+    try {
+      final loadedProperties = await PropertyProvider.loadProperties();
+      if (mounted) {
+        setState(() {
+          properties = loadedProperties
+              .where(
+                  (p) => p.imageUrl.isNotEmpty) // Filter out invalid properties
+              .map((p) => PortfolioProperty.fromProperty(p))
+              .toList();
+          isLoading = false;
+        });
+      }
+    } catch (e) {
+      debugPrint('Error loading properties: $e');
+      if (mounted) {
+        setState(() {
+          properties = [];
+          isLoading = false;
+        });
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProperties();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(bottom: 16),
-            padding: const EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: isDark ? AppColors.backgroundDark : AppColors.surfaceLight,
-              border: Border(
-                bottom: BorderSide(
-                  width: 1,
-                  color:
-                      isDark ? AppColors.surfaceDark100 : AppColors.borderLight,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color:
+                    isDark ? AppColors.backgroundDark : AppColors.surfaceLight,
+                border: Border(
+                  bottom: BorderSide(
+                    width: 1,
+                    color: isDark
+                        ? AppColors.surfaceDark100
+                        : AppColors.borderLight,
+                  ),
+                ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(24),
+                  bottomRight: Radius.circular(24),
                 ),
               ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(24),
-                bottomRight: Radius.circular(24),
+              child: Column(
+                children: [
+                  _buildHeader(),
+                  const SizedBox(height: 16),
+                  _buildBalanceCard(),
+                ],
               ),
             ),
-            child: Column(
-              children: [
-                _buildHeader(),
-                const SizedBox(height: 16),
-                _buildBalanceCard(),
-              ],
+            Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: AppConstants.padding20,
+                horizontal: AppConstants.padding8,
+              ),
+              decoration: BoxDecoration(
+                color:
+                    isDark ? AppColors.backgroundDark : AppColors.surfaceLight,
+                border: Border.all(
+                  color:
+                      isDark ? AppColors.surfaceDark100 : AppColors.neutral200,
+                  width: 1,
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(24),
+                ),
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  _buildChart(),
+                  const SizedBox(height: 24),
+                  _buildMetricCards(),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 24),
-          _buildChart(),
-          const SizedBox(height: 24),
-          _buildMetricCards(),
-        ],
+            const SizedBox(height: 16),
+            // Add Assets Section
+            Container(
+              decoration: BoxDecoration(
+                color:
+                    isDark ? AppColors.backgroundDark : AppColors.surfaceLight,
+                border: Border(
+                  top: BorderSide(
+                    width: 1,
+                    color: isDark
+                        ? AppColors.surfaceDark100
+                        : AppColors.borderLight,
+                  ),
+                ),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'My Assets',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: isDark
+                                ? AppColors.textPrimaryDark
+                                : AppColors.neutral800,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                    const SizedBox(height: 16),
+                    _buildAssetsList(),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -139,7 +252,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           '\$1,243,535',
           style: theme.textTheme.displayLarge!.copyWith(
             fontWeight: FontWeight.w500,
-            fontSize: 40.sp,
+            fontSize: 32.sp,
             color: isDark ? AppColors.textPrimaryDark : AppColors.neutral800,
           ),
         ),
@@ -172,13 +285,9 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   Widget _buildChart() {
     return Column(
       children: [
-        const SizedBox(
-          height: 250,
-          child: PortfolioChart(),
-        ),
-        const SizedBox(height: 16),
+        SizedBox(height: 8),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
@@ -186,6 +295,11 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
               (index) => _buildTimeframeButton(index),
             ),
           ),
+        ),
+        const SizedBox(height: 16),
+        SizedBox(
+          height: 250,
+          child: PortfolioChart(),
         ),
       ],
     );
@@ -220,53 +334,82 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   }
 
   Widget _buildMetricCards() {
-    return Column(
-      children: [
-        SizedBox(
-          height: 100,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics(),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            itemCount: summaryCards.length,
-            itemBuilder: (context, index) {
-              return Container(
-                width: MediaQuery.of(context).size.width * 0.6,
-                margin: const EdgeInsets.only(right: 16),
-                child: MetricCard(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 105,
+            child: PageView.builder(
+              controller: _pageController,
+              physics: const BouncingScrollPhysics(),
+              padEnds: false,
+              itemCount: summaryCards.length,
+              onPageChanged: (index) {
+                setState(() => selectedCardIndex = index);
+              },
+              itemBuilder: (context, index) {
+                return MetricCard(
                   title: summaryCards[index]['title']!,
                   value: summaryCards[index]['value']!,
                   description: summaryCards[index]['description']!,
-                  isSelected: selectedCardIndex == index,
-                  onTap: () => setState(() => selectedCardIndex = index),
-                ),
-              );
-            },
+                  onTap: () {},
+                );
+              },
+            ),
           ),
-        ),
-        const SizedBox(height: 16),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            summaryCards.length,
-            (index) => AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              margin: const EdgeInsets.symmetric(horizontal: 1.0),
-              width: selectedCardIndex == index ? 15.0 : 5.0,
-              height: 5.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                color: selectedCardIndex == index
-                    ? AppColors.primary500
-                    : AppColors.neutral400,
-                borderRadius: BorderRadius.circular(16.0),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              summaryCards.length,
+              (index) => AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                margin: EdgeInsets.symmetric(horizontal: 1.w),
+                width: selectedCardIndex == index ? 16.w : 6.w,
+                height: 6.h,
+                decoration: BoxDecoration(
+                  color: selectedCardIndex == index
+                      ? Theme.of(context).primaryColor
+                      : AppColors.neutral300,
+                  borderRadius: BorderRadius.circular(3.r),
+                ),
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAssetsList() {
+    if (isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (properties.isEmpty) {
+      return Center(
+        child: Text(
+          'No properties found',
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
-      ],
+      );
+    }
+
+    return ListView.separated(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: properties.length,
+      separatorBuilder: (context, index) => const SizedBox(height: 12),
+      itemBuilder: (context, index) {
+        final property = properties[index];
+        return PropertyCard(
+          property: property, // Remove index parameter
+          onTap: () {
+            Navigator.of(context).pushNamed('/property', arguments: property);
+          },
+        );
+      },
     );
   }
 }

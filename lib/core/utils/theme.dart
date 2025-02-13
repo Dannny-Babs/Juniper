@@ -178,8 +178,8 @@ class AppTheme {
 
         if (states.contains(WidgetState.selected)) {
           return baseStyle.copyWith(
-            fontSize: 15.sp,
-            fontWeight: FontWeight.w600,
+            fontSize: 14 .sp,
+            fontWeight: FontWeight.w500,
             color: AppColors.primary500,
           );
         }

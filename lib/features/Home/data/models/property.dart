@@ -1,6 +1,6 @@
 class Property {
   final String id;
-  final String imageUrl;
+  final String imageUrl; // Changed from image to imageUrl
   final String title;
   final String location;
   final String price;
@@ -25,16 +25,17 @@ class Property {
 
   factory Property.fromJson(Map<String, dynamic> json) {
     return Property(
-      id: json['id'],
-      imageUrl: json['imageUrl'],
-      title: json['title'],
-      location: json['location'],
-      price: json['price'],
-      roi: json['roi'],
-      beds: json['beds'],
-      baths: (json['baths'] as num).toDouble(),
-      sqft: json['sqft'],
-      status: json['status'],
+      id: json['id']?.toString() ?? '',
+      imageUrl: json['imageUrl'] ??
+          'https://images.unsplash.com/photo-1568605114967-8130f3a36994', // Provide a default URL instead of asset path
+      title: json['title']?.toString() ?? '',
+      location: json['location']?.toString() ?? '',
+      price: json['price']?.toString() ?? '',
+      roi: json['roi']?.toString() ?? '',
+      beds: json['beds'] ?? 0,
+      baths: (json['baths'] as num?)?.toDouble() ?? 0.0,
+      sqft: json['sqft'] ?? 0,
+      status: json['status']?.toString() ?? '',
     );
   }
 }

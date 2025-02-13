@@ -71,8 +71,8 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
                   label: 'Home',
                 ),
                 NavigationDestination(
-                  icon: Icon(EneftyIcons.document_text_2_outline),
-                  selectedIcon: Icon(EneftyIcons.document_text_2_bold),
+                  icon: Icon(EneftyIcons.chart_outline),
+                  selectedIcon: Icon(EneftyIcons.chart_bold),
                   label: 'Portfolio',
                 ),
                 NavigationDestination(

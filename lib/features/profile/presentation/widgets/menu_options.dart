@@ -67,19 +67,24 @@ class MenuOptions extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return ListTile(
       minVerticalPadding: 16,
-      leading: Icon(item.icon,
-          color: isDarkMode ? AppColors.neutral300 : AppColors.neutral600,
-          size: 22),
+      titleAlignment: ListTileTitleAlignment.center,
+      leading: Icon(
+        item.icon,
+        color: isDarkMode ? AppColors.neutral300 : AppColors.neutral600,
+        size: 22,
+      ),
       title: Text(
         item.title,
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
               color: isDarkMode ? AppColors.neutral100 : AppColors.neutral800,
               fontWeight: FontWeight.w500,
-              fontSize: 20,
+              fontSize: 18,
             ),
       ),
-      trailing: Icon(Icons.chevron_right,
-          color: isDarkMode ? AppColors.neutral700 : AppColors.neutral400),
+      trailing: Icon(
+        Icons.chevron_right,
+        color: isDarkMode ? AppColors.neutral700 : AppColors.neutral400,
+      ),
       contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 0),
       onTap: item.onTap,
     );

@@ -50,9 +50,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/properties/
     - assets/fonts/
     - assets/icons/
     - lib/features/home/data/datasources/response.json
+    - lib/features/home/data/datasources/
+    - lib/features/profile/data/datasources/
 
   fonts:
     - family: HelveticaNeue

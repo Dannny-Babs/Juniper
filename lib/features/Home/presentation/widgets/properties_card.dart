@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/features/home/data/models/property.dart';
+import 'package:juniper/core/widgets/optimized_image.dart';
 
 import '../../../../core/utils/utils.dart';
 
@@ -17,64 +18,48 @@ class PropertyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(6),
-      decoration: BoxDecoration(
-        color: theme.cardColor,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: isDark ? AppColors.neutral800 : AppColors.borderLight,
-        ),
+    final borderColor = isDark ? AppColors.neutral800 : AppColors.borderLight;
+    final containerDecoration = BoxDecoration(
+      color: theme.cardColor,
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(
+        color: borderColor,
       ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildImage(context),
-            _buildDetails(theme, isDark),
-          ],
+    );
+    final detailsPadding = EdgeInsets.all(12.sp);
+
+    return RepaintBoundary(
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(6),
+        decoration: containerDecoration,
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildImage(context),
+              Padding(
+                padding: detailsPadding,
+                child: _buildDetails(theme, isDark),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _buildImage(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(6)),
-      child: SizedBox(
-        height: 180.h,
+      child: OptimizedImage(
+        imageUrl: property.imageUrl,
         width: double.infinity,
-        child: CachedNetworkImage(
-          imageUrl: property.imageUrl,
-          fit: BoxFit.cover,
-          placeholder: (context, url) => Shimmer.fromColors(
-            baseColor: isDark ? Colors.grey[850]! : Colors.grey[300]!,
-            highlightColor: isDark ? Colors.grey[700]! : Colors.grey[100]!,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(6),
-              ),
-            ),
-          ),
-          errorWidget: (context, url, error) => Container(
-            color: theme.colorScheme.surface,
-            child: Center(
-              child: Icon(
-                Icons.image_not_supported_outlined,
-                color: theme.colorScheme.onSurface.withOpacity(0.4),
-                size: 40,
-              ),
-            ),
-          ),
-        ),
+        height: 180.h,
+        borderRadius: 6.r,
+        useShimmer: true,
       ),
     );
   }

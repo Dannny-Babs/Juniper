@@ -1,7 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart' as path;
 import 'core/utils/utils.dart';
 import 'features/navigation/presentation/bloc/navigation_bloc.dart';
 import 'features/onboarding/bloc/onboarding_bloc.dart';
@@ -9,11 +10,13 @@ import 'features/onboarding/bloc/onboarding_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Initialize database properly
+  await initializeDependencies();
+
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final isOnboardingCompleted = prefs.getBool('onboarding_complete') ?? false;
 
   final router = AppRouter.createRouter(isOnboardingCompleted);
-  await initializeDependencies();
   runApp(
     MultiBlocProvider(
       providers: [
@@ -31,12 +34,22 @@ void main() async {
 }
 
 Future<void> initializeDependencies() async {
-  // Initialize paths
   final appDocDir = await getApplicationDocumentsDirectory();
   await Directory(appDocDir.path).create(recursive: true);
 
-  // Initialize database
- // Sqflite.setDebugModeOn(kDebugMode);
+  final dbPath = path.join(appDocDir.path, 'juniper.db');
+  final database = await openDatabase(
+    dbPath,
+    version: 1,
+    onCreate: (Database db, int version) async {
+      // Add your database creation logic here
+    },
+    onConfigure: (Database db) async {
+      // Enable foreign keys and proper locking behavior
+      await db.execute('PRAGMA foreign_keys = ON');
+      await db.execute('PRAGMA journal_mode = WAL');
+    },
+  );
 
   // Initialize cache
   await CacheManager.initialize();

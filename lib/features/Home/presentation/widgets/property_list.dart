@@ -18,32 +18,38 @@ class PropertyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _buildHeader(context),
-        const SizedBox(height: 12),
-        SizedBox(
-          height: 243, // Fixed height for the horizontal list
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: properties.length > 5 ? 5 : properties.length,
-            padding: EdgeInsets.zero,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: MiniPropertyCard(
-                  property: properties[index],
-                  onTap: onPropertyTap != null
-                      ? () => onPropertyTap!(properties[index])
-                      : null,
-                ),
-              );
-            },
+    return SizedBox(
+      height: 320.h,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildHeader(context),
+          SizedBox(height: 12.h),
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: properties.length > 5 ? 5 : properties.length,
+              padding: EdgeInsets.only(
+                left: 16.w,
+                right: 16.w,
+                bottom: 8.h,
+              ),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(right: 16.w),
+                  child: MiniPropertyCard(
+                    property: properties[index],
+                    onTap: onPropertyTap != null
+                        ? () => onPropertyTap!(properties[index])
+                        : null,
+                  ),
+                );
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

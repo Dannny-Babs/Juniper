@@ -43,7 +43,7 @@ class PortfolioChart extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1.70,
       child: Padding(
-        padding: const EdgeInsets.only(right: 16, left: 8),
+        padding: const EdgeInsets.only(right: 8, left: 8),
         child: LineChart(
           LineChartData(
             lineTouchData: LineTouchData(
@@ -98,8 +98,8 @@ class PortfolioChart extends StatelessWidget {
               horizontalInterval: 1,
               getDrawingHorizontalLine: (value) => FlLine(
                 color: isDark 
-                    ? Colors.white.withOpacity(0.05)
-                    : Colors.black.withOpacity(0.05),
+                    ? Colors.white.withAlpha(13)
+                    : Colors.black.withAlpha(13),
                 strokeWidth: 1,
               ),
             ),
