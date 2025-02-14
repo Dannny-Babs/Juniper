@@ -41,9 +41,10 @@ class _ChatInputState extends State<ChatInput> {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: 16.w,
+        horizontal: 4.w,
         vertical: 8.h,
       ),
+     
       decoration: BoxDecoration(
         color: isDark ? AppColors.surfaceDark : AppColors.backgroundLight,
         border: Border(
@@ -59,7 +60,7 @@ class _ChatInputState extends State<ChatInput> {
               icon: Icon(
                 EneftyIcons.image_outline,
                 color: AppColors.primary500,
-                size: 24.sp,
+                size: 20.sp,
               ),
               onPressed: widget.onAttachment,
             ),
@@ -69,13 +70,16 @@ class _ChatInputState extends State<ChatInput> {
                 controller: _controller,
                 maxLines: 4,
                 minLines: 1,
+                textAlign: TextAlign.start,
+                textAlignVertical: TextAlignVertical.center,
                 textCapitalization: TextCapitalization.sentences,
-                style: TextStyle(fontSize: 16.sp),
+                style: TextStyle(fontSize: 14.sp),
                 decoration: InputDecoration(
                   hintText: 'Type a message...',
+                  alignLabelWithHint: true,
                   hintStyle: TextStyle(
                     color: AppColors.neutral400,
-                    fontSize: 16.sp,
+                    fontSize: 14.sp,
                   ),
                   border: InputBorder.none,
                 ),
@@ -90,7 +94,7 @@ class _ChatInputState extends State<ChatInput> {
                       ? EneftyIcons.send_2_bold
                       : EneftyIcons.send_2_outline,
                   color: _hasText ? AppColors.primary500 : AppColors.neutral400,
-                  size: 24.sp,
+                  size: 20.sp,
                 ),
                 onPressed: _hasText
                     ? () {

@@ -95,7 +95,17 @@ class AppRouter {
             name: 'profile-setup',
             builder: (context, state) => const ProfileSetupPage(),
           ),
-
+          // Chat room route (outside shell)
+          GoRoute(
+            path: '/chat/room/:userId',
+            name: 'chatRoom',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) => ChatRoomScreen(
+              userId: state.pathParameters['userId'] ?? '',
+              userName: state.extra as String? ?? 'User',
+              userAvatar: null,
+            ),
+          ),
           // Shell route for bottom navigation
           ShellRoute(
             navigatorKey: _shellNavigatorKey,
@@ -127,6 +137,7 @@ class AppRouter {
                 name: 'chat',
                 builder: (context, state) =>
                     const ChatListScreen(), //ChatPage(),
+               
               ),
               GoRoute(
                 path: '/profile',

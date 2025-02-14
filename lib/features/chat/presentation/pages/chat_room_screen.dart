@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/back_button.dart';
 import '../bloc/chat_bloc.dart';
 import '../widgets/chat_bubble.dart';
 import '../widgets/chat_input.dart';
@@ -31,6 +29,7 @@ class ChatRoomScreen extends StatelessWidget {
 
           return Scaffold(
             backgroundColor: theme.scaffoldBackgroundColor,
+            extendBody: false,
             appBar: AppBar(
               leading: PlatformBackButton(
                 onPressed: () => Navigator.of(context).pop(),
@@ -51,7 +50,8 @@ class ChatRoomScreen extends StatelessWidget {
                     userName,
                     style: theme.textTheme.titleMedium?.copyWith(
                       fontSize: 16.sp,
-                      color: isDark ? AppColors.neutral50 : AppColors.neutral900,
+                      color:
+                          isDark ? AppColors.neutral50 : AppColors.neutral900,
                     ),
                   ),
                 ],
@@ -79,37 +79,41 @@ class ChatRoomScreen extends StatelessWidget {
                 }
 
                 if (state is ChatLoaded) {
-                  return Column(
-                    children: [
-                      Expanded(
-                        child: ListView.builder(
-                          reverse: true,
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-                          itemCount: state.chats.length,
-                          itemBuilder: (context, index) {
-                            final message = state.chats[index];
-                            final isMe = message.senderId == userId;
+                  return SafeArea(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            reverse: true,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.w, vertical: 8.h),
+                            itemCount: state.chats.length,
+                            itemBuilder: (context, index) {
+                              final message = state.chats[index];
+                              final isMe = message.senderId == userId;
 
-                            if (message.type == MessageType.image) {
-                              return ChatImageBubble(message: message, isMe: isMe);
-                            }
+                              if (message.type == MessageType.image) {
+                                return ChatImageBubble(
+                                    message: message, isMe: isMe);
+                              }
 
-                            return ChatBubble(message: message, isMe: isMe);
+                              return ChatBubble(message: message, isMe: isMe);
+                            },
+                          ),
+                        ),
+                        ChatInput(
+                          onSend: (content) {
+                            context.read<ChatBloc>().add(
+                                  SendMessage(
+                                      content: content, receiverId: userId),
+                                );
+                          },
+                          onAttachment: () {
+                            // TODO: Implement attachment picker
                           },
                         ),
-                      ),
-                      ChatInput(
-                        onSend: (content) {
-                          context.read<ChatBloc>().add(
-                                SendMessage(content: content, receiverId: userId),
-                              );
-                        },
-                        onAttachment: () {
-                          // TODO: Implement attachment picker
-                        },
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 }
 

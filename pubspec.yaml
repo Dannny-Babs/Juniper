@@ -54,11 +54,10 @@ flutter:
   assets:
     - assets/images/
     - assets/images/properties/
-    - assets/images/agents/
     - assets/fonts/
     - assets/icons/
-    - lib/features/home/data/datasources/response.json
     - lib/features/home/data/datasources/
+    - lib/features/home/data/datasources/response.json
     - lib/features/profile/data/datasources/
 
   fonts:

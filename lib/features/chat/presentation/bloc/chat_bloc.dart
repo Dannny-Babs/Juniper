@@ -22,7 +22,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     ),
     Message(
       id: '2',
-      content: "Great! The property is still available. Would you like to schedule a viewing?",
+      content:
+          "Great! The property is still available. Would you like to schedule a viewing?",
       senderId: 'agent1',
       roomId: 'room1',
       timestamp: DateTime.now().subtract(const Duration(minutes: 25)),
@@ -32,14 +33,16 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   Future<void> _onLoadChats(LoadChats event, Emitter<ChatState> emit) async {
     emit(ChatLoading());
     try {
-      await Future.delayed(const Duration(milliseconds: 500)); // Simulate network delay
+      await Future.delayed(
+          const Duration(milliseconds: 500)); // Simulate network delay
       emit(ChatLoaded(_mockMessages));
     } catch (e) {
       emit(const ChatError('Failed to load messages'));
     }
   }
 
-  Future<void> _onSendMessage(SendMessage event, Emitter<ChatState> emit) async {
+  Future<void> _onSendMessage(
+      SendMessage event, Emitter<ChatState> emit) async {
     try {
       final message = Message(
         id: DateTime.now().toString(),
@@ -48,7 +51,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         roomId: 'room1',
         timestamp: DateTime.now(),
       );
-      
+
       if (state is ChatLoaded) {
         final currentMessages = (state as ChatLoaded).chats;
         emit(ChatLoaded([message, ...currentMessages]));
