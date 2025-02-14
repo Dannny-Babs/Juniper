@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
+import 'package:juniper/features/chat/presentation/pages/chat_list_screen.dart';
 import 'package:juniper/features/portfolio/presentation/pages/portfolio_screen.dart';
 import 'package:juniper/features/profile/presentation/pages/profile_screen.dart';
 import '../../features/navigation/presentation/bloc/navigation_bloc.dart';
 import '../../features/navigation/presentation/widgets/bottom_bar.dart';
 import '../constants/not_found_screen.dart';
+import '../../features/chat/presentation/pages/chat_room_screen.dart';
 
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -123,7 +125,8 @@ class AppRouter {
               GoRoute(
                 path: '/chat',
                 name: 'chat',
-                builder: (context, state) => const LoginPage(), //ChatPage(),
+                builder: (context, state) =>
+                    const ChatListScreen(), //ChatPage(),
               ),
               GoRoute(
                 path: '/profile',

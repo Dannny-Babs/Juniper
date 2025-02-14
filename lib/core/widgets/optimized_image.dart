@@ -27,7 +27,8 @@ class OptimizedImage extends StatelessWidget {
 
     // Calculate cache dimensions, ensuring they're valid integers
     final cacheWidth = width != null && width!.isFinite ? width!.toInt() : null;
-    final cacheHeight = height != null && height!.isFinite ? height!.toInt() : null;
+    final cacheHeight =
+        height != null && height!.isFinite ? height!.toInt() : null;
 
     Widget fallbackWidget = Container(
       width: width,
@@ -104,4 +105,4 @@ class OptimizedImage extends StatelessWidget {
 
     return image;
   }
-} 
+}

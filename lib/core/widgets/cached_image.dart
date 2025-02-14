@@ -18,12 +18,12 @@ class CachedImage extends StatelessWidget {
         ImageType.asset, // Default to asset since you're using local images
   });
 
-  static final Widget _defaultErrorWidget = Container(
+  static final Widget _defaultErrorWidget =  Container(
     color: Colors.grey, // simplified constant color instead of Colors.grey[200]
     child: const Icon(Icons.error_outline),
   );
 
-  static final Widget _defaultPlaceholder = Container(
+  static final Widget _defaultPlaceholder =  Container(
     color: Colors.grey, // simplified constant color
     child: Center(
       child: SizedBox(
