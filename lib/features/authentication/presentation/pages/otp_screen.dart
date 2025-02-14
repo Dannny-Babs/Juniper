@@ -89,6 +89,10 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
     return _controllers.every((controller) => controller.text.length == 1);
   }
 
+  void _resendCode() {
+    // TODO: Implement code to resend OTP
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
@@ -139,7 +143,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(
-                6,
+                otpLength,
                 (index) => SizedBox(
                   width: 50,
                   child: TextField(
@@ -156,10 +160,6 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                       filled: true,
                       hintText: '0',
                       hintStyle: Theme.of(context).textTheme.bodyMedium,
-                      errorStyle: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: AppColors.error500),
                     ),
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
@@ -172,12 +172,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
             const SizedBox(height: 16),
             Center(
               child: TextButton(
-                onPressed: _canResendCode
-                    ? () {
-                        // Implement resend logic here
-                        _startResendTimer();
-                      }
-                    : null,
+                onPressed: _canResendCode ? _resendCode : null,
                 child: Text(
                   _canResendCode
                       ? "Didn't receive the code?"
@@ -213,7 +208,6 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                       context
                           .read<NavigationBloc>()
                           .add(AuthenticationStatusChanged(true));
-                       
 
                       // Navigate to home
                       context.go('/home');

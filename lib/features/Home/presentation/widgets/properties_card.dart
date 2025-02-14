@@ -26,7 +26,7 @@ class PropertyCard extends StatelessWidget {
         color: borderColor,
       ),
     );
-    final detailsPadding = EdgeInsets.all(12.sp);
+    final detailsPadding = EdgeInsets.all(6.sp);
 
     return RepaintBoundary(
       child: Container(
@@ -66,7 +66,7 @@ class PropertyCard extends StatelessWidget {
 
   Widget _buildDetails(ThemeData theme, bool isDark) {
     return Padding(
-      padding: EdgeInsets.all(12.sp),
+      padding: EdgeInsets.all(1.sp),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
