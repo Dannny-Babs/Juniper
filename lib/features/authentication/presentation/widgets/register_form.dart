@@ -47,8 +47,10 @@ class RegisterForm extends StatelessWidget {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: BorderSide(
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurface
+                      .withAlpha((0.1 * 255).round()),
                   width: 1.0,
                 ),
               ),

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/utils/utils.dart';
 
-
 class ProfilePictureSelector extends StatefulWidget {
   final String? initialImage;
   final Function(String) onImageSelected;
@@ -143,7 +142,7 @@ class _ProfilePictureSelectorState extends State<ProfilePictureSelector> {
                     height: size,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.black.withOpacity(0.5),
+                      color: Colors.black.withAlpha((0.5 * 255).round()),
                     ),
                     child: const CircularProgressIndicator(),
                   ),
@@ -185,4 +184,3 @@ class _ImageSourceOption extends StatelessWidget {
     );
   }
 }
-

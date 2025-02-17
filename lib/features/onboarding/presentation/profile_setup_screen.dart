@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 
@@ -155,7 +156,9 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
     // Navigate to home
     context.go('/home');
 
-    print(profileData);
+    if (kDebugMode) {
+      print(profileData);
+    }
   }
 
   @override

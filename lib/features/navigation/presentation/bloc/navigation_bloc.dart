@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../../../../core/utils/utils.dart';
 
 part 'navigation_event.dart';
@@ -31,7 +33,9 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
   void _onAuthenticationStatusChanged(
       AuthenticationStatusChanged event, Emitter<NavigationState> emit) {
     prefs.setBool('isAuthenticated', event.isAuthenticated);
-    print('isAuthenticated: ${event.isAuthenticated}');
+    if (kDebugMode) {
+      print('isAuthenticated: ${event.isAuthenticated}');
+    }
     emit(state.copyWith(isAuthenticated: event.isAuthenticated));
   }
 

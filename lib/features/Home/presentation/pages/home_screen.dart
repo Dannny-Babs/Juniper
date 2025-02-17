@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
     try {
       final loadedProperties = await PropertyProvider.loadProperties();
       setState(() {
-        print(loadedProperties);
         properties = loadedProperties;
         isLoading = false;
       });

@@ -70,7 +70,7 @@ class _PreferencesStepState extends State<PreferencesStep> {
           divisions: 20,
           onRangeChanged: (RangeValues range) {
             // Handle range changes
-            print('New range: ${range.start} - ${range.end}');
+            widget.onBudgetChanged(range.end);
           },
         ),
         SizedBox(height: 24.sp),
@@ -188,7 +188,7 @@ class _PreferencesStepState extends State<PreferencesStep> {
             vertical: 6.sp,
           ),
           decoration: BoxDecoration(
-            color: AppColors.primary500.withOpacity(0.2),
+            color: AppColors.primary500.withAlpha((0.2 * 255).round()),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
