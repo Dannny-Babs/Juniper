@@ -57,7 +57,10 @@ class ProfileHeader extends StatelessWidget {
                 onPressed: () {},
                 child: SvgPicture.asset(
                   'assets/icons/Menu Dots.svg',
-                  color: isDark ? AppColors.neutral300 : AppColors.neutral500,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? AppColors.neutral300 : AppColors.neutral500,
+                    BlendMode.srcIn,
+                  ),
                   height: 22.sp,
                 ),
               ),

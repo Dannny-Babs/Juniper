@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import '../models/property.dart';
@@ -15,7 +16,9 @@ class PropertyProvider {
           .toList();
     } catch (e) {
       // Handle errors appropriately
-      print('Error loading properties: $e');
+      if (kDebugMode) {
+        print('Error loading properties: $e');
+      }
       return [];
     }
   }

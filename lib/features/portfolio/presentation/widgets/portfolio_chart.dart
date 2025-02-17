@@ -15,7 +15,7 @@ class ChartTooltip extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((0.1 * 255).round()),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -66,13 +66,15 @@ class PortfolioChart extends StatelessWidget {
                 },
                 //tooltipBgColor: theme.colorScheme.primary.withOpacity(0.8),
                 tooltipRoundedRadius: 8,
-                tooltipPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                tooltipPadding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               ),
               getTouchedSpotIndicator: (barData, spotIndexes) {
                 return spotIndexes.map((spotIndex) {
                   return TouchedSpotIndicatorData(
                     FlLine(
-                      color: theme.colorScheme.primary.withOpacity(0.2),
+                      color: theme.colorScheme.primary
+                          .withAlpha((0.2 * 255).round()),
                       strokeWidth: 2,
                       dashArray: [4, 4],
                     ),
@@ -97,7 +99,7 @@ class PortfolioChart extends StatelessWidget {
               drawVerticalLine: false,
               horizontalInterval: 1,
               getDrawingHorizontalLine: (value) => FlLine(
-                color: isDark 
+                color: isDark
                     ? Colors.white.withAlpha(13)
                     : Colors.black.withAlpha(13),
                 strokeWidth: 1,
@@ -114,9 +116,9 @@ class PortfolioChart extends StatelessWidget {
                       child: Text(
                         '\$${(value * 1000).toInt()}',
                         style: theme.textTheme.bodySmall?.copyWith(
-                          color: isDark 
-                              ? Colors.white.withOpacity(0.5)
-                              : Colors.black.withOpacity(0.5),
+                          color: isDark
+                              ? Colors.white.withAlpha((0.5 * 255).round())
+                              : Colors.black.withAlpha((0.5 * 255).round()),
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
                         ),
@@ -125,7 +127,8 @@ class PortfolioChart extends StatelessWidget {
                   },
                 ),
               ),
-              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              rightTitles:
+                  AxisTitles(sideTitles: SideTitles(showTitles: false)),
               topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
               bottomTitles: AxisTitles(
                 sideTitles: SideTitles(
@@ -134,15 +137,16 @@ class PortfolioChart extends StatelessWidget {
                   interval: 1,
                   getTitlesWidget: (value, meta) {
                     final timeframes = ['1D', '1W', '1M', '3M', '1Y', 'All'];
-                    if (value.toInt() >= 0 && value.toInt() < timeframes.length) {
+                    if (value.toInt() >= 0 &&
+                        value.toInt() < timeframes.length) {
                       return Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
                           timeframes[value.toInt()],
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: isDark 
-                                ? Colors.white.withOpacity(0.5)
-                                : Colors.black.withOpacity(0.5),
+                            color: isDark
+                                ? Colors.white.withAlpha((0.5 * 255).round())
+                                : Colors.black.withAlpha((0.5 * 255).round()),
                             fontSize: 11,
                             fontWeight: FontWeight.w500,
                           ),
@@ -178,8 +182,8 @@ class PortfolioChart extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      theme.colorScheme.primary.withOpacity(0.25),
-                      theme.colorScheme.primary.withOpacity(0.0),
+                      theme.colorScheme.primary.withAlpha((0.25 * 255).round()),
+                      theme.colorScheme.primary.withAlpha(0),
                     ],
                     stops: const [0.0, 0.95],
                   ),
