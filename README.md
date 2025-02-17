@@ -6,18 +6,21 @@ Juniper is a modern mobile app that bridges the gap between renters, landlords, 
 
 ## Features
 
-### For Renters:
+### For Renters
+
 - **Smart Search**: Find apartments based on location, budget, and preferences.
 - **Detailed Listings**: Access comprehensive apartment details with photos and descriptions.
 - **Favorites**: Save and organize your favorite apartments for easy comparison.
 - **Onboarding Flow**: Get started with a smooth, guided user experience.
 
-### For Investors:
+### For Investors
+
 - **Investment Tracking**: Monitor and analyze your real estate investments.
 - **Market Insights**: AI-driven insights on price predictions and market trends.
 - **Custom Recommendations**: Tailored suggestions based on investment goals.
 
-### For Landlords:
+### For Landlords
+
 - **Easy Management**: List and manage your properties efficiently.
 - **Data Analytics**: Gain insights into market performance and property visibility.
 
@@ -36,27 +39,31 @@ Juniper is a modern mobile app that bridges the gap between renters, landlords, 
 ## Installation and Setup
 
 ### Prerequisites
+
 - Flutter SDK (latest stable version)
 - Dart (latest stable version)
 
 ### Steps to Run
+
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/juniper.git
 
-	2.	Navigate to the project directory:
+2. Navigate to the project directory:
 
-cd juniper
+   ```bash
+   cd juniper
 
+3. Get the dependencies:
 
-	3.	Get the dependencies:
+   ```bash
+   flutter pub get
 
-flutter pub get
+4. Run the app:
 
-
-	4.	Run the app:
-
-flutter run
+ ```bash
+ flutter run
 
 Project Structure
 
@@ -72,18 +79,19 @@ lib/
 ├── presentation/        # UI layers and widgets
 
 Future Roadmap
-	•	Implement AI-powered apartment recommendations
-	•	Integrate advanced investment analytics
-	•	Add support for property sharing and collaboration
-	•	Expand market coverage for listings
-	•	Enable real-time chat between renters and landlords
+ • Implement AI-powered apartment recommendations
+ • Integrate advanced investment analytics
+ • Add support for property sharing and collaboration
+ • Expand market coverage for listings
+ • Enable real-time chat between renters and landlords
 
 Contributing
 
 We welcome contributions from the community! To contribute:
-	1.	Fork the repository
-	2.	Create a new branch for your feature/bugfix
-	3.	Commit your changes and submit a pull request
+
+ 1. Fork the repository
+ 2. Create a new branch for your feature/bugfix
+ 3. Commit your changes and submit a pull request
 
 License
 
@@ -92,6 +100,6 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 Contact
 
 For questions or feedback, feel free to reach out:
-	•	Author: Daniel
-	•	Email: dbabs297@gmail.com
-	•	LinkedIn: in/dannybabs
+ • Author: Daniel
+ • Email: <dbabs297@gmail.com>
+ • LinkedIn: in/dannybabs
