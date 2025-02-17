@@ -40,7 +40,7 @@ class OptimizedImage extends StatelessWidget {
       child: Icon(
         EneftyIcons.buildings_2_outline,
         size: (width ?? 40) * 0.4,
-        color: theme.colorScheme.onSurface.withOpacity(0.4),
+        color: theme.colorScheme.onSurface.withAlpha((0.4 * 255).round()),
       ),
     );
 

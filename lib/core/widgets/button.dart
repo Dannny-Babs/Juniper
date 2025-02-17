@@ -138,22 +138,25 @@ class _CustomButtonState extends State<CustomButton>
     switch (widget.variant) {
       case ButtonVariant.primary:
         return _isHovered
-            ? theme.colorScheme.primary.withOpacity(0.9)
+            ? theme.colorScheme.primary.withAlpha((0.9 * 255).round())
             : theme.colorScheme.primary;
       case ButtonVariant.secondary:
         return _isHovered
-            ? theme.colorScheme.secondaryContainer.withOpacity(0.9)
+            ? theme.colorScheme.secondaryContainer
+                .withAlpha((0.9 * 255).round())
             : theme.colorScheme.secondaryContainer;
       case ButtonVariant.outline:
         return _isHovered
-            ? theme.colorScheme.surface.withOpacity(0.1)
+            ? theme.colorScheme.surface.withAlpha((0.1 * 255).round())
             : Colors.transparent;
       case ButtonVariant.error:
         return _isHovered
-            ? theme.colorScheme.error.withOpacity(0.9)
+            ? theme.colorScheme.error.withAlpha((0.9 * 255).round())
             : theme.colorScheme.error;
       case ButtonVariant.success:
-        return _isHovered ? Colors.green.withOpacity(0.9) : Colors.green;
+        return _isHovered
+            ? Colors.green.withAlpha((0.9 * 255).round())
+            : Colors.green;
     }
   }
 
@@ -164,7 +167,7 @@ class _CustomButtonState extends State<CustomButton>
 
     final theme = Theme.of(context);
     if (widget.isDisabled) {
-      return theme.colorScheme.onSurface.withOpacity(0.38);
+      return theme.colorScheme.onSurface.withAlpha(102);
     }
 
     switch (widget.variant) {
@@ -205,7 +208,7 @@ class _CustomButtonState extends State<CustomButton>
                   ? []
                   : [
                       BoxShadow(
-                        color: theme.shadowColor.withOpacity(0.2),
+                        color: theme.shadowColor.withAlpha((0.2 * 255).round()),
                         blurRadius: 8,
                         offset: Offset(0, 4),
                       ),
