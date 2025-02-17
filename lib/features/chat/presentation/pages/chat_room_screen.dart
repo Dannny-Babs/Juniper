@@ -46,12 +46,29 @@ class ChatRoomScreen extends StatelessWidget {
                         : null,
                   ),
                   SizedBox(width: 12.w),
-                  Text(
-                    userName,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontSize: 16.sp,
-                      color:
-                          isDark ? AppColors.neutral50 : AppColors.neutral900,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          userName,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                              fontSize: 18.sp,
+                              color: isDark
+                                  ? AppColors.neutral50
+                                  : AppColors.neutral700,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        Text(
+                          "Online",
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: AppColors.neutral400,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -80,37 +97,49 @@ class ChatRoomScreen extends StatelessWidget {
 
                 if (state is ChatLoaded) {
                   return SafeArea(
-                    child: Column(
+                    child: Stack(
                       children: [
-                        Expanded(
-                          child: ListView.builder(
-                            reverse: true,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16.w, vertical: 8.h),
-                            itemCount: state.chats.length,
-                            itemBuilder: (context, index) {
-                              final message = state.chats[index];
-                              final isMe = message.senderId == userId;
-
-                              if (message.type == MessageType.image) {
-                                return ChatImageBubble(
-                                    message: message, isMe: isMe);
-                              }
-
-                              return ChatBubble(message: message, isMe: isMe);
-                            },
-                          ),
+                        Positioned.fill(
+                          child: Image.asset(
+                              isDark
+                                  ? 'assets/images/chat-bg-dark.png'
+                                  : 'assets/images/chat-bg.png',
+                              fit: BoxFit.cover,
+                              opacity: const AlwaysStoppedAnimation(0.07)),
                         ),
-                        ChatInput(
-                          onSend: (content) {
-                            context.read<ChatBloc>().add(
-                                  SendMessage(
-                                      content: content, receiverId: userId),
-                                );
-                          },
-                          onAttachment: () {
-                            // TODO: Implement attachment picker
-                          },
+                        Column(
+                          children: [
+                            Expanded(
+                              child: ListView.builder(
+                                reverse: true,
+                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                itemCount: state.chats.length,
+                                itemBuilder: (context, index) {
+                                  final message = state.chats[index];
+                                  final isMe = message.senderId == userId;
+
+                                  if (message.type == MessageType.image) {
+                                    return ChatImageBubble(
+                                        message: message, isMe: isMe);
+                                  }
+
+                                  return ChatBubble(
+                                      message: message, isReceiver: isMe);
+                                },
+                              ),
+                            ),
+                            ChatInput(
+                              onSend: (content) {
+                                context.read<ChatBloc>().add(
+                                      SendMessage(
+                                          content: content, receiverId: userId),
+                                    );
+                              },
+                              onAttachment: () {
+                                // TODO: Implement attachment picker
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),

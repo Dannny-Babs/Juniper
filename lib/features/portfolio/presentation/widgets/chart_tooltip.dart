@@ -17,7 +17,7 @@ class ChartTooltip extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((0.1*255).round()),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),

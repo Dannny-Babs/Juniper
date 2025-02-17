@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/utils.dart';
 import '../bloc/chat_bloc.dart';
-import 'chat_room_screen.dart';
 
 class ChatListScreen extends StatelessWidget {
   const ChatListScreen({super.key});
@@ -32,7 +31,74 @@ class ChatListScreen extends StatelessWidget {
               'unread': 0,
               'avatar': null
             },
-            // Add more placeholder chats
+            {
+              'name': 'Alex Johnson',
+              'message': 'I have a question about the property',
+              'time': 'Feb 16, 2025',
+              'unread': 0,
+              'avatar':
+                  'https://i.pravatar.cc/150?img=2' // Using placeholder avatar
+            },
+            {
+              'name': 'Emma Brown',
+              'message': 'Can I get more details about the property?',
+              'time': 'Feb 15, 2025',
+              'unread': 0,
+              'avatar': null
+            },
+            {
+              'name': 'Michael Davis',
+              'message': 'I am interested in the property',
+              'time': 'Feb 16, 2025',
+              'unread': 0,
+              'avatar':
+                  'https://i.pravatar.cc/150?img=3' // Using placeholder avatar
+            },
+            {
+              'name': 'Olivia Martinez',
+              'message': 'Can I schedule a viewing?',
+              'time': 'Feb 14, 2025',
+              'unread': 3,
+              'avatar': null
+            },
+            {
+              'name': 'William Taylor',
+              'message': 'I have a question about the property',
+              'time': 'Feb 16, 2025',
+              'unread': 0,
+              'avatar':
+                  'https://i.pravatar.cc/150?img=4' // Using placeholder avatar
+            },
+            {
+              'name': 'Sophia Anderson',
+              'message': 'Can I get more details about the property?',
+              'time': 'Feb 13, 2025',
+              'unread': 2,
+              'avatar': null
+            },
+            {
+              'name': 'James Thomas',
+              'message': 'I am interested in the property',
+              'time': 'Feb 16, 2025',
+              'unread': 0,
+              'avatar':
+                  'https://i.pravatar.cc/150?img=5' // Using placeholder avatar
+            },
+            {
+              'name': 'Isabella Jackson',
+              'message': 'Can I schedule a viewing?',
+              'time': 'Feb 12, 2025',
+              'unread': 0,
+              'avatar': null
+            },
+            {
+              'name': 'Ethan White',
+              'message': 'I have a question about the property',
+              'time': 'Feb 16, 2025',
+              'unread': 0,
+              'avatar':
+                  'https://i.pravatar.cc/150?img=6' // Using placeholder avatar
+            },
           ];
 
           return Scaffold(
@@ -66,7 +132,7 @@ class ChatListScreen extends StatelessWidget {
                                             ? AppColors.textPrimaryDark
                                             : AppColors.neutral800,
                                         fontSize: 24.sp,
-                                        fontWeight: FontWeight.w500),
+                                        fontWeight: FontWeight.w600),
                               ),
                               Stack(
                                 children: [
@@ -155,6 +221,14 @@ class ChatListScreen extends StatelessWidget {
                       final chat = chats[index];
                       return ListTile(
                         style: ListTileStyle.list,
+                        shape: Border(
+                          bottom: BorderSide(
+                            color: isDark
+                                ? AppColors.surfaceDark100
+                                : AppColors.neutral100,
+                            width: 1,
+                          ),
+                        ),
                         leading: CircleAvatar(
                           radius: 20.r,
                           backgroundImage: chat['avatar'] != null
@@ -186,7 +260,7 @@ class ChatListScreen extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         trailing: SizedBox(
-                          width: 60.w, // Fixed width for trailing widget
+                          width: 80.w, // Fixed width for trailing widget
                           child: Column(
                             mainAxisSize: MainAxisSize.min, // Add this
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -229,7 +303,7 @@ class ChatListScreen extends StatelessWidget {
                         ),
                         onTap: () => context.pushNamed(
                           'chatRoom',
-                          pathParameters: {'userId': 'user_${index + 1}'},
+                          pathParameters: {'userId': 'user${index + 1}'},
                           extra: chat['name'] as String,
                         ),
                       );

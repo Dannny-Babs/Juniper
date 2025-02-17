@@ -18,6 +18,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       content: "Hi, I'm interested in the property on 123 Main Street",
       senderId: 'user1',
       roomId: 'room1',
+      isRead: true,
       timestamp: DateTime.now().subtract(const Duration(minutes: 30)),
     ),
     Message(
@@ -26,8 +27,39 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
           "Great! The property is still available. Would you like to schedule a viewing?",
       senderId: 'agent1',
       roomId: 'room1',
+      isRead: true,
       timestamp: DateTime.now().subtract(const Duration(minutes: 25)),
     ),
+    Message(
+      id: '3',
+      content: "Yes, I'd like to schedule a viewing",
+      senderId: 'user1',
+      roomId: 'room1',
+      isRead: true,
+      timestamp: DateTime.now().subtract(const Duration(minutes: 20)),
+    ),
+    Message(
+      id: '4',
+      content: "Sure! How about tomorrow at 10:00 AM?",
+      senderId: 'agent1',
+      roomId: 'room1',
+      isRead: true,
+      timestamp: DateTime.now().subtract(const Duration(minutes: 15)),
+    ),
+    Message(
+      id: '5',
+      content: "That works for me. See you then!",
+      senderId: 'user1',
+      roomId: 'room1',
+      timestamp: DateTime.now().subtract(const Duration(minutes: 10)),
+    ),
+    Message(
+        id: '6',
+        content: "Great! Looking forward to meeting you",
+        senderId: 'agent1',
+        roomId: 'room1',
+        timestamp: DateTime.now().subtract(const Duration(minutes: 5)),
+        status: MessageStatus.delivered),
   ];
 
   Future<void> _onLoadChats(LoadChats event, Emitter<ChatState> emit) async {

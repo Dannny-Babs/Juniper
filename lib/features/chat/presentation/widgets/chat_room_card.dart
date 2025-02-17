@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/optimized_image.dart';
 import '../../data/models/chat_message.dart';
 
 class ChatRoomCard extends StatelessWidget {
