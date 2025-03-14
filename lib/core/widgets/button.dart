@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:juniper/core/utils/colors.dart';
 import 'package:juniper/core/utils/packages.dart';
 
 enum ButtonVariant { primary, secondary, outline, error, success }
@@ -23,6 +24,8 @@ class CustomButton extends StatefulWidget {
   final BorderRadius? borderRadius;
   final Color? textColor;
   final Color? backgroundColor;
+  final bool noShadow;
+  
 
   const CustomButton({
     super.key,
@@ -42,6 +45,7 @@ class CustomButton extends StatefulWidget {
     this.borderRadius,
     this.textColor,
     this.backgroundColor,
+    this.noShadow = false
   });
 
   @override
@@ -166,6 +170,8 @@ class _CustomButtonState extends State<CustomButton>
     }
 
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     if (widget.isDisabled) {
       return theme.colorScheme.onSurface.withAlpha(102);
     }
@@ -176,12 +182,20 @@ class _CustomButtonState extends State<CustomButton>
       case ButtonVariant.secondary:
         return theme.colorScheme.onSecondaryContainer;
       case ButtonVariant.outline:
-        return theme.colorScheme.primary;
+        return isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight;
       case ButtonVariant.error:
         return theme.colorScheme.onError;
       case ButtonVariant.success:
         return Colors.white;
     }
+  }
+
+  Border _borderstyle(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    return widget.variant == ButtonVariant.outline
+        ? Border.all(color: isDark ? AppColors.borderDark : AppColors.borderLight)
+        : const Border();
   }
 
   @override
@@ -201,10 +215,12 @@ class _CustomButtonState extends State<CustomButton>
           child: Container(
             width: buttonSize.width,
             height: buttonSize.height,
+
             decoration: BoxDecoration(
               color: _getBackgroundColor(context),
               borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
-              boxShadow: widget.isDisabled || widget.isLoading
+              border: _borderstyle(context),
+              boxShadow: widget.isDisabled || widget.isLoading || widget.noShadow
                   ? []
                   : [
                       BoxShadow(

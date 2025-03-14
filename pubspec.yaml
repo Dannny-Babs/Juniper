@@ -45,6 +45,8 @@ dependencies:
   rxdart: ^0.28.0
   chat_bubbles: ^1.7.0
   supabase_flutter: ^2.8.4
+  smooth_page_indicator: ^1.2.1
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +60,8 @@ flutter:
     - assets/images/properties/
     - assets/fonts/
     - assets/icons/
+    - assets/icons/linear/
+    - assets/icons/bold/
     - lib/features/home/data/datasources/
     - lib/features/home/data/datasources/response.json
     - lib/features/profile/data/datasources/

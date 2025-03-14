@@ -7,7 +7,7 @@ class PortfolioProperty extends Property {
   final double monthlyIncome;
   final double changePercent; // Add this property
 
-  const PortfolioProperty({
+  PortfolioProperty({
     required super.id,
     required super.imageUrl, // Changed from image to imageUrl
     required super.title,
@@ -16,7 +16,7 @@ class PortfolioProperty extends Property {
     required super.roi,
     required super.status,
     super.beds = 0,
-    super.baths = 0.0,
+    super.baths = 0,
     super.sqft = 0,
     required this.investmentAmount,
     required this.currentValue,
