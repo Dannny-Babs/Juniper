@@ -3,6 +3,9 @@ import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/features/chat/presentation/pages/chat_list_screen.dart';
 import 'package:juniper/features/portfolio/presentation/pages/portfolio_screen.dart';
 import 'package:juniper/features/profile/presentation/pages/profile_screen.dart';
+import 'package:juniper/features/property_details/presentation/pages/property_details_screen.dart';
+import 'package:juniper/features/notifications/presentation/pages/notifications_screen.dart';
+import 'package:juniper/features/favorites/presentation/pages/favorites_screen.dart';
 import '../../features/navigation/presentation/bloc/navigation_bloc.dart';
 import '../../features/navigation/presentation/widgets/bottom_bar.dart';
 import '../constants/not_found_screen.dart';
@@ -105,6 +108,29 @@ class AppRouter {
               userName: state.extra as String? ?? 'User',
               userAvatar: null,
             ),
+          ),
+          // Property details route
+          GoRoute(
+            path: '/property/:propertyId',
+            name: 'propertyDetails',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) => PropertyDetailsScreen(
+              propertyId: state.pathParameters['propertyId'] ?? '',
+            ),
+          ),
+          // Notifications route
+          GoRoute(
+            path: '/notifications',
+            name: 'notifications',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) => const NotificationsScreen(),
+          ),
+          // Favorites route
+          GoRoute(
+            path: '/favorites',
+            name: 'favorites',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) => const FavoritesScreen(),
           ),
           // Shell route for bottom navigation
           ShellRoute(
