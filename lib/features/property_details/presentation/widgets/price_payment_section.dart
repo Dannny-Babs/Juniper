@@ -46,7 +46,7 @@ class _PricePaymentSectionState extends State<PricePaymentSection> {
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
               color:
-                  widget.isDark ? AppColors.neutral100 : AppColors.neutral900,
+                  widget.isDark ? AppColors.neutral100 : AppColors.neutral700,
             ),
           ),
           SizedBox(height: 16.h),
@@ -57,10 +57,10 @@ class _PricePaymentSectionState extends State<PricePaymentSection> {
                 '\$${currencyFormatter.format(widget.property.price)}',
                 style: TextStyle(
                   fontSize: 28.sp,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                   color: widget.isDark
                       ? AppColors.neutral100
-                      : AppColors.neutral900,
+                      : AppColors.neutral800,
                   height: 1,
                 ),
               ),
@@ -161,7 +161,7 @@ class _PricePaymentSectionState extends State<PricePaymentSection> {
                         fontWeight: FontWeight.w500,
                         color: widget.isDark
                             ? AppColors.neutral100
-                            : AppColors.neutral900,
+                            : AppColors.neutral800,
                       ),
                     ),
                   ],

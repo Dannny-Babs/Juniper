@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
+import 'package:juniper/core/widgets/investment_modal.dart';
 import '../../../../core/widgets/property_info_card.dart';
 import '../bloc/favorites_bloc.dart';
 import '../bloc/property_details_bloc.dart';
@@ -206,9 +207,12 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                                       property: state.property,
                                       isDark: isDark,
                                     ),
-                                  
                                     SizedBox(height: 16.h),
-                                    // Sample nearby landmarks (in a real app, this would come from your model)
+                                    InvestmentMetrics(
+                                      property: state.property,
+                                      isDark: isDark,
+                                    ),
+                                    SizedBox(height: 16.h),
                                     NearbyLandmarksSection(
                                       isDark: isDark,
                                       landmarks: [
@@ -338,11 +342,28 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                             top: 16.h,
                           ),
                           child: PropertyActionButtons(
-                            onInvestPressed: () {
-                              // TODO: Implement invest action
-                            },
+                            onInvestPressed: () {},
                             onContactPressed: () {
-                              // TODO: Implement contact action
+                              // Show investment modal when "Start Investing" is pressed
+                              InvestmentModal.show(
+                                context,
+                                balance:
+                                    5000.00, // You might want to get this from user data
+                                propertyTitle: state.property.title,
+                                onInvest: (amount, method) {
+                                  // Process the investment
+                                  final methodName =
+                                      method == PaymentMethod.wallet
+                                          ? 'Wallet'
+                                          : 'Credit Card';
+                                  _showSnackBar(
+                                    'Successfully invested \$$amount in ${state.property.title} using $methodName',
+                                    true,
+                                  );
+
+                                  // Here you would typically call an API to process the investment
+                                },
+                              );
                             },
                           ),
                         ),

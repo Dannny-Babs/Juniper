@@ -17,118 +17,124 @@ class InvestmentMetrics extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  '\$${property.price.toString()}',
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.neutral700,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Profitability',
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        color: AppColors.neutral500,
-                      ),
-                    ),
-                    SizedBox(width: 3.w),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 4.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.success50,
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            EneftyIcons.arrow_up_outline,
-                            size: 14.sp,
-                            color: AppColors.success500,
-                          ),
-                          SizedBox(width: 2.w),
-                          Text(
-                            '${property.profitability}%',
-                            style: TextStyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.success500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(height: 8.h),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(4.r),
-              child: LinearProgressIndicator(
-                value: 0.75, // Assuming 75% progress
-                backgroundColor: AppColors.neutral100,
-                valueColor: AlwaysStoppedAnimation<Color>(AppColors.primary500),
-                minHeight: 4.h,
-              ),
-            ),
-            SizedBox(height: 12.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      EneftyIcons.profile_2user_outline,
-                      size: 14.sp,
-                      color: AppColors.primary700,
-                    ),
-                    SizedBox(width: 2.w),
-                    Text(
-                      '${property.investorCount} ${property.investorCount == 1 ? 'Investor' : 'Investors'}',
-                      style: TextStyle(
-                        fontSize: 13.sp,
-                        color: AppColors.primary700,
-                      ),
-                    ),
-                  ],
-                ),
-                Text(
-                  'Available',
-                  style: TextStyle(
-                    fontSize: 13.sp,
-                    color: AppColors.neutral500,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        SizedBox(height: 16.h),
         Container(
           padding: EdgeInsets.all(16.w),
           decoration: BoxDecoration(
             color: isDark ? AppColors.surfaceDark100 : Colors.white,
             borderRadius: BorderRadius.circular(16.r),
             border: Border.all(
-              color: isDark ? AppColors.borderDark : AppColors.neutral100,
+              color: isDark ? AppColors.borderDark : AppColors.borderLight,
               width: 1,
             ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        '\$${property.price.toString()}',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.neutral700,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Profitability',
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              color: AppColors.neutral500,
+                            ),
+                          ),
+                          SizedBox(width: 3.w),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.w,
+                              vertical: 4.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.success50,
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  EneftyIcons.arrow_up_outline,
+                                  size: 14.sp,
+                                  color: AppColors.success500,
+                                ),
+                                SizedBox(width: 2.w),
+                                Text(
+                                  '${property.profitability}%',
+                                  style: TextStyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.success500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(4.r),
+                    child: LinearProgressIndicator(
+                      value: 0.75, // Assuming 75% progress
+                      backgroundColor: AppColors.neutral100,
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(AppColors.primary500),
+                      minHeight: 4.h,
+                    ),
+                  ),
+                  SizedBox(height: 12.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            EneftyIcons.profile_2user_outline,
+                            size: 14.sp,
+                            color: AppColors.primary700,
+                          ),
+                          SizedBox(width: 2.w),
+                          Text(
+                            '${property.investorCount} ${property.investorCount == 1 ? 'Investor' : 'Investors'}',
+                            style: TextStyle(
+                              fontSize: 13.sp,
+                              color: AppColors.primary700,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Available',
+                        style: TextStyle(
+                          fontSize: 13.sp,
+                          color: AppColors.neutral500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 12.h),
+              Divider(
+                color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                thickness: 1,
+              ),
+              SizedBox(height: 12.h),
               _buildMetricRow(
                   'Yearly investment return', '${property.yearlyReturn}%'),
               SizedBox(height: 12.h),

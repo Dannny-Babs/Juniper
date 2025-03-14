@@ -18,12 +18,12 @@ class PropertyActionButtons extends StatelessWidget {
       children: [
         Expanded(
           child: SizedBox(
-            height: 40.h,
+            height: 44.h,
             child: CustomButton(
               backgroundColor: AppColors.backgroundLight,
               noShadow: true,
               borderRadius: BorderRadius.all(Radius.circular(12)),
-              text: 'Invest Now',
+              text: 'View Property', // Changed from "Rent property"
               variant: ButtonVariant.outline,
               size: ButtonSize.medium,
               onPressed: onInvestPressed,
@@ -34,13 +34,13 @@ class PropertyActionButtons extends StatelessWidget {
         SizedBox(width: 16.w),
         Expanded(
           child: SizedBox(
-            height: 40.h,
+            height: 44.h,
             child: CustomButton(
               noShadow: true,
-              text: 'Contact',
+              text: 'Start Investing',
               variant: ButtonVariant.primary,
               size: ButtonSize.medium,
-              backgroundColor: AppColors.primary700,
+              backgroundColor: AppColors.neutral900,
               onPressed: onContactPressed,
             ),
           ),
