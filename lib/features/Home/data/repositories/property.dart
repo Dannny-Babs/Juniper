@@ -21,21 +21,43 @@ class PropertyProvider {
           .loadString('lib/features/home/data/datasources/response.json');
       final data = await json.decode(response);
 
-      if (data == null || !data.containsKey('properties')) {
-        debugPrint('Invalid JSON structure: missing properties key');
+      if (data == null) {
+        debugPrint('Error loading properties: JSON data is null');
+        return [];
+      }
+
+      if (!data.containsKey('properties')) {
+        debugPrint('Error loading properties: Missing "properties" key in JSON');
         return [];
       }
 
       final List<dynamic> propertyList = data['properties'];
-      return propertyList.map((item) => Property.fromJson(item)).toList();
-    } catch (e) {
+      final List<Property> properties = [];
+
+      for (var item in propertyList) {
+        try {
+          final property = Property.fromJson(item);
+          properties.add(property);
+        } catch (e) {
+          debugPrint('Error parsing property: $e');
+          debugPrint('Property data: $item');
+          // Continue with next property instead of failing completely
+          continue;
+        }
+      }
+
+      return properties;
+    } catch (e, stackTrace) {
       debugPrint('Error loading properties: $e');
+      debugPrint('Stack trace: $stackTrace');
       return [];
     }
   }
 
-  static List<Property> filterByStatus(
-      List<Property> properties, String status) {
-    return properties.where((property) => property.status == status).toList();
+  static List<Property> filterByStatus(List<Property> properties, String status) {
+    return properties
+        .where((property) => 
+            property.status.toLowerCase() == status.toLowerCase())
+        .toList();
   }
 }

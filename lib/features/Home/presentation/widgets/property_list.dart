@@ -113,6 +113,7 @@ class InfinitePropertySliverList extends StatelessWidget {
               ),
               child: Text(
                 "😔 That's the end...",
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             );

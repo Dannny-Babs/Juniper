@@ -1,41 +1,67 @@
 class Property {
   final String id;
-  final String imageUrl; // Changed from image to imageUrl
   final String title;
-  final String location;
+  final String description;
   final String price;
-  final String roi;
+  final String location;
+  final String imageUrl;
   final int beds;
   final double baths;
   final int sqft;
+  final String roi;
   final String status;
+  final List<String> amenities;
+  final String type;
 
-  const Property({
+  Property({
     required this.id,
-    required this.imageUrl,
     required this.title,
-    required this.location,
+    this.description = '',
     required this.price,
+    required this.location,
+    required this.imageUrl,
+    required this.beds,
+    required this.baths,
+    required this.sqft,
     required this.roi,
-    this.beds = 0,
-    this.baths = 0.0,
-    this.sqft = 0,
-    required this.status,
+    this.status = 'Available',
+    this.amenities = const [],
+    this.type = 'apartment',
   });
 
   factory Property.fromJson(Map<String, dynamic> json) {
     return Property(
-      id: json['id']?.toString() ?? '',
-      imageUrl: json['imageUrl'] ??
-          'https://images.unsplash.com/photo-1568605114967-8130f3a36994', // Provide a default URL instead of asset path
-      title: json['title']?.toString() ?? '',
-      location: json['location']?.toString() ?? '',
-      price: json['price']?.toString() ?? '',
-      roi: json['roi']?.toString() ?? '',
-      beds: json['beds'] ?? 0,
-      baths: (json['baths'] as num?)?.toDouble() ?? 0.0,
-      sqft: json['sqft'] ?? 0,
-      status: json['status']?.toString() ?? '',
+      id: json['id'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String? ?? '',
+      price: json['price'] as String,
+      location: json['location'] as String,
+      imageUrl: json['imageUrl'] as String,
+      beds: json['beds'] as int,
+      baths: (json['baths'] as num).toDouble(),
+      sqft: json['sqft'] as int,
+      roi: json['roi'] as String,
+      status: json['status'] as String? ?? 'Available',
+      amenities: (json['amenities'] as List<dynamic>?)?.cast<String>() ?? [],
+      type: json['type'] as String? ?? 'apartment',
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'price': price,
+      'location': location,
+      'imageUrl': imageUrl,
+      'beds': beds,
+      'baths': baths,
+      'sqft': sqft,
+      'roi': roi,
+      'status': status,
+      'amenities': amenities,
+      'type': type,
+    };
   }
 }

@@ -35,7 +35,16 @@ class PropertyCard extends StatelessWidget {
         decoration: containerDecoration,
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          onTap: onTap,
+          onTap: () {
+            if (onTap != null) {
+              onTap!();
+            } else {
+              context.pushNamed(
+                'propertyDetails',
+                pathParameters: {'propertyId': property.id},
+              );
+            }
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
