@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
 
+import 'investment_confirmation_modal.dart';
+
 class InvestmentModal extends StatefulWidget {
   final double balance;
   final VoidCallback? onClose;
@@ -370,10 +372,51 @@ class _InvestmentModalState extends State<InvestmentModal> {
         isDisabled: !_canInvest,
         onPressed: _canInvest
             ? () {
-                if (widget.onInvest != null) {
+                // Close the current modal
+                Navigator.of(context).pop();
+
+                // Simulate a network request with 50% success rate for demo purposes
+                final bool isSuccess =
+                    DateTime.now().millisecondsSinceEpoch % 2 == 0;
+
+                // Show confirmation modal
+                InvestmentConfirmationModal.show(
+                  context,
+                  state: isSuccess
+                      ? ConfirmationState.success
+                      : ConfirmationState.error,
+                  amount: _selectedAmount,
+                  propertyTitle: widget.propertyTitle,
+                  errorMessage: isSuccess
+                      ? null
+                      : "Payment method declined. Please try a different payment method.",
+                  onPrimaryAction: () {
+                    // On success: Go to home or portfolio
+                    // On error: Retry
+
+                    if (isSuccess) {
+                      // Navigate to home/portfolio
+                      context.go('/portfolio');
+                    } else {
+                      // Show investment modal again
+                      InvestmentModal.show(
+                        context,
+                        balance: widget.balance,
+                        propertyTitle: widget.propertyTitle,
+                        onInvest: widget.onInvest,
+                      );
+                    }
+                  },
+                  onSecondaryAction: () {
+                    // Only used in error state for "Cancel"
+                    Navigator.pop(context);
+                  },
+                );
+
+                // Still call the original onInvest callback if needed
+                if (isSuccess && widget.onInvest != null) {
                   widget.onInvest!(_selectedAmount, _selectedPaymentMethod);
                 }
-                Navigator.of(context).pop();
               }
             : null,
       ),

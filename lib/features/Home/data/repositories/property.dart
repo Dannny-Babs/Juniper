@@ -15,7 +15,7 @@ class PropertyProvider {
     return _fallbackImages[index % _fallbackImages.length];
   }
 
-  static Future<List<Property>> loadProperties() async {
+  static Future<List<Property>> loadProperties({required int limit}) async {
     try {
       final String response = await rootBundle
           .loadString('lib/features/home/data/datasources/response.json');
@@ -27,7 +27,8 @@ class PropertyProvider {
       }
 
       if (!data.containsKey('properties')) {
-        debugPrint('Error loading properties: Missing "properties" key in JSON');
+        debugPrint(
+            'Error loading properties: Missing "properties" key in JSON');
         return [];
       }
 
@@ -54,10 +55,49 @@ class PropertyProvider {
     }
   }
 
-  static List<Property> filterByStatus(List<Property> properties, String status) {
+  static List<Property> filterByStatus(
+      List<Property> properties, String status) {
     return properties
-        .where((property) => 
-            property.status.toLowerCase() == status.toLowerCase())
+        .where(
+            (property) => property.status.toLowerCase() == status.toLowerCase())
         .toList();
+  }
+
+  static Future<String> fetchProperties() async {
+    try {
+      return await rootBundle
+          .loadString('lib/features/home/data/datasources/response.json');
+    } catch (e) {
+      debugPrint('Error fetching property data: $e');
+      throw Exception('Failed to fetch property data');
+    }
+  }
+
+  static List<Property> parseProperties(String jsonData) {
+    try {
+      final data = json.decode(jsonData);
+
+      if (data == null || !data.containsKey('properties')) {
+        return [];
+      }
+
+      final List<dynamic> propertyList = data['properties'];
+      final List<Property> properties = [];
+
+      for (var item in propertyList) {
+        try {
+          final property = Property.fromJson(item);
+          properties.add(property);
+        } catch (e) {
+          debugPrint('Error parsing property: $e');
+          // Continue with next property instead of failing completely
+        }
+      }
+
+      return properties;
+    } catch (e) {
+      debugPrint('Error parsing properties: $e');
+      return [];
+    }
   }
 }

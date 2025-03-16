@@ -30,19 +30,24 @@ class PropertyList extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: properties.length > 5 ? 5 : properties.length,
-              padding: EdgeInsets.only(
-                left: 16.w,
-                right: 16.w,
-                bottom: 8.h,
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.w,
+                vertical: 8.h,
               ),
+              cacheExtent: 500.0,
+              clipBehavior: Clip.none,
               itemBuilder: (context, index) {
+                final property = properties[index];
                 return Padding(
                   padding: EdgeInsets.only(right: 16.w),
-                  child: MiniPropertyCard(
-                    property: properties[index],
-                    onTap: onPropertyTap != null
-                        ? () => onPropertyTap!(properties[index])
-                        : null,
+                  child: RepaintBoundary(
+                    child: MiniPropertyCard(
+                      key: ValueKey(property.id),
+                      property: property,
+                      onTap: onPropertyTap != null
+                          ? () => onPropertyTap!(property)
+                          : null,
+                    ),
                   ),
                 );
               },
@@ -56,30 +61,33 @@ class PropertyList extends StatelessWidget {
   Widget _buildHeader(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    final textStyle = theme.textTheme.titleLarge?.copyWith(
+      color: isDark ? AppColors.neutral200 : AppColors.neutral800,
+      fontWeight: FontWeight.w500,
+      fontSize: 20.sp,
+    );
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          '$category Properties',
-          style: theme.textTheme.titleLarge?.copyWith(
-            color: isDark ? AppColors.neutral200 : AppColors.neutral800,
-            fontWeight: FontWeight.w500,
-            fontSize: 20.sp,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            '$category Properties',
+            style: textStyle,
           ),
-        ),
-        TextButton(
-          onPressed: () {
-            // Handle view all
-          },
-          child: Text('View All'),
-        ),
-      ],
+          TextButton(
+            onPressed: () {
+              // Handle view all
+            },
+            child: const Text('View All'),
+          ),
+        ],
+      ),
     );
   }
 }
 
-// Create a new widget called InfinitePropertySliverList
 class InfinitePropertySliverList extends StatelessWidget {
   final List<Property> properties;
   final void Function(Property)? onPropertyTap;
@@ -106,29 +114,34 @@ class InfinitePropertySliverList extends StatelessWidget {
           }
 
           if (index == properties.length) {
-            return Padding(
+            return const Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 16,
                 vertical: 16,
               ),
-              child: Text(
-                "😔 That's the end...",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
+              child: Center(
+                child: Text(
+                  "😔 That's the end...",
+                  textAlign: TextAlign.center,
+                ),
               ),
             );
           }
 
+          final property = properties[index];
           return Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 8,
             ),
-            child: PropertyCard(
-              property: properties[index],
-              onTap: onPropertyTap != null
-                  ? () => onPropertyTap!(properties[index])
-                  : null,
+            child: RepaintBoundary(
+              child: PropertyCard(
+                key: ValueKey(property.id),
+                property: property,
+                onTap: onPropertyTap != null
+                    ? () => onPropertyTap!(property)
+                    : null,
+              ),
             ),
           );
         },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:juniper/features/home/presentation/widgets/home_header.dart';
 import 'package:juniper/features/home/presentation/widgets/main_content.dart';
 import 'package:juniper/features/home/presentation/widgets/property_list.dart';
@@ -14,129 +15,177 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  List<Property> properties = [];
-  bool isLoading = true;
-  String? error;
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
+  final List<Property> _properties = [];
+  bool _isLoading = true;
+  String? _error;
+  final ScrollController _scrollController = ScrollController();
+
+  static const _scrollThrottleDuration = Duration(milliseconds: 500);
+  DateTime? _lastLoadTime;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
     _loadProperties();
+    _scrollController.addListener(_throttledScrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_throttledScrollListener);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _throttledScrollListener() {
+    final now = DateTime.now();
+    if (_lastLoadTime != null && 
+        now.difference(_lastLoadTime!) < _scrollThrottleDuration) {
+      return;
+    }
+    _lastLoadTime = now;
+
+    if (_scrollController.position.pixels >= 
+        _scrollController.position.maxScrollExtent - 1000) {
+      _loadMoreProperties();
+    }
   }
 
   Future<void> _loadProperties() async {
     if (!mounted) return;
-    
+
     setState(() {
-      isLoading = true;
-      error = null;
+      _isLoading = true;
+      _error = null;
     });
 
     try {
-      final loadedProperties = await PropertyProvider.loadProperties();
-      if (!mounted) return;
+      final rawData = await PropertyProvider.fetchProperties();
+      final loadedProperties = await compute(PropertyProvider.parseProperties, rawData);
       
+      if (!mounted) return;
+
       setState(() {
-        properties = loadedProperties;
-        isLoading = false;
+        _properties.clear();
+        _properties.addAll(loadedProperties);
+        _isLoading = false;
       });
     } catch (e) {
       if (!mounted) return;
-      
+
       setState(() {
-        error = 'Failed to load properties. Please try again.';
-        isLoading = false;
+        _error = 'Failed to load properties. Please try again.';
+        _isLoading = false;
       });
       debugPrint('Error loading properties: $e');
     }
   }
 
-  void _handlePropertyTap(Property property) {
-    context.pushNamed(
-      'propertyDetails',
-      pathParameters: {'propertyId': property.id},
-    );
-  }
+  Future<void> _loadMoreProperties() async {
+    if (_isLoading) return;
 
-  void _loadMoreProperties() async {
-    if (isLoading) return;
+    setState(() => _isLoading = true);
 
     try {
-      final loadedProperties = await PropertyProvider.loadProperties();
+      final rawData = await PropertyProvider.fetchProperties();
+      final loadedProperties = await compute(PropertyProvider.parseProperties, rawData);
+      
       if (!mounted) return;
 
       setState(() {
-        properties.addAll(loadedProperties);
+        _properties.addAll(loadedProperties);
+        _isLoading = false;
       });
     } catch (e) {
+      if (!mounted) return;
+      setState(() => _isLoading = false);
       debugPrint('Error loading more properties: $e');
     }
   }
 
+  void _handlePropertyTap(Property property) {
+    context.go('/property/${property.id}');
+  }
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return SafeArea(
       maintainBottomViewPadding: true,
       top: false,
       child: RefreshIndicator(
         onRefresh: _loadProperties,
         child: CustomScrollView(
+          controller: _scrollController,
+          physics: const AlwaysScrollableScrollPhysics(),
+          cacheExtent: 1000.0,
           slivers: [
-            // Header Section
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: HomeHeader(),
             ),
 
-            if (isLoading)
-              const SliverFillRemaining(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              )
-            else if (error != null)
-              SliverFillRemaining(
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        error!,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 16.h),
-                      ElevatedButton(
-                        onPressed: _loadProperties,
-                        child: Text('Try Again'),
-                      ),
-                    ],
+            if (_isLoading && _properties.isEmpty)
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Center(
+                    child: CircularProgressIndicator(),
                   ),
                 ),
               )
-            else if (properties.isEmpty)
-              SliverFillRemaining(
-                child: Center(
-                  child: Text(
-                    'No properties available',
-                    style: Theme.of(context).textTheme.bodyLarge,
+            else if (_error != null)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          _error!,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 16),
+                        ElevatedButton(
+                          onPressed: _loadProperties,
+                          child: const Text('Try Again'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            else if (_properties.isEmpty)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Center(
+                    child: Text(
+                      'No properties available',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
                 ),
               )
             else ...[
-              // Properties Section
               SliverToBoxAdapter(
                 child: PropertyCategories(
-                  properties: properties,
+                  properties: _properties,
                   onPropertyTap: _handlePropertyTap,
                 ),
               ),
 
               InfinitePropertySliverList(
-                properties: properties,
+                properties: _properties,
                 onPropertyTap: _handlePropertyTap,
                 onLoadMore: _loadMoreProperties,
-                isLoading: isLoading,
+                isLoading: _isLoading,
               ),
             ],
           ],
