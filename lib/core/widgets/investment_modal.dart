@@ -394,8 +394,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
                     // On error: Retry
 
                     if (isSuccess) {
-                      // Navigate to home/portfolio
-                      context.go('/portfolio');
+                      context.push('/portfolio');
                     } else {
                       // Show investment modal again
                       InvestmentModal.show(

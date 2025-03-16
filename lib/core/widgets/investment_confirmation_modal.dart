@@ -76,7 +76,7 @@ class InvestmentConfirmationModal extends StatelessWidget {
           _buildCloseButton(),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 16.w),
+            margin: EdgeInsets.symmetric(horizontal: 4.w, vertical: 8.h),
             constraints: BoxConstraints(
               maxWidth: 380.w,
             ),

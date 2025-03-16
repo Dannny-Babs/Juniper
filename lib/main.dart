@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart' show getApplicationDocumentsDirectory, getTemporaryDirectory;
+import 'package:path_provider/path_provider.dart'
+    show getApplicationDocumentsDirectory, getTemporaryDirectory;
 import 'core/utils/utils.dart';
 import 'features/property_details/data/repositories/property_repository_impl.dart';
 
@@ -13,6 +14,12 @@ void main() async {
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final isOnboardingCompleted = prefs.getBool('onboarding_complete') ?? false;
+
+  // Register error handlers
+  FlutterError.onError = (details) {
+    FlutterError.presentError(details);
+    debugPrint('Flutter error: ${details.exception}');
+  };
 
   final router = AppRouter.createRouter(isOnboardingCompleted);
   runApp(

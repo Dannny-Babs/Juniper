@@ -10,3 +10,6 @@ export 'packages.dart';
 export 'router.dart';
 export '../widgets/back_button.dart';
 export 'bloc.dart';
+
+// Export the ImageErrorHandler for easy access
+export 'image_error_handler.dart';
