@@ -22,3 +22,14 @@ class PropertyDetailsLoaded extends PropertyDetailsState {
   @override
   List<Object?> get props => [property];
 }
+
+
+
+class PropertyDetailsError extends PropertyDetailsState {
+  final String message;
+
+  const PropertyDetailsError(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}

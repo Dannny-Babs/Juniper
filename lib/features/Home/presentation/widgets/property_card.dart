@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:juniper/features/home/data/models/property.dart';
 import 'package:juniper/core/widgets/optimized_image.dart';
 import '../../../../core/utils/utils.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../property_details/domain/bloc/property_details_bloc.dart';
 
 class MiniPropertyCard extends StatelessWidget {
   final Property property;
@@ -93,12 +91,10 @@ class MiniPropertyCard extends StatelessWidget {
     try {
       // Try to preload the property details if BLoC is available
       try {
-        if (context.read<PropertyDetailsBloc>() != null) {
-          context
-              .read<PropertyDetailsBloc>()
-              .add(LoadPropertyDetails(property.id));
-        }
-      } catch (e) {
+        context
+            .read<PropertyDetailsBloc>()
+            .add(LoadPropertyDetails(property.id));
+            } catch (e) {
         // Ignore if BLoC isn't available yet
         debugPrint('PropertyDetailsBloc not available: $e');
       }

@@ -15,3 +15,4 @@ class LoadPropertyDetails extends PropertyDetailsEvent {
   @override
   List<Object> get props => [propertyId];
 }
+
