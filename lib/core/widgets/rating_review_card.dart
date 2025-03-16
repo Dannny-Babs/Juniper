@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RatingReviewCard extends StatelessWidget {
   final double overallRating;

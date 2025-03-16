@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:juniper/features/home/data/models/property.dart';
 import 'package:juniper/core/widgets/optimized_image.dart';
 import '../../../../core/utils/utils.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../property_details/domain/bloc/property_details_bloc.dart';
 
 class MiniPropertyCard extends StatelessWidget {
   final Property property;
@@ -34,7 +36,13 @@ class MiniPropertyCard extends StatelessWidget {
           ),
         ),
         child: InkWell(
-          onTap: onTap,
+          onTap: () {
+            if (onTap != null) {
+              onTap!();
+            } else {
+              _handlePropertyTap(context, property);
+            }
+          },
           borderRadius: BorderRadius.circular(8.r),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,14 +89,37 @@ class MiniPropertyCard extends StatelessWidget {
     );
   }
 
+  void _handlePropertyTap(BuildContext context, Property property) {
+    try {
+      // Try to preload the property details if BLoC is available
+      try {
+        if (context.read<PropertyDetailsBloc>() != null) {
+          context
+              .read<PropertyDetailsBloc>()
+              .add(LoadPropertyDetails(property.id));
+        }
+      } catch (e) {
+        // Ignore if BLoC isn't available yet
+        debugPrint('PropertyDetailsBloc not available: $e');
+      }
+
+      // Navigate to property details
+      context.push('/property/${property.id}');
+    } catch (e) {
+      debugPrint('Navigation error: $e');
+    }
+  }
+
   Widget _buildImage(BuildContext context) {
-    // Updated to use OptimizedImage for caching and performance.
-    return OptimizedImage(
-      imageUrl: property.imageUrl,
-      width: double.infinity,
-      height: 125.h,
-      borderRadius: 8.r,
-      useShimmer: true,
+    return Hero(
+      tag: 'property_image_${property.id}',
+      child: OptimizedImage(
+        imageUrl: property.imageUrl,
+        width: double.infinity,
+        height: 125.h,
+        borderRadius: 8.r,
+        useShimmer: true,
+      ),
     );
   }
 

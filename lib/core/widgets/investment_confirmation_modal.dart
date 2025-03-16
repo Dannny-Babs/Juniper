@@ -18,7 +18,7 @@ class InvestmentConfirmationModal extends StatelessWidget {
   final String? errorMessage;
 
   const InvestmentConfirmationModal({
-    Key? key,
+    super.key,
     required this.state,
     this.onClose,
     this.onPrimaryAction,
@@ -26,7 +26,7 @@ class InvestmentConfirmationModal extends StatelessWidget {
     required this.amount,
     required this.propertyTitle,
     this.errorMessage,
-  }) : super(key: key);
+  });
 
   static void show(
     BuildContext context, {
@@ -75,9 +75,9 @@ class InvestmentConfirmationModal extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildCloseButton(),
-          SizedBox(height: 10.h),
           Container(
             width: double.infinity,
+            margin: EdgeInsets.symmetric(horizontal: 16.w),
             constraints: BoxConstraints(
               maxWidth: 380.w,
             ),
@@ -144,6 +144,8 @@ class InvestmentConfirmationModal extends StatelessWidget {
           child: Lottie.asset(
             'assets/animations/transaction_success.json',
             fit: BoxFit.contain,
+            repeat: false, // Don't repeat animation
+            animate: true,
           ),
         ),
         SizedBox(height: 24.h),

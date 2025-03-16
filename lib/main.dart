@@ -1,11 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'core/utils/utils.dart';
-import 'features/navigation/presentation/bloc/navigation_bloc.dart';
-import 'features/onboarding/bloc/onboarding_bloc.dart';
-import 'features/chat/presentation/bloc/chat_bloc.dart';
+import 'features/property_details/data/repositories/property_repository_impl.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +26,18 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => ChatBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PropertyDetailsBloc(
+            propertyRepository: PropertyRepositoryImpl(),
+          ),
+        ),
+        BlocProvider<PropertyDetailsBloc>(
+          create: (context) => PropertyDetailsBloc(
+            propertyRepository: PropertyRepositoryImpl(),
+          ),
+          // Don't lazy load this BLoC
+          lazy: false,
         ),
       ],
       child: MainApp(router: router),

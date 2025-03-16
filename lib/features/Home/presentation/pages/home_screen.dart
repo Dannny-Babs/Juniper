@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:juniper/features/home/presentation/widgets/home_header.dart';
 import 'package:juniper/features/home/presentation/widgets/main_content.dart';
 import 'package:juniper/features/home/presentation/widgets/property_list.dart';
@@ -7,6 +8,7 @@ import 'package:juniper/core/utils/utils.dart';
 
 import '../../data/models/property.dart';
 import '../../data/repositories/property.dart';
+import '../../../property_details/domain/bloc/property_details_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +17,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
   final List<Property> _properties = [];
   bool _isLoading = true;
   String? _error;
@@ -43,13 +46,13 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
 
   void _throttledScrollListener() {
     final now = DateTime.now();
-    if (_lastLoadTime != null && 
+    if (_lastLoadTime != null &&
         now.difference(_lastLoadTime!) < _scrollThrottleDuration) {
       return;
     }
     _lastLoadTime = now;
 
-    if (_scrollController.position.pixels >= 
+    if (_scrollController.position.pixels >=
         _scrollController.position.maxScrollExtent - 1000) {
       _loadMoreProperties();
     }
@@ -65,8 +68,9 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
 
     try {
       final rawData = await PropertyProvider.fetchProperties();
-      final loadedProperties = await compute(PropertyProvider.parseProperties, rawData);
-      
+      final loadedProperties =
+          await compute(PropertyProvider.parseProperties, rawData);
+
       if (!mounted) return;
 
       setState(() {
@@ -92,8 +96,9 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
 
     try {
       final rawData = await PropertyProvider.fetchProperties();
-      final loadedProperties = await compute(PropertyProvider.parseProperties, rawData);
-      
+      final loadedProperties =
+          await compute(PropertyProvider.parseProperties, rawData);
+
       if (!mounted) return;
 
       setState(() {
@@ -108,7 +113,15 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
   }
 
   void _handlePropertyTap(Property property) {
-    context.go('/property/${property.id}');
+    // Try to preload the property details
+    try {
+      context.read<PropertyDetailsBloc>().add(LoadPropertyDetails(property.id));
+    } catch (e) {
+      debugPrint('PropertyDetailsBloc not available: $e');
+    }
+
+    // Use push instead of go to maintain the back stack
+    context.push('/property/${property.id}');
   }
 
   @override
@@ -128,7 +141,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
             const SliverToBoxAdapter(
               child: HomeHeader(),
             ),
-
             if (_isLoading && _properties.isEmpty)
               const SliverToBoxAdapter(
                 child: Padding(
@@ -180,7 +192,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                   onPropertyTap: _handlePropertyTap,
                 ),
               ),
-
               InfinitePropertySliverList(
                 properties: _properties,
                 onPropertyTap: _handlePropertyTap,

@@ -9,7 +9,7 @@ class PortfolioProperty extends Property {
 
   PortfolioProperty({
     required super.id,
-    required super.imageUrl, // Changed from image to imageUrl
+    required super.imageUrl,
     required super.title,
     required super.location,
     required super.price,
@@ -18,10 +18,14 @@ class PortfolioProperty extends Property {
     super.beds = 0,
     super.baths = 0,
     super.sqft = 0,
+    super.description = '',
+    super.amenities = const [],
+    super.type = 'apartment',
+    super.images = const [],
     required this.investmentAmount,
     required this.currentValue,
     required this.monthlyIncome,
-    required this.changePercent, // Add this parameter
+    required this.changePercent,
   });
 
   factory PortfolioProperty.fromProperty(Property property) {
@@ -31,7 +35,7 @@ class PortfolioProperty extends Property {
 
     return PortfolioProperty(
       id: property.id,
-      imageUrl: property.imageUrl, // Changed from image to imageUrl
+      imageUrl: property.imageUrl,
       title: property.title,
       location: property.location,
       price: property.price,
@@ -40,6 +44,10 @@ class PortfolioProperty extends Property {
       beds: property.beds,
       baths: property.baths,
       sqft: property.sqft,
+      description: property.description,
+      amenities: property.amenities,
+      type: property.type,
+      images: property.images,
       investmentAmount: 100000, // Example values
       currentValue: 120000, // Example values
       monthlyIncome: 1200, // Example values

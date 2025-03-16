@@ -15,7 +15,7 @@ class PropertyProvider {
     return _fallbackImages[index % _fallbackImages.length];
   }
 
-  static Future<List<Property>> loadProperties({required int limit}) async {
+  static Future<List<Property>> loadProperties({int limit = 10}) async {
     try {
       final String response = await rootBundle
           .loadString('lib/features/home/data/datasources/response.json');
@@ -37,6 +37,16 @@ class PropertyProvider {
 
       for (var item in propertyList) {
         try {
+          // Make sure each property has at least one image
+          if (!item.containsKey('imageUrl') &&
+              item.containsKey('images') &&
+              item['images'].isNotEmpty) {
+            item['imageUrl'] = item['images'][0];
+          } else if (!item.containsKey('imageUrl') &&
+              (!item.containsKey('images') || item['images'].isEmpty)) {
+            item['imageUrl'] = getFallbackImage(properties.length);
+          }
+
           final property = Property.fromJson(item);
           properties.add(property);
         } catch (e) {
@@ -47,7 +57,7 @@ class PropertyProvider {
         }
       }
 
-      return properties;
+      return properties.take(limit).toList();
     } catch (e, stackTrace) {
       debugPrint('Error loading properties: $e');
       debugPrint('Stack trace: $stackTrace');
@@ -86,17 +96,56 @@ class PropertyProvider {
 
       for (var item in propertyList) {
         try {
-          final property = Property.fromJson(item);
-          properties.add(property);
-        } catch (e) {
+          // Make sure each property has at least one image and that all required fields are present
+          if (item is Map<String, dynamic>) {
+            // Ensure all required fields exist, even if null
+            // This prevents errors during parsing
+            final requiredFields = [
+              'id',
+              'title',
+              'price',
+              'location',
+              'beds',
+              'baths',
+              'sqft',
+              'roi'
+            ];
+
+            for (var field in requiredFields) {
+              if (!item.containsKey(field)) {
+                item[field] = field == 'roi' ? '0%' : '';
+              }
+            }
+
+            // Handle imageUrl and images
+            if (!item.containsKey('imageUrl') &&
+                item.containsKey('images') &&
+                item['images'] is List &&
+                (item['images'] as List).isNotEmpty) {
+              item['imageUrl'] = (item['images'] as List).first.toString();
+            } else if (!item.containsKey('imageUrl') ||
+                (item['imageUrl'] == null) ||
+                (!item.containsKey('images') ||
+                    item['images'] == null ||
+                    (item['images'] is List &&
+                        (item['images'] as List).isEmpty))) {
+              item['imageUrl'] = getFallbackImage(properties.length);
+            }
+
+            final property = Property.fromJson(item);
+            properties.add(property);
+          }
+        } catch (e, stackTrace) {
           debugPrint('Error parsing property: $e');
+          debugPrint('Stack trace: $stackTrace');
           // Continue with next property instead of failing completely
         }
       }
 
       return properties;
-    } catch (e) {
+    } catch (e, stackTrace) {
       debugPrint('Error parsing properties: $e');
+      debugPrint('Stack trace: $stackTrace');
       return [];
     }
   }
