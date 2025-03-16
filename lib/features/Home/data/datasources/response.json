@@ -2,495 +2,2669 @@
   "properties": [
     {
       "id": "0",
-      "imageUrl": "https://odimaconstruction.ca/wp-content/uploads/2022/07/custom-homes-1024x683.jpg",
       "title": "The Grand Apartments",
-      "location": "Toronto, ON",
+      "description": "Located in the heart of Toronto, The Grand Apartments offers luxury living with panoramic city views. This newly renovated property features premium finishes, smart home technology, and access to top-tier amenities.",
       "price": "$1,200,000",
+      "location": "Toronto, ON",
+      "property_type": "apartment",
       "roi": "12%",
       "beds": 3,
       "baths": 3.5,
       "sqft": 2200,
-      "status": "Available"
+      "status": "available",
+      "amenities": [
+        "Gym",
+        "Pool",
+        "Concierge",
+        "Parking",
+        "Rooftop Terrace"
+      ],
+      "images": [
+        "https://odimaconstruction.ca/wp-content/uploads/2022/07/custom-homes-1024x683.jpg",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+        "https://images.unsplash.com/photo-1560184897-ae75f418493e"
+      ],
+      "monthly_payment": "$4,300",
+      "annual_return": "$144,000",
+      "coordinates": {
+        "latitude": 43.6532,
+        "longitude": -79.3832
+      },
+      "rating": 4.8,
+      "reviews_count": 32,
+      "agent": {
+        "id": "ag001",
+        "name": "Jane Smith",
+        "phone": "+1-555-123-4567",
+        "email": "jane.smith@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/44.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Union Station",
+          "category": "Transport",
+          "distance": 0.5
+        },
+        {
+          "name": "Rogers Centre",
+          "category": "Entertainment",
+          "distance": 0.8
+        },
+        {
+          "name": "Financial District",
+          "category": "Business",
+          "distance": 0.3
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-03-22",
+          "time_slots": [
+            "10:00 AM - 10:30 AM",
+            "5:00 PM - 5:30 PM"
+          ]
+        },
+        {
+          "date": "2025-03-23",
+          "time_slots": [
+            "1:00 PM - 1:30 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "5.2%",
+        "cash_on_cash": "8.7%",
+        "total_return_5yr": "$220,500",
+        "appreciation_estimate": "4.3%"
+      }
     },
     {
       "id": "1",
-      "imageUrl": "https://images.unsplash.com/photo-1515263487990-61b07816b324",
       "title": "Luxury Downtown Penthouse",
-      "location": "Toronto, ON",
+      "description": "Experience unparalleled luxury in this stunning downtown penthouse with floor-to-ceiling windows offering breathtaking city skyline views. Features include custom Italian finishes, private elevator access, and an expansive terrace.",
       "price": "$2,850,000",
+      "location": "Toronto, ON",
+      "property_type": "penthouse",
       "roi": "7.5%",
       "beds": 3,
       "baths": 3.5,
       "sqft": 2200,
-      "status": "Available"
+      "status": "available",
+      "amenities": [
+        "Private Elevator",
+        "Wine Cellar",
+        "Home Theater",
+        "24/7 Security",
+        "Spa"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1515263487990-61b07816b324",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
+      ],
+      "monthly_payment": "$9,800",
+      "annual_return": "$213,750",
+      "coordinates": {
+        "latitude": 43.6478,
+        "longitude": -79.3801
+      },
+      "rating": 4.9,
+      "reviews_count": 28,
+      "agent": {
+        "id": "ag002",
+        "name": "Michael Chen",
+        "phone": "+1-555-234-5678",
+        "email": "michael.chen@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/22.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Eaton Centre",
+          "category": "Shopping",
+          "distance": 0.3
+        },
+        {
+          "name": "Four Seasons Centre",
+          "category": "Culture",
+          "distance": 0.4
+        },
+        {
+          "name": "Bay Street",
+          "category": "Business",
+          "distance": 0.2
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-03-20",
+          "time_slots": [
+            "11:00 AM - 12:00 PM",
+            "4:00 PM - 5:00 PM"
+          ]
+        },
+        {
+          "date": "2025-03-21",
+          "time_slots": [
+            "2:00 PM - 3:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "4.5%",
+        "cash_on_cash": "6.2%",
+        "total_return_5yr": "$498,750",
+        "appreciation_estimate": "3.8%"
+      }
     },
     {
       "id": "2",
-      "imageUrl": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
       "title": "Waterfront Contemporary Villa",
-      "location": "Vancouver, BC",
+      "description": "This architectural masterpiece offers unobstructed ocean views and direct beach access. The villa features an infinity pool, smart home integration, luxury finishes, and an entertainer's dream layout with indoor-outdoor living spaces.",
       "price": "$4,200,000",
+      "location": "Vancouver, BC",
+      "property_type": "villa",
       "roi": "6.8%",
       "beds": 5,
       "baths": 4,
       "sqft": 3800,
-      "status": "Exited"
+      "status": "exited",
+      "amenities": [
+        "Infinity Pool",
+        "Home Automation",
+        "Private Beach Access",
+        "Wine Cellar",
+        "Media Room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
+        "https://images.unsplash.com/photo-1513584684374-8bab748fbf90",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6"
+      ],
+      "monthly_payment": "$14,700",
+      "annual_return": "$285,600",
+      "coordinates": {
+        "latitude": 49.2827,
+        "longitude": -123.1207
+      },
+      "rating": 4.9,
+      "reviews_count": 45,
+      "agent": {
+        "id": "ag003",
+        "name": "Sarah Johnson",
+        "phone": "+1-555-345-6789",
+        "email": "sarah.johnson@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/33.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Stanley Park",
+          "category": "Recreation",
+          "distance": 0.8
+        },
+        {
+          "name": "Vancouver Harbour",
+          "category": "Waterfront",
+          "distance": 0.1
+        },
+        {
+          "name": "Coal Harbour Marina",
+          "category": "Marine",
+          "distance": 0.5
+        }
+      ],
+      "inspection_times": [],
+      "investment_metrics": {
+        "cap_rate": "4.2%",
+        "cash_on_cash": "5.8%",
+        "total_return_5yr": "$735,000",
+        "appreciation_estimate": "3.5%"
+      }
     },
     {
       "id": "3",
-      "imageUrl": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
       "title": "Historic Old Port Loft",
-      "location": "Montreal, QC",
+      "description": "Immerse yourself in Montreal's rich history with this beautifully renovated loft in the Old Port district. Original brick walls and timber beams complement modern amenities and stylish finishes in this unique urban sanctuary.",
       "price": "$895,000",
+      "location": "Montreal, QC",
+      "property_type": "loft",
       "roi": "8.2%",
       "beds": 1,
       "baths": 2,
       "sqft": 1100,
-      "status": "Funded"
+      "status": "funded",
+      "amenities": [
+        "Exposed Brick",
+        "High Ceilings",
+        "Hardwood Floors",
+        "Security System",
+        "Communal Rooftop"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+        "https://images.unsplash.com/photo-1577495508048-b635879837f1",
+        "https://images.unsplash.com/photo-1513584684374-8bab748fbf90"
+      ],
+      "monthly_payment": "$3,100",
+      "annual_return": "$73,390",
+      "coordinates": {
+        "latitude": 45.5017,
+        "longitude": -73.5673
+      },
+      "rating": 4.7,
+      "reviews_count": 19,
+      "agent": {
+        "id": "ag004",
+        "name": "Pierre Tremblay",
+        "phone": "+1-555-456-7890",
+        "email": "pierre.tremblay@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/54.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Notre-Dame Basilica",
+          "category": "Culture",
+          "distance": 0.3
+        },
+        {
+          "name": "Old Port",
+          "category": "Waterfront",
+          "distance": 0.2
+        },
+        {
+          "name": "Bonsecours Market",
+          "category": "Shopping",
+          "distance": 0.4
+        }
+      ],
+      "inspection_times": [],
+      "investment_metrics": {
+        "cap_rate": "4.8%",
+        "cash_on_cash": "7.6%",
+        "total_return_5yr": "$143,200",
+        "appreciation_estimate": "4.1%"
+      }
     },
     {
       "id": "4",
-      "imageUrl": "https://images.unsplash.com/photo-1518780664697-55e3ad937233",
       "title": "Mountain View Estate",
-      "location": "Banff, AB",
+      "description": "Nestled in the breathtaking Rocky Mountains, this luxurious estate offers unparalleled mountain views and outdoor living. Perfect for nature enthusiasts, with ski-in/ski-out access, heated outdoor spaces, and premium finishes throughout.",
       "price": "$3,750,000",
+      "location": "Banff, AB",
+      "property_type": "estate",
       "roi": "5.9%",
       "beds": 6,
       "baths": 5.5,
       "sqft": 4500,
-      "status": "Funded"
+      "status": "funded",
+      "amenities": [
+        "Hot Tub",
+        "Ski Room",
+        "Wine Cellar",
+        "Fireplace",
+        "Mountain Views"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1518780664697-55e3ad937233",
+        "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688"
+      ],
+      "monthly_payment": "$13,100",
+      "annual_return": "$221,250",
+      "coordinates": {
+        "latitude": 51.1784,
+        "longitude": -115.5708
+      },
+      "rating": 4.8,
+      "reviews_count": 37,
+      "agent": {
+        "id": "ag005",
+        "name": "Robert Winters",
+        "phone": "+1-555-567-8901",
+        "email": "robert.winters@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/66.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Banff National Park",
+          "category": "Recreation",
+          "distance": 0.5
+        },
+        {
+          "name": "Banff Springs Hotel",
+          "category": "Landmark",
+          "distance": 1.2
+        },
+        {
+          "name": "Lake Louise",
+          "category": "Nature",
+          "distance": 15.6
+        }
+      ],
+      "inspection_times": [],
+      "investment_metrics": {
+        "cap_rate": "3.9%",
+        "cash_on_cash": "5.2%",
+        "total_return_5yr": "$656,250",
+        "appreciation_estimate": "3.0%"
+      }
     },
     {
       "id": "5",
-      "imageUrl": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00",
       "title": "Urban Smart Condo",
-      "location": "Ottawa, ON",
+      "description": "This modern smart condo in Ottawa's vibrant downtown combines efficiency with luxury. Featuring voice-controlled home automation, energy-efficient design, and sleek minimalist finishes for the tech-savvy urban professional.",
       "price": "$525,000",
+      "location": "Ottawa, ON",
+      "property_type": "condo",
       "roi": "9.1%",
       "beds": 2,
       "baths": 1,
       "sqft": 850,
-      "status": "Available"
+      "status": "available",
+      "amenities": [
+        "Smart Home System",
+        "Fitness Center",
+        "Bike Storage",
+        "Co-working Space",
+        "Pet Washing Station"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
+      ],
+      "monthly_payment": "$1,950",
+      "annual_return": "$47,775",
+      "coordinates": {
+        "latitude": 45.4215,
+        "longitude": -75.6972
+      },
+      "rating": 4.6,
+      "reviews_count": 24,
+      "agent": {
+        "id": "ag006",
+        "name": "Emily Wilson",
+        "phone": "+1-555-678-9012",
+        "email": "emily.wilson@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/12.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Parliament Hill",
+          "category": "Government",
+          "distance": 0.6
+        },
+        {
+          "name": "Rideau Canal",
+          "category": "Recreation",
+          "distance": 0.4
+        },
+        {
+          "name": "Byward Market",
+          "category": "Shopping",
+          "distance": 0.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-03-25",
+          "time_slots": [
+            "12:00 PM - 12:30 PM",
+            "6:00 PM - 6:30 PM"
+          ]
+        },
+        {
+          "date": "2025-03-26",
+          "time_slots": [
+            "10:00 AM - 10:30 AM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "5.5%",
+        "cash_on_cash": "8.3%",
+        "total_return_5yr": "$94,500",
+        "appreciation_estimate": "4.2%"
+      }
     },
     {
       "id": "6",
-      "imageUrl": "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8",
       "title": "Lakefront Cottage",
-      "location": "Muskoka, ON",
+      "description": "Escape to this charming lakefront cottage in the heart of Muskoka. Featuring a private dock, expansive deck, stone fireplace, and panoramic water views, this property offers the perfect blend of rustic charm and modern convenience.",
       "price": "$1,250,000",
+      "location": "Muskoka, ON",
+      "property_type": "cottage",
       "roi": "7.8%",
       "beds": 3,
       "baths": 2,
       "sqft": 1800,
-      "status": "Available"
+      "status": "available",
+      "amenities": [
+        "Private Dock",
+        "Stone Fireplace",
+        "Deck",
+        "Boat House",
+        "Fire Pit"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1587061949409-02df41d5e562",
+        "https://images.unsplash.com/photo-1510798831971-661eb04b3739",
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+      ],
+      "monthly_payment": "$4,375",
+      "annual_return": "$97,500",
+      "coordinates": {
+        "latitude": 45.0215,
+        "longitude": -79.3086
+      },
+      "rating": 4.9,
+      "reviews_count": 31,
+      "agent": {
+        "id": "ag007",
+        "name": "Thomas Miller",
+        "phone": "+1-555-789-0123",
+        "email": "thomas.miller@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/38.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Lake Muskoka",
+          "category": "Nature",
+          "distance": 0.0
+        },
+        {
+          "name": "Muskoka Lakes Golf Club",
+          "category": "Recreation",
+          "distance": 3.2
+        },
+        {
+          "name": "Port Carling",
+          "category": "Town",
+          "distance": 7.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-04-02",
+          "time_slots": [
+            "11:00 AM - 1:00 PM"
+          ]
+        },
+        {
+          "date": "2025-04-03",
+          "time_slots": [
+            "2:00 PM - 4:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "4.7%",
+        "cash_on_cash": "6.9%",
+        "total_return_5yr": "$218,750",
+        "appreciation_estimate": "4.5%"
+      }
     },
     {
       "id": "7",
-      "imageUrl": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90",
-      "title": "Downtown Heritage Home",
+      "title": "Eco-Friendly Passive House",
+      "description": "This cutting-edge passive house combines sustainable design with modern luxury. Featuring solar panels, rainwater collection, energy-efficient systems, and non-toxic materials throughout, this home offers dramatically reduced utility costs and minimal environmental impact.",
+      "price": "$1,750,000",
       "location": "Victoria, BC",
-      "price": "$1,895,000",
-      "roi": "6.5%",
+      "property_type": "house",
+      "roi": "8.3%",
       "beds": 4,
       "baths": 3,
-      "sqft": 2800,
-      "status": "Exited"
+      "sqft": 2300,
+      "status": "available",
+      "amenities": [
+        "Solar Panels",
+        "Rainwater Collection",
+        "Geothermal Heating",
+        "EV Charging",
+        "Edible Garden"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1572120360610-d971b9d7767c",
+        "https://images.unsplash.com/photo-1600607687644-a59a0c618071",
+        "https://images.unsplash.com/photo-1628624747186-a941c476b7ef"
+      ],
+      "monthly_payment": "$6,125",
+      "annual_return": "$145,250",
+      "coordinates": {
+        "latitude": 48.4284,
+        "longitude": -123.3656
+      },
+      "rating": 4.8,
+      "reviews_count": 22,
+      "agent": {
+        "id": "ag008",
+        "name": "Olivia Green",
+        "phone": "+1-555-890-1234",
+        "email": "olivia.green@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/26.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Beacon Hill Park",
+          "category": "Recreation",
+          "distance": 1.2
+        },
+        {
+          "name": "Victoria Harbour",
+          "category": "Waterfront",
+          "distance": 2.5
+        },
+        {
+          "name": "University of Victoria",
+          "category": "Education",
+          "distance": 5.3
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-03-29",
+          "time_slots": [
+            "10:00 AM - 11:30 AM",
+            "3:00 PM - 4:30 PM"
+          ]
+        },
+        {
+          "date": "2025-03-30",
+          "time_slots": [
+            "1:00 PM - 2:30 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "5.0%",
+        "cash_on_cash": "7.5%",
+        "total_return_5yr": "$306,250",
+        "appreciation_estimate": "4.8%"
+      }
     },
     {
       "id": "8",
-      "imageUrl": "https://images.unsplash.com/photo-1567496898669-ee935f5f647a",
-      "title": "Modern Sky Loft",
-      "location": "Calgary, AB",
-      "price": "$785,000",
-      "roi": "8.5%",
-      "beds": 2,
-      "baths": 2,
-      "sqft": 1200,
-      "status": "Funded"
+      "title": "Historic Townhome",
+      "description": "Own a piece of Canadian history with this meticulously restored 19th-century townhome in Quebec City's historic district. Original architectural details blend seamlessly with modern updates, offering a unique living experience steps from cultural attractions.",
+      "price": "$980,000",
+      "location": "Quebec City, QC",
+      "property_type": "townhome",
+      "roi": "6.9%",
+      "beds": 3,
+      "baths": 2.5,
+      "sqft": 1950,
+      "status": "funded",
+      "amenities": [
+        "Original Woodwork",
+        "Stone Foundation",
+        "Garden Courtyard",
+        "Wine Cellar",
+        "Period Fixtures"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1520608760-eff2c44a89e3",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
+        "https://images.unsplash.com/photo-1600585152915-d208bec867a1"
+      ],
+      "monthly_payment": "$3,430",
+      "annual_return": "$67,620",
+      "coordinates": {
+        "latitude": 46.8139,
+        "longitude": -71.2080
+      },
+      "rating": 4.7,
+      "reviews_count": 29,
+      "agent": {
+        "id": "ag009",
+        "name": "Jean-Pierre Dubois",
+        "phone": "+1-555-901-2345",
+        "email": "jp.dubois@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/42.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Château Frontenac",
+          "category": "Landmark",
+          "distance": 0.4
+        },
+        {
+          "name": "Old Quebec",
+          "category": "Historic District",
+          "distance": 0.1
+        },
+        {
+          "name": "Place Royale",
+          "category": "Culture",
+          "distance": 0.6
+        }
+      ],
+      "inspection_times": [],
+      "investment_metrics": {
+        "cap_rate": "4.3%",
+        "cash_on_cash": "6.1%",
+        "total_return_5yr": "$171,500",
+        "appreciation_estimate": "3.7%"
+      }
     },
     {
       "id": "9",
-      "imageUrl": "https://images.unsplash.com/photo-1505843513577-22bb7d21e455",
-      "title": "Riverside Manor",
-      "location": "Halifax, NS",
-      "price": "$1,450,000",
-      "roi": "7.2%",
+      "title": "Luxury Ski Chalet",
+      "description": "Experience mountain luxury in this exclusive ski-in/ski-out chalet. This stunning property offers panoramic mountain vistas, vaulted ceilings, a stone fireplace, heated floors, and premium finishes throughout - perfect for enthusiasts of winter sports and mountain living.",
+      "price": "$2,750,000",
+      "location": "Whistler, BC",
+      "property_type": "chalet",
+      "roi": "6.5%",
       "beds": 5,
       "baths": 4,
       "sqft": 3200,
-      "status": "Available"
+      "status": "available",
+      "amenities": [
+        "Hot Tub",
+        "Sauna",
+        "Ski Room",
+        "Heated Floors",
+        "Mountain Views"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1520690214124-2405c5217036",
+        "https://images.unsplash.com/photo-1562182384-08115de5ee97",
+        "https://images.unsplash.com/photo-1547393931-b2cd82be9aa4"
+      ],
+      "monthly_payment": "$9,625",
+      "annual_return": "$178,750",
+      "coordinates": {
+        "latitude": 50.1163,
+        "longitude": -122.9574
+      },
+      "rating": 4.9,
+      "reviews_count": 34,
+      "agent": {
+        "id": "ag010",
+        "name": "Alison Parker",
+        "phone": "+1-555-012-3456",
+        "email": "alison.parker@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/58.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Whistler Blackcomb",
+          "category": "Ski Resort",
+          "distance": 0.3
+        },
+        {
+          "name": "Whistler Village",
+          "category": "Shopping",
+          "distance": 1.2
+        },
+        {
+          "name": "Lost Lake",
+          "category": "Recreation",
+          "distance": 2.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-04-05",
+          "time_slots": [
+            "11:00 AM - 1:00 PM"
+          ]
+        },
+        {
+          "date": "2025-04-06",
+          "time_slots": [
+            "2:00 PM - 4:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "4.4%",
+        "cash_on_cash": "5.9%",
+        "total_return_5yr": "$481,250",
+        "appreciation_estimate": "4.2%"
+      }
     },
     {
       "id": "10",
-      "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6",
-      "title": "Executive Townhouse",
-      "location": "Edmonton, AB",
-      "price": "$675,000",
-      "roi": "8.8%",
-      "beds": 3,
-      "baths": 2.5,
-      "sqft": 1600,
-      "status": "Funded"
+      "title": "Waterfront Commercial Space",
+      "description": "Prime commercial investment opportunity in Halifax's revitalized waterfront district. This modern mixed-use space features retail on the ground floor with office space above, offering stable tenants and strong growth potential in an emerging neighborhood.",
+      "price": "$3,200,000",
+      "location": "Halifax, NS",
+      "property_type": "commercial",
+      "roi": "10.2%",
+      "beds": 0,
+      "baths": 4,
+      "sqft": 5800,
+      "status": "available",
+      "amenities": [
+        "Elevator",
+        "Loading Dock",
+        "Security System",
+        "Meeting Rooms",
+        "Waterfront Views"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
+        "https://images.unsplash.com/photo-1497215842964-222b430dc094"
+      ],
+      "monthly_payment": "$11,200",
+      "annual_return": "$326,400",
+      "coordinates": {
+        "latitude": 44.6476,
+        "longitude": -63.5728
+      },
+      "rating": 4.8,
+      "reviews_count": 19,
+      "agent": {
+        "id": "ag011",
+        "name": "David Thompson",
+        "phone": "+1-555-123-4567",
+        "email": "david.thompson@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/75.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Halifax Harbor",
+          "category": "Waterfront",
+          "distance": 0.1
+        },
+        {
+          "name": "Maritime Museum",
+          "category": "Culture",
+          "distance": 0.6
+        },
+        {
+          "name": "Downtown Halifax",
+          "category": "Business",
+          "distance": 0.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-04-10",
+          "time_slots": [
+            "9:00 AM - 11:00 AM",
+            "1:00 PM - 3:00 PM"
+          ]
+        },
+        {
+          "date": "2025-04-11",
+          "time_slots": [
+            "10:00 AM - 12:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "7.8%",
+        "cash_on_cash": "9.4%",
+        "total_return_5yr": "$560,000",
+        "appreciation_estimate": "3.5%"
+      }
     },
     {
       "id": "11",
-      "imageUrl": "https://images.unsplash.com/photo-1577495508048-b635879837f1",
-      "title": "Plateau Character Home",
-      "location": "Montreal, QC",
-      "price": "$1,150,000",
-      "roi": "7.6%",
-      "beds": 4,
+      "title": "Modern Industrial Loft",
+      "description": "This converted warehouse loft offers the perfect blend of industrial character and modern luxury. Featuring soaring ceilings, exposed brick walls, steel beams, and floor-to-ceiling windows that flood the space with natural light.",
+      "price": "$875,000",
+      "location": "Calgary, AB",
+      "property_type": "loft",
+      "roi": "7.9%",
+      "beds": 2,
       "baths": 2,
-      "sqft": 2100,
-      "status": "Exited"
+      "sqft": 1650,
+      "status": "available",
+      "amenities": [
+        "Concrete Floors",
+        "Roof Access",
+        "Freight Elevator",
+        "Smart Home System",
+        "Bike Storage"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36",
+        "https://images.unsplash.com/photo-1600607686527-6fb886090705"
+      ],
+      "monthly_payment": "$3,060",
+      "annual_return": "$69,125",
+      "coordinates": {
+        "latitude": 51.0447,
+        "longitude": -114.0719
+      },
+      "rating": 4.6,
+      "reviews_count": 23,
+      "agent": {
+        "id": "ag012",
+        "name": "Jessica Lee",
+        "phone": "+1-555-234-5678",
+        "email": "jessica.lee@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "East Village",
+          "category": "Neighborhood",
+          "distance": 0.3
+        },
+        {
+          "name": "Studio Bell",
+          "category": "Culture",
+          "distance": 0.7
+        },
+        {
+          "name": "Bow River Pathway",
+          "category": "Recreation",
+          "distance": 0.4
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-04-15",
+          "time_slots": [
+            "10:30 AM - 11:00 AM",
+            "5:30 PM - 6:00 PM"
+          ]
+        },
+        {
+          "date": "2025-04-16",
+          "time_slots": [
+            "12:30 PM - 1:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "5.1%",
+        "cash_on_cash": "7.2%",
+        "total_return_5yr": "$153,125",
+        "appreciation_estimate": "4.3%"
+      }
     },
     {
       "id": "12",
-      "imageUrl": "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1",
-      "title": "Forest Hill Mansion",
-      "location": "Toronto, ON",
-      "price": "$5,900,000",
-      "roi": "5.5%",
-      "beds": 7,
-      "baths": 8,
-      "sqft": 6500,
-      "status": "Funded"
+      "title": "Seaside Retirement Villa",
+      "description": "Perfect retirement investment on Vancouver Island offering scenic ocean views and resort-style amenities. This well-maintained property features single-level living, accessibility features, and a vibrant community of active retirees.",
+      "price": "$685,000",
+      "location": "Victoria, BC",
+      "property_type": "villa",
+      "roi": "8.7%",
+      "beds": 2,
+      "baths": 2,
+      "sqft": 1200,
+      "status": "available",
+      "amenities": [
+        "Community Center",
+        "Walking Trails",
+        "Gardens",
+        "Golf Cart Access",
+        "Security"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1518780664697-55e3ad937233",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6",
+        "https://images.unsplash.com/photo-1600566753051-f0b89df2dd90"
+      ],
+      "monthly_payment": "$2,397",
+      "annual_return": "$59,595",
+      "coordinates": {
+        "latitude": 48.4284,
+        "longitude": -123.3656
+      },
+      "rating": 4.7,
+      "reviews_count": 41,
+      "agent": {
+        "id": "ag013",
+        "name": "Margaret Wilson",
+        "phone": "+1-555-345-6789",
+        "email": "margaret.wilson@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/35.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Oak Bay Marina",
+          "category": "Waterfront",
+          "distance": 1.2
+        },
+        {
+          "name": "Victoria Golf Club",
+          "category": "Recreation",
+          "distance": 0.8
+        },
+        {
+          "name": "Willows Beach",
+          "category": "Beach",
+          "distance": 0.9
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-04-18",
+          "time_slots": [
+            "11:00 AM - 12:00 PM",
+            "2:00 PM - 3:00 PM"
+          ]
+        },
+        {
+          "date": "2025-04-19",
+          "time_slots": [
+            "1:00 PM - 2:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "5.3%",
+        "cash_on_cash": "7.9%",
+        "total_return_5yr": "$119,875",
+        "appreciation_estimate": "3.6%"
+      }
     },
     {
       "id": "13",
-      "imageUrl": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
-      "title": "Harbourfront Studio",
-      "location": "Vancouver, BC",
-      "price": "$599,000",
-      "roi": "9.5%",
-      "beds": 1,
-      "baths": 1,
-      "sqft": 550,
-      "status": "Funded"
+      "title": "Urban Micro-Apartment Building",
+      "description": "Innovative micro-apartment complex in downtown Edmonton offering 20 fully furnished units with smart space utilization. This turnkey investment opportunity boasts high occupancy rates and appeals to young professionals and students.",
+      "price": "$2,350,000",
+      "location": "Edmonton, AB",
+      "property_type": "multi-family",
+      "roi": "11.3%",
+      "beds": 20,
+      "baths": 20,
+      "sqft": 8500,
+      "status": "available",
+      "amenities": [
+        "Shared Workspace",
+        "Laundry Facility",
+        "Rooftop Patio",
+        "Package Room",
+        "Bike Storage"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00",
+        "https://images.unsplash.com/photo-1515263487990-61b07816b324",
+        "https://images.unsplash.com/photo-1460317442991-0ec209397118"
+      ],
+      "monthly_payment": "$8,225",
+      "annual_return": "$265,550",
+      "coordinates": {
+        "latitude": 53.5461,
+        "longitude": -113.4938
+      },
+      "rating": 4.5,
+      "reviews_count": 27,
+      "agent": {
+        "id": "ag014",
+        "name": "Jason Rodriguez",
+        "phone": "+1-555-456-7890",
+        "email": "jason.rodriguez@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/28.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Rogers Place",
+          "category": "Entertainment",
+          "distance": 0.4
+        },
+        {
+          "name": "MacEwan University",
+          "category": "Education",
+          "distance": 0.7
+        },
+        {
+          "name": "ICE District",
+          "category": "Business",
+          "distance": 0.3
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-04-20",
+          "time_slots": [
+            "9:00 AM - 11:00 AM",
+            "1:00 PM - 3:00 PM"
+          ]
+        },
+        {
+          "date": "2025-04-21",
+          "time_slots": [
+            "10:00 AM - 12:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "8.1%",
+        "cash_on_cash": "9.6%",
+        "total_return_5yr": "$411,250",
+        "appreciation_estimate": "3.9%"
+      }
     },
     {
       "id": "14",
-      "imageUrl": "https://images.unsplash.com/photo-1516156008625-3a9d6067fab5",
-      "title": "Country Estate",
+      "title": "Vineyard Estate",
+      "description": "Rare investment opportunity in the heart of Okanagan wine country. This turnkey vineyard estate includes a luxury residence, established vineyard with premium varietals, wine production facility, and tasting room with established tourism revenue.",
+      "price": "$4,950,000",
       "location": "Kelowna, BC",
-      "price": "$2,250,000",
-      "roi": "6.9%",
-      "beds": 5,
-      "baths": 4.5,
-      "sqft": 4200,
-      "status": "Available"
+      "property_type": "agricultural",
+      "roi": "7.2%",
+      "beds": 4,
+      "baths": 3.5,
+      "sqft": 3600,
+      "status": "available",
+      "amenities": [
+        "Wine Cellar",
+        "Irrigation System",
+        "Equipment Barn",
+        "Guest House",
+        "Tasting Room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1464082354059-27db6ce50048",
+        "https://images.unsplash.com/photo-1543418219-44e30b057fea",
+        "https://images.unsplash.com/photo-1566750687693-130a0d8b8ebe"
+      ],
+      "monthly_payment": "$17,325",
+      "annual_return": "$356,400",
+      "coordinates": {
+        "latitude": 49.8880,
+        "longitude": -119.4960
+      },
+      "rating": 4.9,
+      "reviews_count": 32,
+      "agent": {
+        "id": "ag015",
+        "name": "Victoria Adams",
+        "phone": "+1-555-567-8901",
+        "email": "victoria.adams@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/19.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Okanagan Lake",
+          "category": "Nature",
+          "distance": 1.5
+        },
+        {
+          "name": "Mission Hill Winery",
+          "category": "Winery",
+          "distance": 3.2
+        },
+        {
+          "name": "Myra Canyon",
+          "category": "Recreation",
+          "distance": 8.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-04-25",
+          "time_slots": [
+            "10:00 AM - 1:00 PM"
+          ]
+        },
+        {
+          "date": "2025-04-26",
+          "time_slots": [
+            "11:00 AM - 2:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "5.2%",
+        "cash_on_cash": "6.4%",
+        "total_return_5yr": "$866,250",
+        "appreciation_estimate": "4.6%"
+      }
     },
     {
       "id": "15",
-      "imageUrl": "https://images.unsplash.com/photo-1574362848149-11496d93a7c7",
-      "title": "Historic Brownstone",
-      "location": "Quebec City, QC",
-      "price": "$945,000",
-      "roi": "8.1%",
-      "beds": 3,
-      "baths": 2,
-      "sqft": 1900,
-      "status": "Available"
+      "title": "Student Housing Complex",
+      "description": "Strategically located student housing investment near the University of Toronto. This newly renovated 15-unit building offers steady rental income, minimal vacancy rates, and modern amenities tailored to the student market.",
+      "price": "$3,850,000",
+      "location": "Toronto, ON",
+      "property_type": "multi-family",
+      "roi": "13.5%",
+      "beds": 30,
+      "baths": 20,
+      "sqft": 12000,
+      "status": "available",
+      "amenities": [
+        "Study Rooms",
+        "High-Speed Internet",
+        "Laundry Facilities",
+        "Bike Storage",
+        "Security System"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af",
+        "https://images.unsplash.com/photo-1555854877-bab0e564b8d5",
+        "https://images.unsplash.com/photo-1592247350271-c5efb4d75e00"
+      ],
+      "monthly_payment": "$13,475",
+      "annual_return": "$519,750",
+      "coordinates": {
+        "latitude": 43.6629,
+        "longitude": -79.3957
+      },
+      "rating": 4.5,
+      "reviews_count": 38,
+      "agent": {
+        "id": "ag016",
+        "name": "Marcus Johnson",
+        "phone": "+1-555-678-9012",
+        "email": "marcus.johnson@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/85.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "University of Toronto",
+          "category": "Education",
+          "distance": 0.3
+        },
+        {
+          "name": "Robarts Library",
+          "category": "Education",
+          "distance": 0.5
+        },
+        {
+          "name": "Queen's Park",
+          "category": "Recreation",
+          "distance": 0.7
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-04-28",
+          "time_slots": [
+            "9:00 AM - 11:00 AM",
+            "2:00 PM - 4:00 PM"
+          ]
+        },
+        {
+          "date": "2025-04-29",
+          "time_slots": [
+            "10:00 AM - 12:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "9.2%",
+        "cash_on_cash": "11.8%",
+        "total_return_5yr": "$673,750",
+        "appreciation_estimate": "3.8%"
+      }
     },
     {
       "id": "16",
-      "imageUrl": "https://images.unsplash.com/photo-1523217582562-09d0def993a6",
-      "title": "Beachfront Bungalow",
-      "location": "White Rock, BC",
-      "price": "$1,750,000",
-      "roi": "7.3%",
-      "beds": 3,
-      "baths": 2,
-      "sqft": 1600,
-      "status": "Funded"
+      "title": "Boutique Hotel",
+      "description": "Exclusive hospitality investment in the heart of Old Montreal. This award-winning boutique hotel features 18 luxury suites, a renowned restaurant, and spa facilities with established clientele and exceptional reviews.",
+      "price": "$5,750,000",
+      "location": "Montreal, QC",
+      "property_type": "hotel",
+      "roi": "9.8%",
+      "beds": 18,
+      "baths": 18,
+      "sqft": 15000,
+      "status": "available",
+      "amenities": [
+        "Restaurant",
+        "Spa",
+        "Concierge",
+        "Valet Parking",
+        "Conference Room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4",
+        "https://images.unsplash.com/photo-1584132967334-10e028bd69f7",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427"
+      ],
+      "monthly_payment": "$20,125",
+      "annual_return": "$563,500",
+      "coordinates": {
+        "latitude": 45.5017,
+        "longitude": -73.5673
+      },
+      "rating": 4.8,
+      "reviews_count": 127,
+      "agent": {
+        "id": "ag017",
+        "name": "Sophie Belanger",
+        "phone": "+1-555-789-0123",
+        "email": "sophie.belanger@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/47.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Notre-Dame Basilica",
+          "category": "Culture",
+          "distance": 0.2
+        },
+        {
+          "name": "Old Port",
+          "category": "Waterfront",
+          "distance": 0.4
+        },
+        {
+          "name": "Place Jacques-Cartier",
+          "category": "Entertainment",
+          "distance": 0.3
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-05-05",
+          "time_slots": [
+            "10:00 AM - 12:00 PM",
+            "2:00 PM - 4:00 PM"
+          ]
+        },
+        {
+          "date": "2025-05-06",
+          "time_slots": [
+            "11:00 AM - 1:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "7.3%",
+        "cash_on_cash": "8.9%",
+        "total_return_5yr": "$1,006,250",
+        "appreciation_estimate": "4.1%"
+      }
     },
     {
       "id": "17",
-      "imageUrl": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
-      "title": "Smart Home Paradise",
-      "location": "Mississauga, ON",
-      "price": "$1,295,000",
-      "roi": "7.9%",
-      "beds": 4,
-      "baths": 3,
-      "sqft": 2400,
-      "status": "Exited"
+      "title": "Medical Office Building",
+      "description": "Stable commercial investment opportunity in Vancouver's medical district. This purpose-built medical office building is fully leased to established healthcare practitioners with long-term triple-net leases in place.",
+      "price": "$4,200,000",
+      "location": "Vancouver, BC",
+      "property_type": "commercial",
+      "roi": "8.9%",
+      "beds": 0,
+      "baths": 8,
+      "sqft": 12500,
+      "status": "available",
+      "amenities": [
+        "Elevator",
+        "Reception Area",
+        "Pharmacy",
+        "Underground Parking",
+        "Patient Waiting Areas"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+        "https://images.unsplash.com/photo-1577041677443-8bbdfd8cce62",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2"
+      ],
+      "monthly_payment": "$14,700",
+      "annual_return": "$373,800",
+      "coordinates": {
+        "latitude": 49.2827,
+        "longitude": -123.1207
+      },
+      "rating": 4.6,
+      "reviews_count": 31,
+      "agent": {
+        "id": "ag018",
+        "name": "Howard Chang",
+        "phone": "+1-555-890-1234",
+        "email": "howard.chang@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/32.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Vancouver General Hospital",
+          "category": "Medical",
+          "distance": 0.4
+        },
+        {
+          "name": "UBC Medical School",
+          "category": "Education",
+          "distance": 1.2
+        },
+        {
+          "name": "False Creek",
+          "category": "Waterfront",
+          "distance": 1.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-05-10",
+          "time_slots": [
+            "9:00 AM - 11:00 AM",
+            "1:00 PM - 3:00 PM"
+          ]
+        },
+        {
+          "date": "2025-05-11",
+          "time_slots": [
+            "10:00 AM - 12:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "6.8%",
+        "cash_on_cash": "8.1%",
+        "total_return_5yr": "$735,000",
+        "appreciation_estimate": "3.5%"
+      }
     },
     {
       "id": "18",
-      "imageUrl": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-      "title": "Downtown Micro Loft",
-      "location": "Toronto, ON",
-      "price": "$449,000",
-      "roi": "9.8%",
-      "beds": 1,
-      "baths": 1,
-      "sqft": 400,
-      "status": "Funded"
+      "title": "Ocean View Bed & Breakfast",
+      "description": "Charming income-generating B&B in Nova Scotia featuring panoramic ocean views, historic architecture, and established clientele. This turnkey operation includes owner's quarters, six guest rooms, and is just steps from the picturesque fishing village.",
+      "price": "$1,250,000",
+      "location": "Lunenburg, NS",
+      "property_type": "bed_and_breakfast",
+      "roi": "10.4%",
+      "beds": 7,
+      "baths": 8,
+      "sqft": 4200,
+      "status": "available",
+      "amenities": [
+        "Ocean Views",
+        "Gardens",
+        "Library",
+        "Dining Room",
+        "Wrap-around Porch"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd",
+        "https://images.unsplash.com/photo-1568084680786-a84f91d1153c"
+      ],
+      "monthly_payment": "$4,375",
+      "annual_return": "$130,000",
+      "coordinates": {
+        "latitude": 44.3770,
+        "longitude": -64.3159
+      },
+      "rating": 4.9,
+      "reviews_count": 215,
+      "agent": {
+        "id": "ag019",
+        "name": "Elizabeth Murray",
+        "phone": "+1-555-901-2345",
+        "email": "elizabeth.murray@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/82.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Lunenburg Harbour",
+          "category": "Waterfront",
+          "distance": 0.3
+        },
+        {
+          "name": "Fisheries Museum",
+          "category": "Culture",
+          "distance": 0.5
+        },
+        {
+          "name": "UNESCO Old Town",
+          "category": "Historic District",
+          "distance": 0.2
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-05-15",
+          "time_slots": [
+            "11:00 AM - 1:00 PM",
+            "3:00 PM - 5:00 PM"
+          ]
+        },
+        {
+          "date": "2025-05-16",
+          "time_slots": [
+            "10:00 AM - 12:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "7.9%",
+        "cash_on_cash": "9.5%",
+        "total_return_5yr": "$218,750",
+        "appreciation_estimate": "4.4%"
+      }
     },
     {
       "id": "19",
-      "imageUrl": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1",
-      "title": "Ski-In Chalet",
-      "location": "Whistler, BC",
-      "price": "$3,250,000",
-      "roi": "6.2%",
-      "beds": 5,
-      "baths": 4,
-      "sqft": 3600,
-      "status": "Available"
+      "title": "Northern Lights Lodge",
+      "description": "Exceptional investment in Yukon's growing tourism sector. This wilderness lodge offers year-round activities including Northern Lights viewing, dog sledding, and summer hiking, with comfortable accommodations and proven operating history.",
+      "price": "$1,850,000",
+      "location": "Whitehorse, YT",
+      "property_type": "lodge",
+      "roi": "15.2%",
+      "beds": 12,
+      "baths": 10,
+      "sqft": 6800,
+      "status": "available",
+      "amenities": [
+        "Sauna",
+        "Viewing Deck",
+        "Equipment Rental",
+        "Dining Hall",
+        "Snowmobile Storage"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1517320069935-1aee2c63c3a4",
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c",
+        "https://images.unsplash.com/photo-1589395937772-f67057e233cf"
+      ],
+      "monthly_payment": "$6,475",
+      "annual_return": "$281,200",
+      "coordinates": {
+        "latitude": 60.7212,
+        "longitude": -135.0568
+      },
+      "rating": 4.7,
+      "reviews_count": 189,
+      "agent": {
+        "id": "ag020",
+        "name": "Nathan Franklin",
+        "phone": "+1-555-012-3456",
+        "email": "nathan.franklin@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/92.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Miles Canyon",
+          "category": "Nature",
+          "distance": 5.3
+        },
+        {
+          "name": "Yukon Wildlife Preserve",
+          "category": "Recreation",
+          "distance": 12.6
+        },
+        {
+          "name": "S.S. Klondike Historic Site",
+          "category": "Culture",
+          "distance": 8.2
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-05-20",
+          "time_slots": [
+            "10:00 AM - 2:00 PM"
+          ]
+        },
+        {
+          "date": "2025-05-21",
+          "time_slots": [
+            "11:00 AM - 3:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "12.1%",
+        "cash_on_cash": "13.8%",
+        "total_return_5yr": "$323,750",
+        "appreciation_estimate": "5.2%"
+      }
     },
     {
       "id": "20",
-      "imageUrl": "https://images.unsplash.com/photo-1571055107559-3e67626fa8be",
-      "title": "Garden District Townhome",
-      "location": "Montreal, QC",
-      "price": "$825,000",
-      "roi": "8.4%",
-      "beds": 3,
-      "baths": 2.5,
-      "sqft": 1700,
-      "status": "Exited"
+      "title": "Self-Storage Facility",
+      "description": "Recession-resistant investment opportunity in Ottawa's growing suburban area. This modern self-storage facility features 175 climate-controlled units, digital security systems, and excellent occupancy rates with minimal management requirements.",
+      "price": "$2,950,000",
+      "location": "Ottawa, ON",
+      "property_type": "storage",
+      "roi": "12.8%",
+      "beds": 0,
+      "baths": 1,
+      "sqft": 42000,
+      "status": "available",
+      "amenities": [
+        "Climate Control",
+        "24/7 Access",
+        "Digital Security",
+        "Loading Dock",
+        "Moving Supplies"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+        "https://images.unsplash.com/photo-1609644124444-8c06af99c609",
+        "https://images.unsplash.com/photo-1558367178-f0ca2f0d37c4"
+      ],
+      "monthly_payment": "$10,325",
+      "annual_return": "$377,600",
+      "coordinates": {
+        "latitude": 45.3416,
+        "longitude": -75.7215
+      },
+      "rating": 4.4,
+      "reviews_count": 47,
+      "agent": {
+        "id": "ag021",
+        "name": "Rachel Kim",
+        "phone": "+1-555-123-7890",
+        "email": "rachel.kim@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/67.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Kanata Research Park",
+          "category": "Business",
+          "distance": 1.8
+        },
+        {
+          "name": "Canadian Tire Centre",
+          "category": "Entertainment",
+          "distance": 3.5
+        },
+        {
+          "name": "Tanger Outlets",
+          "category": "Shopping",
+          "distance": 2.7
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-05-25",
+          "time_slots": [
+            "9:00 AM - 11:00 AM",
+            "1:00 PM - 3:00 PM"
+          ]
+        },
+        {
+          "date": "2025-05-26",
+          "time_slots": [
+            "10:00 AM - 12:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "9.7%",
+        "cash_on_cash": "11.3%",
+        "total_return_5yr": "$516,250",
+        "appreciation_estimate": "3.2%"
+      }
     },
     {
       "id": "21",
-      "imageUrl": "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6",
-      "title": "Eco-Friendly Modern Home",
-      "location": "Burlington, ON",
-      "price": "$1,175,000",
-      "roi": "7.7%",
-      "beds": 4,
-      "baths": 3,
-      "sqft": 2200,
-      "status": "Funded"
-    },
-    {
-      "id": "22",
-      "imageUrl": "https://images.unsplash.com/photo-1567496898669-ee935f5f647a",
-      "title": "Island View Penthouse",
-      "location": "Victoria, BC",
-      "price": "$2,450,000",
-      "roi": "6.6%",
-      "beds": 3,
-      "baths": 3,
-      "sqft": 2600,
-      "status": "Exited"
-    },
-    {
-      "id": "23",
-      "imageUrl": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
-      "title": "Heritage Conversion Loft",
-      "location": "Gastown, Vancouver",
-      "price": "$1,095,000",
-      "roi": "8.0%",
-      "beds": 2,
-      "baths": 2,
-      "sqft": 1400,
-      "status": "Available"
-    },
-    {
-      "id": "24",
-      "imageUrl": "https://images.unsplash.com/photo-1613490493576-7fde63acd811",
-      "title": "Luxury Golf Estate",
-      "location": "Oakville, ON",
-      "price": "$4,750,000",
-      "roi": "5.8%",
-      "beds": 6,
-      "baths": 6.5,
-      "sqft": 5500,
-      "status": "Available"
-    },
-    {
-      "id": "25",
-      "imageUrl": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
-      "title": "Downtown Bachelor Pad",
+      "title": "Mountain View Ranch",
+      "description": "Spectacular equestrian estate in the heart of Alberta's ranch country. This luxury property features a custom-built log home, horse barn, riding arena, and panoramic mountain views, offering a serene retreat for horse enthusiasts and nature lovers.",
+      "price": "$3,500,000",
       "location": "Calgary, AB",
-      "price": "$389,000",
-      "roi": "9.7%",
-      "beds": 1,
-      "baths": 1,
-      "sqft": 500,
-      "status": "Exited"
-    },
-    {
-      "id": "26",
-      "imageUrl": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-      "title": "Waterfront Estate",
-      "location": "West Vancouver, BC",
-      "price": "$8,900,000",
-      "roi": "5.2%",
-      "beds": 7,
-      "baths": 8.5,
-      "sqft": 8200,
-      "status": "Funded"
-    },
-    {
-      "id": "27",
-      "imageUrl": "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
-      "title": "Urban Family Home",
-      "location": "Kingston, ON",
-      "price": "$695,000",
-      "roi": "8.6%",
-      "beds": 4,
-      "baths": 2.5,
-      "sqft": 2000,
-      "status": "Funded"
-    },
-    {
-      "id": "28",
-      "imageUrl": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00",
-      "title": "Park View Condo",
-      "location": "Ottawa, ON",
-      "price": "$579,000",
-      "roi": "9.2%",
-      "beds": 2,
-      "baths": 2,
-      "sqft": 950,
-      "status": "Funded"
-    },
-    {
-      "id": "29",
-      "imageUrl": "https://images.unsplash.com/photo-1505843513577-22bb7d21e455",
-      "title": "Vineyard Estate",
-      "location": "Niagara-on-the-Lake, ON",
-      "price": "$2,895,000",
-      "roi": "6.4%",
-      "beds": 5,
-      "baths": 4.5,
-      "sqft": 4800,
-      "status": "Exited"
-    },
-    {
-      "id": "30",
-      "imageUrl": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
-      "title": "Industrial Chic Loft",
-      "location": "Toronto, ON",
-      "price": "$925,000",
-      "roi": "8.3%",
-      "beds": 2,
-      "baths": 2,
-      "sqft": 1300,
-      "status": "Exited"
-    },
-    {
-      "id": "31",
-      "imageUrl": "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
-      "title": "Downtown Highrise",
-      "location": "Toronto, ON",
-      "price": "$648,000",
-      "roi": "7.6%",
-      "beds": 3,
-      "baths": 2.5,
-      "sqft": 1900,
-      "status": "Exited"
-    },
-    {
-      "id": "32",
-      "imageUrl": "https://images.unsplash.com/photo-1515263487990-61b07816b324",
-      "title": "Luxury Sub-Penthouse",
-      "location": "Toronto, ON",
-      "price": "$3,250,000",
-      "roi": "6.3%",
-      "beds": 4,
-      "baths": 3.5,
-      "sqft": 3200,
-      "status": "Funded"
-    },
-    {
-      "id": "33",
-      "imageUrl": "https://images.unsplash.com/photo-1516156008625-3a9d6067fab5",
-      "title": "Country Retreat",
-      "location": "Prince Edward County, ON",
-      "price": "$1,450,000",
-      "roi": "7.1%",
-      "beds": 4,
-      "baths": 3,
-      "sqft": 2400,
-      "status": "Available"
-    },
-    {
-      "id": "34",
-      "imageUrl": "https://images.unsplash.com/photo-1577495508048-b635879837f1",
-      "title": "Plateau Duplex",
-      "location": "Montreal, QC",
-      "price": "$1,250,000",
-      "roi": "7.9%",
-      "beds": 4,
-      "baths": 2,
-      "sqft": 2100,
-      "status": "Funded"
-    },
-    {
-      "id": "35",
-      "imageUrl": "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1",
-      "title": "Forest Hill Townhouse",
-      "location": "Toronto, ON",
-      "price": "$1,750,000",
-      "roi": "7.3%",
-      "beds": 3,
-      "baths": 2.5,
-      "sqft": 1800,
-      "status": "Funded"
-    },
-    {
-      "id": "36",
-      "imageUrl": "https://images.unsplash.com/photo-1574362848149-11496d93a7c7",
-      "title": "Historic Townhouse",
-      "location": "Quebec City, QC",
-      "price": "$1,095,000",
-      "roi": "8.0%",
-      "beds": 3,
-      "baths": 2,
-      "sqft": 1400,
-      "status": "Available"
-    },
-    {
-      "id": "37",
-      "imageUrl": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-      "title": "Downtown Studio",
-      "location": "Toronto, ON",
-      "price": "$349,000",
-      "roi": "9.9%",
-      "beds": 1,
-      "baths": 1,
-      "sqft": 400,
-      "status": "Funded"
-    },
-    {
-      "id": "38",
-      "imageUrl": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1",
-      "title": "Ski Chalet",
-      "location": "Whistler, BC",
-      "price": "$2,750,000",
+      "property_type": "ranch",
       "roi": "6.5%",
       "beds": 4,
       "baths": 3.5,
-      "sqft": 3200,
-      "status": "Available"
+      "sqft": 4200,
+      "status": "available",
+      "amenities": [
+        "Horse Barn",
+        "Riding Arena",
+        "Guest House",
+        "Pond",
+        "Mountain Views"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd",
+        "https://images.unsplash.com/photo-1568084680786-a84f91d1153c"
+      ],
+      "monthly_payment": "$15,125",
+      "annual_return": "$231,500",
+      "coordinates": {
+        "latitude": 51.0447,
+        "longitude": -114.0719
+      },
+      "rating": 4.9,
+      "reviews_count": 32,
+      "agent": {
+        "id": "ag022",
+        "name": "Michael Thompson",
+        "phone": "+1-555-234-5678",
+        "email": "jp.dubois@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/42.jpg",
+        "nearby_landmarks": [
+          {
+            "name": "Kananaskis Country",
+            "category": "Nature",
+            "distance": 2.3
+          },
+          {
+            "name": "Spruce Meadows",
+            "category": "Equestrian",
+            "distance": 1.5
+          },
+          {
+            "name": "Elbow River",
+            "category": "Recreation",
+            "distance": 0.8
+          }
+        ],
+        "inspection_times": [
+          {
+            "date": "2025-05-30",
+            "time_slots": [
+              "10:00 AM - 12:00 PM",
+              "2:00 PM - 4:00 PM"
+            ]
+          },
+          {
+            "date": "2025-05-31",
+            "time_slots": [
+              "11:00 AM - 1:00 PM"
+            ]
+          }
+        ],
+        "investment_metrics": {
+          "cap_rate": "4.8%",
+          "cash_on_cash": "6.2%",
+          "total_return_5yr": "$381,250",
+          "appreciation_estimate": "4.1%"
+        }
+      }
     },
     {
-      "id": "39",
-      "imageUrl": "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6",
-      "title": "Eco-Friendly Townhome",
-      "location": "Burlington, ON",
-      "price": "$1,175,000",
-      "roi": "7.7%",
+      "id": "22",
+      "title": "Historic Waterfront Inn",
+      "description": "Iconic waterfront inn in the heart of Nova Scotia's historic district. This beautifully restored property offers 12 guest rooms, a fine dining restaurant, and stunning views of the harbor, making it a popular destination for tourists and locals alike.",
+      "price": "$2,750,000",
+      "location": "Halifax, NS",
+      "property_type": "inn",
+      "roi": "8.3%",
+      "beds": 12,
+      "baths": 12,
+      "sqft": 8000,
+      "status": "available",
+      "amenities": [
+        "Restaurant",
+        "Lounge",
+        "Event Space",
+        "Waterfront Patio",
+        "Gift Shop"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1517320069935-1aee2c63c3a4",
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2"
+      ],
+      "monthly_payment": "$10,750",
+      "annual_return": "$228,500",
+      "coordinates": {
+        "latitude": 44.6476,
+        "longitude": -63.5728
+      },
+      "rating": 4.7,
+      "reviews_count": 27,
+      "agent": {
+        "id": "ag023",
+        "name": "Sophie Belanger",
+        "phone": "+1-555-345-6789",
+        "email": "michael.chen@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/35.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Halifax Harbor",
+          "category": "Waterfront",
+          "distance": 0.1
+        },
+        {
+          "name": "Maritime Museum",
+          "category": "Culture",
+          "distance": 0.6
+        },
+        {
+          "name": "Downtown Halifax",
+          "category": "Business",
+          "distance": 0.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-06-05",
+          "time_slots": [
+            "9:00 AM - 11:00 AM",
+            "1:00 PM - 3:00 PM"
+          ]
+        },
+        {
+          "date": "2025-06-06",
+          "time_slots": [
+            "10:00 AM - 12:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "6.7%",
+        "cash_on_cash": "8.1%",
+        "total_return_5yr": "$411,250",
+        "appreciation_estimate": "3.9%"
+      }
+    },
+    {
+      "id": "23",
+      "title": "Luxury Ski Chalet",
+      "description": "Exquisite ski-in/ski-out chalet in Whistler's exclusive mountain resort. This custom-built home features high-end finishes, panoramic mountain views, and direct access to the slopes, offering a luxurious retreat for winter sports enthusiasts.",
+      "price": "$6,500,000",
+      "location": "Whistler, BC",
+      "property_type": "chalet",
+      "roi": "5.6%",
+      "beds": 5,
+      "baths": 5,
+      "sqft": 5500,
+      "status": "available",
+      "amenities": [
+        "Hot Tub",
+        "Sauna",
+        "Home Theater",
+        "Wine Cellar",
+        "Ski Room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1517320069935-1aee2c63c3a4",
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c",
+        "https://images.unsplash.com/photo-1568084680786-a84f91d1153c"
+      ],
+      "monthly_payment": "$28,750",
+      "annual_return": "$364,500",
+      "coordinates": {
+        "latitude": 50.1163,
+        "longitude": -122.9574
+      },
+      "rating": 4.9,
+      "reviews_count": 32,
+      "agent": {
+        "id": "ag024",
+        "name": "Michael Thompson",
+        "phone": "+1-555-234-5678",
+        "email": "michael.chen@realestate.com"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Whistler Blackcomb",
+          "category": "Ski Resort",
+          "distance": 0.1
+        },
+        {
+          "name": "Village Stroll",
+          "category": "Shopping",
+          "distance": 0.5
+        },
+        {
+          "name": "Lost Lake",
+          "category": "Nature",
+          "distance": 1.2
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-06-10",
+          "time_slots": [
+            "10:00 AM - 12:00 PM",
+            "2:00 PM - 4:00 PM"
+          ]
+        },
+        {
+          "date": "2025-06-11",
+          "time_slots": [
+            "11:00 AM - 1:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "4.8%",
+        "cash_on_cash": "6.2%",
+        "total_return_5yr": "$381,250",
+        "appreciation_estimate": "4.1%"
+      }
+    },
+    {
+      "id": "24",
+      "title": "Historic Waterfront Inn",
+      "description": "Iconic waterfront inn in the heart of Nova Scotia's historic district. This beautifully restored property offers 12 guest rooms, a fine dining restaurant, and stunning views of the harbor, making it a popular destination for tourists and locals alike.",
+      "price": "$2,750,000",
+      "location": "Halifax, NS",
+      "property_type": "inn",
+      "roi": "8.3%",
+      "beds": 12,
+      "baths": 12,
+      "sqft": 8000,
+      "status": "available",
+      "amenities": [
+        "Restaurant",
+        "Lounge",
+        "Event Space",
+        "Waterfront Patio",
+        "Gift Shop"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1517320069935-1aee2c63c3a4",
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2"
+      ],
+      "monthly_payment": "$10,750",
+      "annual_return": "$228,500",
+      "coordinates": {
+        "latitude": 44.6476,
+        "longitude": -63.5728
+      },
+      "rating": 4.7,
+      "reviews_count": 27,
+      "agent": {
+        "id": "ag025",
+        "name": "Sophie Belanger",
+        "phone": "+1-555-345-6789",
+        "email": "sophie.belanger@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/35.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Halifax Harbor",
+          "category": "Waterfront",
+          "distance": 0.1
+        },
+        {
+          "name": "Maritime Museum",
+          "category": "Culture",
+          "distance": 0.6
+        },
+        {
+          "name": "Downtown Halifax",
+          "category": "Business",
+          "distance": 0.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-06-15",
+          "time_slots": [
+            "9:00 AM - 11:00 AM",
+            "1:00 PM - 3:00 PM"
+          ]
+        },
+        {
+          "date": "2025-06-16",
+          "time_slots": [
+            "10:00 AM - 12:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "6.7%",
+        "cash_on_cash": "8.1%",
+        "total_return_5yr": "$411,250",
+        "appreciation_estimate": "3.9%"
+      }
+    },
+    {
+      "id": "25",
+      "title": "Luxury Ski Chalet",
+      "description": "Exquisite ski-in/ski-out chalet in Whistler's exclusive mountain resort. This custom-built home features high-end finishes, panoramic mountain views, and direct access to the slopes, offering a luxurious retreat for winter sports enthusiasts.",
+      "price": "$6,500,000",
+      "location": "Whistler, BC",
+      "property_type": "chalet",
+      "roi": "5.6%",
+      "beds": 5,
+      "baths": 5,
+      "sqft": 5500,
+      "status": "available",
+      "amenities": [
+        "Hot Tub",
+        "Sauna",
+        "Home Theater",
+        "Wine Cellar",
+        "Ski Room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1517320069935-1aee2c63c3a4",
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c",
+        "https://images.unsplash.com/photo-1568084680786-a84f91d1153c"
+      ],
+      "monthly_payment": "$28,750",
+      "annual_return": "$364,500",
+      "coordinates": {
+        "latitude": 50.1163,
+        "longitude": -122.9574
+      },
+      "rating": 4.9,
+      "reviews_count": 32,
+      "agent": {
+        "id": "ag026",
+        "name": "Michael Thompson",
+        "phone": "+1-555-234-5678",
+        "email": "michael.chen@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/54.jpg",
+        "nearby_landmarks": [
+          {
+            "name": "Whistler Blackcomb",
+            "category": "Ski Resort",
+            "distance": 0.1
+          },
+          {
+            "name": "Village Stroll",
+            "category": "Shopping",
+            "distance": 0.5
+          },
+          {
+            "name": "Lost Lake",
+            "category": "Nature",
+            "distance": 1.2
+          }
+        ],
+        "inspection_times": [
+          {
+            "date": "2025-06-20",
+            "time_slots": [
+              "10:00 AM - 12:00 PM",
+              "2:00 PM - 4:00 PM"
+            ]
+          },
+          {
+            "date": "2025-06-21",
+            "time_slots": [
+              "11:00 AM - 1:00 PM"
+            ]
+          }
+        ],
+        "investment_metrics": {
+          "cap_rate": "4.8%",
+          "cash_on_cash": "6.2%",
+          "total_return_5yr": "$381,250",
+          "appreciation_estimate": "4.1%"
+        }
+      }
+    },
+    {
+      "id": "26",
+      "title": "Historic Waterfront Inn",
+      "description": "Iconic waterfront inn in the heart of Nova Scotia's historic district. This beautifully restored property offers 12 guest rooms, a fine dining restaurant, and stunning views of the harbor, making it a popular destination for tourists and locals alike.",
+      "price": "$2,750,000",
+      "location": "Halifax, NS",
+      "property_type": "inn",
+      "roi": "8.3%",
+      "beds": 12,
+      "baths": 12,
+      "sqft": 8000,
+      "status": "available",
+      "amenities": [
+        "Restaurant",
+        "Lounge",
+        "Event Space",
+        "Waterfront Patio",
+        "Gift Shop"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1517320069935-1aee2c63c3a4",
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2"
+      ],
+      "monthly_payment": "$10,750",
+      "annual_return": "$228,500",
+      "coordinates": {
+        "latitude": 44.6476,
+        "longitude": -63.5728
+      },
+      "rating": 4.7,
+      "reviews_count": 27,
+      "agent": {
+        "id": "ag027",
+        "name": "Sophie Belanger",
+        "phone": "+1-555-345-6789",
+        "email": " ",
+        "photo": "https://randomuser.me/api/portraits/women/35.jpg",
+        "nearby_landmarks": [
+          {
+            "name": "Halifax Harbor",
+            "category": "Waterfront",
+            "distance": 0.1
+          },
+          {
+            "name": "Maritime Museum",
+            "category": "Culture",
+            "distance": 0.6
+          },
+          {
+            "name": "Downtown Halifax",
+            "category": "Business",
+            "distance": 0.5
+          }
+        ],
+        "inspection_times": [
+          {
+            "date": "2025-06-25",
+            "time_slots": [
+              "9:00 AM - 11:00 AM",
+              "1:00 PM - 3:00 PM"
+            ]
+          },
+          {
+            "date": "2025-06-26",
+            "time_slots": [
+              "10:00 AM - 12:00 PM"
+            ]
+          }
+        ],
+        "investment_metrics": {
+          "cap_rate": "6.7%",
+          "cash_on_cash": "8.1%",
+          "total_return_5yr": "$411,250",
+          "appreciation_estimate": "3.9%"
+        }
+      }
+    },
+    {
+      "id": "27",
+      "title": "Luxury Ski Chalet",
+      "description": "Exquisite ski-in/ski-out chalet in Whistler's exclusive mountain resort. This custom-built home features high-end finishes, panoramic mountain views, and direct access to the slopes, offering a luxurious retreat for winter sports enthusiasts.",
+      "price": "$6,500,000",
+      "location": "Whistler, BC",
+      "property_type": "chalet",
+      "roi": "5.6%",
+      "beds": 5,
+      "baths": 5,
+      "sqft": 5500,
+      "status": "available",
+      "amenities": [
+        "Hot Tub",
+        "Sauna",
+        "Home Theater",
+        "Wine Cellar",
+        "Ski Room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1517320069935-1aee2c63c3a4",
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c",
+        "https://images.unsplash.com/photo-1568084680786-a84f91d1153c"
+      ],
+      "monthly_payment": "$28,750",
+      "annual_return": "$364,500",
+      "coordinates": {
+        "latitude": 50.1163,
+        "longitude": -122.9574
+      },
+      "rating": 4.9,
+      "reviews_count": 32,
+      "agent": {
+        "id": "ag028",
+        "name": "Michael Thompson",
+        "phone": "+1-555-234-5678",
+        "email": "michael.thompson@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/54.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Whistler Blackcomb",
+          "category": "Ski Resort",
+          "distance": 0.1
+        },
+        {
+          "name": "Village Stroll",
+          "category": "Shopping",
+          "distance": 0.5
+        },
+        {
+          "name": "Lost Lake",
+          "category": "Nature",
+          "distance": 1.2
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-06-30",
+          "time_slots": [
+            "10:00 AM - 12:00 PM",
+            "2:00 PM - 4:00 PM"
+          ]
+        },
+        {
+          "date": "2025-07-01",
+          "time_slots": [
+            "11:00 AM - 1:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "4.8%",
+        "cash_on_cash": "6.2%",
+        "total_return_5yr": "$381,250",
+        "appreciation_estimate": "4.1%"
+      }
+    },
+    {
+      "id": "29",
+      "title": "Urban Smart Home",
+      "description": "State-of-the-art smart home in downtown Calgary featuring cutting-edge home automation, energy efficiency, and modern design. This property offers voice-controlled systems, automated lighting, and advanced security throughout.",
+      "price": "$1,850,000",
+      "location": "Calgary, AB",
+      "property_type": "house",
+      "roi": "7.3%",
       "beds": 4,
-      "baths": 3,
-      "sqft": 2200,
-      "status": "Funded"
+      "baths": 3.5,
+      "sqft": 3100,
+      "status": "available",
+      "amenities": [
+        "Smart Home System",
+        "Solar Panels",
+        "EV Charging",
+        "Home Theater",
+        "Climate Control"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1558979158-65a1eaa08691",
+        "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+      ],
+      "monthly_payment": "$6,475",
+      "annual_return": "$135,050",
+      "coordinates": {
+        "latitude": 51.0447,
+        "longitude": -114.0719
+      },
+      "rating": 4.7,
+      "reviews_count": 24,
+      "agent": {
+        "id": "ag029",
+        "name": "Daniel Wright",
+        "phone": "+1-555-123-4567",
+        "email": "daniel.wright@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/23.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Bow River",
+          "category": "Nature",
+          "distance": 0.3
+        },
+        {
+          "name": "Calgary Tower",
+          "category": "Landmark",
+          "distance": 0.8
+        },
+        {
+          "name": "Stephen Avenue",
+          "category": "Shopping",
+          "distance": 0.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-07-05",
+          "time_slots": [
+            "10:00 AM - 11:30 AM",
+            "2:00 PM - 3:30 PM"
+          ]
+        },
+        {
+          "date": "2025-07-06",
+          "time_slots": [
+            "1:00 PM - 2:30 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "5.2%",
+        "cash_on_cash": "6.8%",
+        "total_return_5yr": "$323,750",
+        "appreciation_estimate": "4.3%"
+      }
     },
     {
-      "id": "40",
-      "imageUrl": "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
-      "title": "Highrise Condo",
-      "location": "Toronto, ON",
-      "price": "$648,000",
-      "roi": "7.6%",
-      "beds": 3,
-      "baths": 2.5,
-      "sqft": 1900,
-      "status": "Exited"
+      "id": "30",
+      "title": "Lakefront Cottage Resort",
+      "description": "Turnkey investment opportunity featuring eight rental cottages on pristine lakefront property in the heart of Ontario's cottage country. This established business offers strong seasonal income and potential for year-round revenue.",
+      "price": "$3,950,000",
+      "location": "Muskoka, ON",
+      "property_type": "resort",
+      "roi": "11.2%",
+      "beds": 24,
+      "baths": 16,
+      "sqft": 12000,
+      "status": "available",
+      "amenities": [
+        "Private Beach",
+        "Boat Docks",
+        "Fishing",
+        "Playground",
+        "Communal Fire Pit"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1587061949409-02df41d5e562",
+        "https://images.unsplash.com/photo-1510798831971-661eb04b3739",
+        "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2"
+      ],
+      "monthly_payment": "$13,825",
+      "annual_return": "$442,400",
+      "coordinates": {
+        "latitude": 45.0215,
+        "longitude": -79.3086
+      },
+      "rating": 4.8,
+      "reviews_count": 215,
+      "agent": {
+        "id": "ag030",
+        "name": "Jennifer Moore",
+        "phone": "+1-555-234-5678",
+        "email": "jennifer.moore@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/72.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Lake Muskoka",
+          "category": "Nature",
+          "distance": 0.0
+        },
+        {
+          "name": "Algonquin Provincial Park",
+          "category": "Recreation",
+          "distance": 45.2
+        },
+        {
+          "name": "Port Carling",
+          "category": "Town",
+          "distance": 8.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-07-10",
+          "time_slots": [
+            "10:00 AM - 2:00 PM"
+          ]
+        },
+        {
+          "date": "2025-07-11",
+          "time_slots": [
+            "11:00 AM - 3:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "8.5%",
+        "cash_on_cash": "9.7%",
+        "total_return_5yr": "$691,250",
+        "appreciation_estimate": "4.8%"
+      }
+    },
+    {
+      "id": "31",
+      "title": "Downtown Mixed-Use Building",
+      "description": "Exceptional investment opportunity in Edmonton's revitalizing downtown core. This historic building features retail on the ground floor, office space on the second floor, and residential units on upper floors, providing diverse income streams.",
+      "price": "$4,750,000",
+      "location": "Edmonton, AB",
+      "property_type": "mixed_use",
+      "roi": "9.6%",
+      "beds": 12,
+      "baths": 14,
+      "sqft": 18500,
+      "status": "available",
+      "amenities": [
+        "Elevator",
+        "Rooftop Deck",
+        "Parking Garage",
+        "Security System",
+        "Loading Bay"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+        "https://images.unsplash.com/photo-1460317442991-0ec209397118",
+        "https://images.unsplash.com/photo-1577041677443-8bbdfd8cce62"
+      ],
+      "monthly_payment": "$16,625",
+      "annual_return": "$456,000",
+      "coordinates": {
+        "latitude": 53.5461,
+        "longitude": -113.4938
+      },
+      "rating": 4.6,
+      "reviews_count": 38,
+      "agent": {
+        "id": "ag031",
+        "name": "Andrew Peterson",
+        "phone": "+1-555-345-6789",
+        "email": "andrew.peterson@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/45.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Rogers Place",
+          "category": "Entertainment",
+          "distance": 0.3
+        },
+        {
+          "name": "Churchill Square",
+          "category": "Culture",
+          "distance": 0.5
+        },
+        {
+          "name": "MacEwan University",
+          "category": "Education",
+          "distance": 0.8
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-07-15",
+          "time_slots": [
+            "9:00 AM - 12:00 PM",
+            "1:00 PM - 4:00 PM"
+          ]
+        },
+        {
+          "date": "2025-07-16",
+          "time_slots": [
+            "10:00 AM - 1:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "7.2%",
+        "cash_on_cash": "8.8%",
+        "total_return_5yr": "$831,250",
+        "appreciation_estimate": "3.8%"
+      }
+    },
+    {
+      "id": "32",
+      "title": "Oceanfront Luxury Villa",
+      "description": "Exquisite oceanfront property on Vancouver Island featuring contemporary architecture, expansive glass walls, infinity pool, and direct beach access. This turnkey luxury villa offers strong rental potential in the high-end vacation market.",
+      "price": "$5,850,000",
+      "location": "Tofino, BC",
+      "property_type": "villa",
+      "roi": "6.8%",
+      "beds": 5,
+      "baths": 5.5,
+      "sqft": 4800,
+      "status": "available",
+      "amenities": [
+        "Infinity Pool",
+        "Private Beach",
+        "Outdoor Kitchen",
+        "Floor-to-Ceiling Windows",
+        "Media Room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
+        "https://images.unsplash.com/photo-1513584684374-8bab748fbf90",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6"
+      ],
+      "monthly_payment": "$20,475",
+      "annual_return": "$397,800",
+      "coordinates": {
+        "latitude": 49.1529,
+        "longitude": -125.9066
+      },
+      "rating": 4.9,
+      "reviews_count": 47,
+      "agent": {
+        "id": "ag032",
+        "name": "Emma Roberts",
+        "phone": "+1-555-456-7890",
+        "email": "emma.roberts@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/16.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Pacific Rim National Park",
+          "category": "Recreation",
+          "distance": 2.5
+        },
+        {
+          "name": "Chesterman Beach",
+          "category": "Beach",
+          "distance": 0.1
+        },
+        {
+          "name": "Tofino Village",
+          "category": "Town",
+          "distance": 3.2
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-07-20",
+          "time_slots": [
+            "11:00 AM - 2:00 PM"
+          ]
+        },
+        {
+          "date": "2025-07-21",
+          "time_slots": [
+            "1:00 PM - 4:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "5.0%",
+        "cash_on_cash": "6.2%",
+        "total_return_5yr": "$1,023,750",
+        "appreciation_estimate": "4.5%"
+      }
+    },
+    {
+      "id": "33",
+      "title": "Urban Micro-Loft Development",
+      "description": "Innovative micro-loft project in Ottawa's trendy Wellington West neighborhood. This sustainable, space-efficient building features 40 smartly designed micro-lofts that appeal to young professionals and students in this high-demand rental area.",
+      "price": "$4,250,000",
+      "location": "Ottawa, ON",
+      "property_type": "multi-family",
+      "roi": "10.8%",
+      "beds": 40,
+      "baths": 40,
+      "sqft": 16000,
+      "status": "available",
+      "amenities": [
+        "Co-Working Space",
+        "Rooftop Garden",
+        "Bike Storage",
+        "Smart Home Features",
+        "Package Room"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1515263487990-61b07816b324",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+        "https://images.unsplash.com/photo-1460317442991-0ec209397118"
+      ],
+      "monthly_payment": "$14,875",
+      "annual_return": "$459,000",
+      "coordinates": {
+        "latitude": 45.4215,
+        "longitude": -75.6972
+      },
+      "rating": 4.6,
+      "reviews_count": 31,
+      "agent": {
+        "id": "ag033",
+        "name": "Lucas Bennett",
+        "phone": "+1-555-567-8901",
+        "email": "lucas.bennett@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/37.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Tunney's Pasture",
+          "category": "Business",
+          "distance": 0.6
+        },
+        {
+          "name": "Wellington Street Shops",
+          "category": "Shopping",
+          "distance": 0.2
+        },
+        {
+          "name": "Ottawa River",
+          "category": "Nature",
+          "distance": 0.8
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-07-25",
+          "time_slots": [
+            "9:00 AM - 12:00 PM",
+            "2:00 PM - 5:00 PM"
+          ]
+        },
+        {
+          "date": "2025-07-26",
+          "time_slots": [
+            "10:00 AM - 1:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "7.9%",
+        "cash_on_cash": "9.2%",
+        "total_return_5yr": "$743,750",
+        "appreciation_estimate": "4.1%"
+      }
+    },
+    {
+      "id": "34",
+      "title": "Historic Brewery Conversion",
+      "description": "Unique investment in Montreal's historic district featuring a converted 19th-century brewery now housing 15 luxury loft apartments. This award-winning heritage restoration combines industrial character with modern luxury and commands premium rents.",
+      "price": "$5,250,000",
+      "location": "Montreal, QC",
+      "property_type": "multi-family",
+      "roi": "8.5%",
+      "beds": 15,
+      "baths": 18,
+      "sqft": 22000,
+      "status": "available",
+      "amenities": [
+        "Original Architecture",
+        "Exposed Brick",
+        "High Ceilings",
+        "Private Courtyard",
+        "Wine Cellar"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36",
+        "https://images.unsplash.com/photo-1600607686527-6fb886090705",
+        "https://images.unsplash.com/photo-1522055573961-8f5f0ddd8219"
+      ],
+      "monthly_payment": "$18,375",
+      "annual_return": "$446,250",
+      "coordinates": {
+        "latitude": 45.5017,
+        "longitude": -73.5673
+      },
+      "rating": 4.8,
+      "reviews_count": 42,
+      "agent": {
+        "id": "ag034",
+        "name": "Claire Dubois",
+        "phone": "+1-555-678-9012",
+        "email": "claire.dubois@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/women/53.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Old Montreal",
+          "category": "Historic District",
+          "distance": 0.2
+        },
+        {
+          "name": "Notre-Dame Basilica",
+          "category": "Culture",
+          "distance": 0.5
+        },
+        {
+          "name": "Lachine Canal",
+          "category": "Waterfront",
+          "distance": 0.7
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-07-30",
+          "time_slots": [
+            "10:00 AM - 12:00 PM",
+            "2:00 PM - 4:00 PM"
+          ]
+        },
+        {
+          "date": "2025-07-31",
+          "time_slots": [
+            "11:00 AM - 1:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "6.4%",
+        "cash_on_cash": "7.7%",
+        "total_return_5yr": "$918,750",
+        "appreciation_estimate": "3.9%"
+      }
+    },
+    {
+      "id": "35",
+      "title": "Wilderness Glamping Resort",
+      "description": "Unique hospitality investment in British Columbia's pristine wilderness. This established glamping resort features 18 luxury safari tents, central lodge, and adventure activities, offering a premium outdoor experience with strong seasonal returns.",
+      "price": "$2,850,000",
+      "location": "Golden, BC",
+      "property_type": "resort",
+      "roi": "12.5%",
+      "beds": 18,
+      "baths": 6,
+      "sqft": 9500,
+      "status": "available",
+      "amenities": [
+        "Luxury Tents",
+        "Central Lodge",
+        "Hot Tubs",
+        "Adventure Equipment",
+        "Hiking Trails"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb",
+        "https://images.unsplash.com/photo-1506974210756-8e1b8985d348",
+        "https://images.unsplash.com/photo-1595274459742-4a5160396d5e"
+      ],
+      "monthly_payment": "$9,975",
+      "annual_return": "$356,250",
+      "coordinates": {
+        "latitude": 51.2981,
+        "longitude": -116.9648
+      },
+      "rating": 4.8,
+      "reviews_count": 187,
+      "agent": {
+        "id": "ag035",
+        "name": "Ryan Mitchell",
+        "phone": "+1-555-789-0123",
+        "email": "ryan.mitchell@realestate.com",
+        "photo": "https://randomuser.me/api/portraits/men/61.jpg"
+      },
+      "nearby_landmarks": [
+        {
+          "name": "Yoho National Park",
+          "category": "Recreation",
+          "distance": 15.3
+        },
+        {
+          "name": "Kicking Horse River",
+          "category": "Nature",
+          "distance": 2.1
+        },
+        {
+          "name": "Golden Downtown",
+          "category": "Town",
+          "distance": 8.5
+        }
+      ],
+      "inspection_times": [
+        {
+          "date": "2025-08-05",
+          "time_slots": [
+            "10:00 AM - 2:00 PM"
+          ]
+        },
+        {
+          "date": "2025-08-06",
+          "time_slots": [
+            "11:00 AM - 3:00 PM"
+          ]
+        }
+      ],
+      "investment_metrics": {
+        "cap_rate": "9.5%",
+        "cash_on_cash": "11.2%",
+        "total_return_5yr": "$498,750",
+        "appreciation_estimate": "4.3%"
+      }
     }
   ]
 }
