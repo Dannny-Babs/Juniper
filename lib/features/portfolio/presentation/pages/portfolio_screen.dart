@@ -57,7 +57,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     }
 
     try {
-      final loadedProperties = await PropertyProvider.loadProperties();
+      final loadedProperties = await PropertyProvider.loadProperties(limit: 100); // Use a specific integer value or remove the parameter if it has a default
       if (mounted) {
         setState(() {
           properties = loadedProperties

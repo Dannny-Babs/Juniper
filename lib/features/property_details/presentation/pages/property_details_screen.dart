@@ -3,8 +3,10 @@ import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
 import 'package:juniper/core/widgets/investment_modal.dart';
 import '../../../../core/widgets/property_info_card.dart';
-import '../bloc/favorites_bloc.dart';
+import '../../../favorites/presentation/favorites_bloc.dart';
 import '../bloc/property_details_bloc.dart';
+import '../bloc/property_details_event.dart';
+import '../bloc/property_details_state.dart';
 import '../widgets/property_widgets.dart';
 import '../../data/repositories/property_repository_impl.dart';
 import '../../domain/repositories/property_repository.dart';
@@ -257,11 +259,6 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                                           distance: 1.8,
                                         ),
                                       ],
-                                    ),
-                                    SizedBox(height: 16.h),
-                                    InvestmentMetrics(
-                                      property: state.property,
-                                      isDark: isDark,
                                     ),
                                     SizedBox(height: 16.h),
                                     RatingReviewCard(
