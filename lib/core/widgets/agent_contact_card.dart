@@ -9,12 +9,12 @@ class AgentContactCard extends StatelessWidget {
   final VoidCallback? onContactPressed;
 
   const AgentContactCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.address,
     required this.imageUrl,
     this.onContactPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

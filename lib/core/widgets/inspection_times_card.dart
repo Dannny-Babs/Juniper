@@ -18,12 +18,12 @@ class InspectionTimesCard extends StatelessWidget {
   final VoidCallback? onRegisterPressed;
 
   const InspectionTimesCard({
-    Key? key,
+    super.key,
     required this.agentName,
     required this.agentImageUrl,
     required this.inspectionTimes,
     this.onRegisterPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

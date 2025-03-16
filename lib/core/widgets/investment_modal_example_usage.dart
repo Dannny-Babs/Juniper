@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
 import 'package:juniper/core/widgets/investment_modal.dart';
 
 class InvestmentModalExample extends StatelessWidget {
-  const InvestmentModalExample({Key? key}) : super(key: key);
+  const InvestmentModalExample({super.key});
 
   @override
   Widget build(BuildContext context) {

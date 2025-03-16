@@ -7,11 +7,11 @@ class RatingReviewCard extends StatelessWidget {
   final int totalReviews;
 
   const RatingReviewCard({
-    Key? key,
+    super.key,
     required this.overallRating,
     required this.subRatings,
     required this.totalReviews,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

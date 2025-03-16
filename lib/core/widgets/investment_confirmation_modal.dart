@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
-import 'package:lottie/lottie.dart';
 
 enum ConfirmationState {
   success,

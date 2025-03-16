@@ -125,7 +125,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
   }
 
   Widget _buildHeader(bool isDark) {
-    final textTheme = Theme.of(context as BuildContext).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -155,7 +155,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
   }
 
   Widget _buildAmountSection(bool isDark) {
-    final textTheme = Theme.of(context as BuildContext).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Column(
       children: [
@@ -238,7 +238,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
   }
 
   Widget _buildBalanceSection(bool isDark) {
-    final textTheme = Theme.of(context as BuildContext).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -261,7 +261,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
   }
 
   Widget _buildPaymentMethodsSection(bool isDark) {
-    final textTheme = Theme.of(context as BuildContext).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,7 +294,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
 
   Widget _buildPaymentOption(
       PaymentMethod method, String title, IconData icon, bool isDark) {
-    final textTheme = Theme.of(context as BuildContext).textTheme;
+    final textTheme = Theme.of(context).textTheme;
     final isSelected = _selectedPaymentMethod == method;
 
     return GestureDetector(
@@ -372,7 +372,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
         onPressed: _canInvest
             ? () {
                 // Close the current modal
-                Navigator.of(context as BuildContext).pop();
+                Navigator.of(context).pop();
 
                 // Simulate a network request with 50% success rate for demo purposes
                 final bool isSuccess =
@@ -380,7 +380,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
 
                 // Show confirmation modal
                 InvestmentConfirmationModal.show(
-                  context as BuildContext,
+                  context,
                   state: isSuccess
                       ? ConfirmationState.success
                       : ConfirmationState.error,
@@ -399,7 +399,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
                     } else {
                       // Show investment modal again
                       InvestmentModal.show(
-                        context as BuildContext,
+                        context,
                         balance: widget.balance,
                         propertyTitle: widget.propertyTitle,
                         onInvest: widget.onInvest,
@@ -408,7 +408,7 @@ class _InvestmentModalState extends State<InvestmentModal> {
                   },
                   onSecondaryAction: () {
                     // Only used in error state for "Cancel"
-                    Navigator.pop(context as BuildContext);
+                    Navigator.pop(context);
                   },
                 );
 

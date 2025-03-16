@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/button.dart';
-import '../../../navigation/presentation/bloc/navigation_bloc.dart';
 
 class EmailVerificationPage extends StatefulWidget {
   final String email;
