@@ -40,7 +40,7 @@ class PropertyActionButtons extends StatelessWidget {
               text: 'Start Investing',
               variant: ButtonVariant.primary,
               size: ButtonSize.medium,
-              backgroundColor: AppColors.neutral900,
+              backgroundColor: AppColors.neutral800,
               onPressed: onContactPressed,
             ),
           ),
