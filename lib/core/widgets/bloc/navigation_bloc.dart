@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../../core/utils/utils.dart';
+import '../../utils/utils.dart';
 
 part 'navigation_event.dart';
 part 'navigation_state.dart';

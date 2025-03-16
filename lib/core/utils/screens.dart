@@ -11,7 +11,7 @@ export '../../features/profile/presentation/pages/profile_screen.dart';
 export '../../features/property_details/presentation/pages/property_details_screen.dart';
 export '../../features/notifications/presentation/pages/notifications_screen.dart';
 export '../../features/favorites/presentation/pages/favorites_screen.dart';
-export '../../features/navigation/presentation/widgets/bottom_bar.dart';
+export '../widgets/bottom_bar.dart';
 export '../constants/not_found_screen.dart';
 export '../../features/chat/presentation/pages/chat_room_screen.dart';
 
