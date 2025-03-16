@@ -26,8 +26,6 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:shimmer/shimmer.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:sqflite/sqflite.dart';
-export 'package:path/path.dart';
-export 'package:path_provider/path_provider.dart';
 export 'package:fl_chart/fl_chart.dart';
 export 'package:bloc_concurrency/bloc_concurrency.dart';
 export 'package:logging/logging.dart';
