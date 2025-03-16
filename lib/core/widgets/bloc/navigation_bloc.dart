@@ -26,7 +26,7 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
   }
 
   void _onTabChanged(TabChanged event, Emitter<NavigationState> emit) {
-    prefs.setInt('currentTabIndex', event.index);
+    prefs.setInt('currentTabIndex', 0);
     emit(state.copyWith(currentIndex: event.index));
   }
 
