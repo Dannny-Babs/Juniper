@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/features/property_details/data/models/property_details.dart';
-import 'package:juniper/features/favorites/presentation/favorites_bloc.dart';
 import 'package:juniper/features/property_details/presentation/widgets/property_icon.dart';
 
 class PropertyHeader extends StatelessWidget {

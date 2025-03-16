@@ -7,6 +7,6 @@ export 'extensions.dart'; // Add this line
 export 'screens.dart';
 export '../constants/constants.dart';
 export 'packages.dart';
-export '../routes/router.dart';
+export 'router.dart';
 export '../widgets/back_button.dart';
 export 'bloc.dart';

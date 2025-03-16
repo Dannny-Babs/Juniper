@@ -3,10 +3,7 @@ import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
 import 'package:juniper/core/widgets/investment_modal.dart';
 import '../../../../core/widgets/property_info_card.dart';
-import '../../../favorites/presentation/favorites_bloc.dart';
-import '../bloc/property_details_bloc.dart';
-import '../bloc/property_details_event.dart';
-import '../bloc/property_details_state.dart';
+
 import '../widgets/property_widgets.dart';
 import '../../data/repositories/property_repository_impl.dart';
 import '../../domain/repositories/property_repository.dart';
@@ -25,7 +22,7 @@ class PropertyDetailsScreen extends StatefulWidget {
 
 class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
   void _showSnackBar(String message, bool isSuccess) {
-    ScaffoldMessenger.of(context).showSnackBar(
+    ScaffoldMessenger.of(context as BuildContext).showSnackBar(
       SnackBar(
         content: Text(
           message,
@@ -91,7 +88,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                 builder: (context, state) {
                   if (state is PropertyDetailsLoaded) {
                     return Text(
-                      state.property.title,
+                      state.propertyDetails.title,
                       style: theme.textTheme.titleLarge?.copyWith(
                         color: isDark ? Colors.white : Colors.black,
                         fontSize: 16.sp,
@@ -173,7 +170,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(16.r),
                               child: PropertyImageCarousel(
-                                  images: state.property.images),
+                                  images: state.propertyDetails.images),
                             ),
                           ),
                           Expanded(
@@ -192,26 +189,26 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     PropertyHeader(
-                                      property: state.property,
+                                      property: state.propertyDetails,
                                       propertyId: widget.propertyId,
                                     ),
                                     SizedBox(height: 16.h),
                                     PropertyDescription(
-                                      description: state.property.description ??
+                                      description: state.propertyDetails.description ??
                                           "This is a beautiful property located in a prime location. "
                                               "It features modern amenities and is perfect for both living and investment purposes.",
                                     ),
                                     SizedBox(height: 16.h),
-                                    PropertyFeatures(property: state.property),
+                                    PropertyFeatures(property: state.propertyDetails),
                                     SizedBox(height: 24.h),
                                     // New sections
                                     PricePaymentSection(
-                                      property: state.property,
+                                      property: state.propertyDetails,
                                       isDark: isDark,
                                     ),
                                     SizedBox(height: 16.h),
                                     InvestmentMetrics(
-                                      property: state.property,
+                                      property: state.propertyDetails,
                                       isDark: isDark,
                                     ),
                                     SizedBox(height: 16.h),
@@ -346,7 +343,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                                 context,
                                 balance:
                                     5000.00, // You might want to get this from user data
-                                propertyTitle: state.property.title,
+                                propertyTitle: state.propertyDetails.title,
                                 onInvest: (amount, method) {
                                   // Process the investment
                                   final methodName =
@@ -354,7 +351,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                                           ? 'Wallet'
                                           : 'Credit Card';
                                   _showSnackBar(
-                                    'Successfully invested \$$amount in ${state.property.title} using $methodName',
+                                    'Successfully invested \$$amount in ${state.propertyDetails.title} using $methodName',
                                     true,
                                   );
 
