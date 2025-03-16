@@ -142,7 +142,7 @@ class PropertyDetails extends Equatable {
           json['agent'] is Map ? json['agent'] as Map<String, dynamic> : null,
       nearbyLandmarks: json['nearby_landmarks'] is List
           ? (json['nearby_landmarks'] as List)
-              .where((item) => item is Map)
+              .whereType<Map>()
               .map((item) => item as Map<String, dynamic>)
               .toList()
           : null,
@@ -154,7 +154,7 @@ class PropertyDetails extends Equatable {
           : null,
       inspectionTimes: json['inspection_times'] is List
           ? (json['inspection_times'] as List)
-              .where((item) => item is Map)
+              .whereType<Map>()
               .map((item) => item as Map<String, dynamic>)
               .toList()
           : null,

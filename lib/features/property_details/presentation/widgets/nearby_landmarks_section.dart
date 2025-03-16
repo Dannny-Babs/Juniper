@@ -6,10 +6,10 @@ class NearbyLandmarksSection extends StatelessWidget {
   final bool isDark;
 
   const NearbyLandmarksSection({
-    Key? key,
+    super.key,
     required this.landmarks,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class NearbyLandmarksSection extends StatelessWidget {
           SizedBox(height: 16.h),
           ...groupedLandmarks.entries
               .map((entry) => _buildCategorySection(entry.key, entry.value))
-              .toList(),
+              ,
         ],
       ),
     );
@@ -103,7 +103,7 @@ class NearbyLandmarksSection extends StatelessWidget {
           ],
         ),
         SizedBox(height: 12.h),
-        ...landmarks.map((landmark) => _buildLandmarkItem(landmark)).toList(),
+        ...landmarks.map((landmark) => _buildLandmarkItem(landmark)),
         SizedBox(height: 16.h),
       ],
     );

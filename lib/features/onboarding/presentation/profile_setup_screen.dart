@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 
-import '../../navigation/presentation/bloc/navigation_bloc.dart';
 import 'final_setup.dart';
 import 'third_setup.dart';
 import 'second_setup.dart';

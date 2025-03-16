@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:juniper/features/home/presentation/widgets/home_header.dart';
 import 'package:juniper/features/home/presentation/widgets/main_content.dart';
 import 'package:juniper/features/home/presentation/widgets/property_list.dart';
 import 'package:juniper/core/utils/utils.dart';
-
 import '../../data/models/property.dart';
 import '../../data/repositories/property.dart';
-import '../../../property_details/domain/bloc/property_details_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -116,6 +113,7 @@ class _HomePageState extends State<HomePage>
     // Try to preload the property details
     try {
       context.read<PropertyDetailsBloc>().add(LoadPropertyDetails(property.id));
+      
     } catch (e) {
       debugPrint('PropertyDetailsBloc not available: $e');
     }

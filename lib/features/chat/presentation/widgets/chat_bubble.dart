@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:chat_bubbles/chat_bubbles.dart';
 import '../../../../core/utils/utils.dart';
 import '../../domain/entities/message.dart';
 

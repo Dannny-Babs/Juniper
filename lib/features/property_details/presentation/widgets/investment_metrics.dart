@@ -7,10 +7,10 @@ class InvestmentMetrics extends StatelessWidget {
   final bool isDark;
 
   const InvestmentMetrics({
-    Key? key,
+    super.key,
     required this.property,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

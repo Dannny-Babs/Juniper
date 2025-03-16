@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/utils.dart';
-import '../bloc/navigation_bloc.dart';
 
 
 class ScaffoldWithBottomNavBar extends StatelessWidget {

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/optimized_image.dart';
 import '../../data/models/property_details.dart';
-import '../../domain/bloc/property_details_bloc.dart';
 import '../widgets/property_details_gallery.dart';
 
 class PropertyDetailsPage extends StatelessWidget {

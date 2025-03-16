@@ -110,7 +110,7 @@ class Property {
           json['agent'] is Map ? json['agent'] as Map<String, dynamic> : null,
       nearbyLandmarks: json['nearby_landmarks'] is List
           ? (json['nearby_landmarks'] as List)
-              .where((item) => item is Map)
+              .whereType<Map>()
               .map((item) => item as Map<String, dynamic>)
               .toList()
           : null,

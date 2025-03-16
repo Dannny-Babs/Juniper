@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
-import '../bloc/onboarding_bloc.dart';
 import '../widgets/slider.dart';
 
 class OnboardingPage extends StatefulWidget {
