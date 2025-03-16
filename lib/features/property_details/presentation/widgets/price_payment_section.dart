@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/features/property_details/data/models/property_details.dart';
-import 'package:intl/intl.dart';
 
 class PricePaymentSection extends StatefulWidget {
   final PropertyDetails property;
   final bool isDark;
 
   const PricePaymentSection({
-    Key? key,
+    super.key,
     required this.property,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   State<PricePaymentSection> createState() => _PricePaymentSectionState();

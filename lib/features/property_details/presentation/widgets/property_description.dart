@@ -6,10 +6,10 @@ class PropertyDescription extends StatefulWidget {
   final int maxLines;
 
   const PropertyDescription({
-    Key? key,
+    super.key,
     required this.description,
     this.maxLines = 3,
-  }) : super(key: key);
+  });
 
   @override
   State<PropertyDescription> createState() => _PropertyDescriptionState();

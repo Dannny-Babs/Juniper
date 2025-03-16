@@ -8,10 +8,10 @@ class PropertyHeader extends StatelessWidget {
   final String propertyId;
 
   const PropertyHeader({
-    Key? key,
+    super.key,
     required this.property,
     required this.propertyId,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -7,10 +7,10 @@ class PropertyActionButtons extends StatelessWidget {
   final VoidCallback? onContactPressed;
 
   const PropertyActionButtons({
-    Key? key,
+    super.key,
     this.onInvestPressed,
     this.onContactPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/optimized_image.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PropertyImageCarousel extends StatefulWidget {
   final List<String> images;
   final double? height;
 
   const PropertyImageCarousel({
-    Key? key,
+    super.key,
     required this.images,
     this.height = 240,
-  }) : super(key: key);
+  });
 
   @override
   State<PropertyImageCarousel> createState() => _PropertyImageCarouselState();

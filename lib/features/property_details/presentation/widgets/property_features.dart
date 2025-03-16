@@ -7,9 +7,9 @@ class PropertyFeatures extends StatelessWidget {
   final PropertyDetails property;
 
   const PropertyFeatures({
-    Key? key,
+    super.key,
     required this.property,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
