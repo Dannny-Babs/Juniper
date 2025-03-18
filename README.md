@@ -107,3 +107,16 @@ For questions or feedback, feel free to reach out:
 
 
 Code Fix:
+
+
+Runner
+All interface orientations must be supported unless the app requires full screen.
+
+/Users/ozii/Documents/Juniper/ios/Runner/Assets.xcassets
+/Users/ozii/Documents/Juniper/ios/Runner/Assets.xcassets:./AppIcon.appiconset A 76x76@2x app icon is required for iPad apps targeting iOS 7.0 and later
+
+/Users/ozii/Documents/Juniper/ios/Runner/Assets.xcassets:./AppIcon.appiconset A 83.5x83.5@2x app icon is required for iPad apps targeting iOS 9.0 and later
+
+permission_handler_apple
+/Users/ozii/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/PhonePermissionStrategy.m
+/Users/ozii/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/PhonePermissionStrategy.m:49:35 'subscriberCellularProvider' is deprecated: first deprecated in iOS 12.0
