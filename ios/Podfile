@@ -12,45 +12,90 @@ project 'Runner', {
 
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
-  unless File.exist?(generated_xcode_build_settings_path)
-    raise "#{generated_xcode_build_settings_path} must exist. If you're running pod install manually, make sure flutter pub get is executed first"
+  if !File.exist?(generated_xcode_build_settings_path)
+    # Instead of raising an error, show a helpful message and attempt to continue
+    puts "Warning: #{generated_xcode_build_settings_path} does not exist."
+    puts "Running 'flutter pub get' to generate necessary files..."
+    system('cd .. && flutter pub get')
+    
+    # Check if the file was generated
+    if !File.exist?(generated_xcode_build_settings_path)
+      puts "Failed to generate Flutter configuration files. Please run 'flutter pub get' manually."
+      return nil
+    end
   end
 
   File.foreach(generated_xcode_build_settings_path) do |line|
     matches = line.match(/FLUTTER_ROOT\=(.*)/)
     return matches[1].strip if matches
   end
-  raise "FLUTTER_ROOT not found in #{generated_xcode_build_settings_path}. Try deleting Generated.xcconfig, then run flutter pub get"
-end
-
-require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
-
-flutter_ios_podfile_setup
-
-target 'Runner' do
-  use_frameworks!
-  use_modular_headers!
-
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  target 'RunnerTests' do
-    inherit! :search_paths
+  
+  # If we can't find FLUTTER_ROOT, try to determine it from Flutter executable
+  flutter_path = `which flutter`.strip
+  if flutter_path && !flutter_path.empty?
+    return File.dirname(File.dirname(flutter_path))
   end
+  
+  puts "FLUTTER_ROOT not found. Using fallback method."
+  # Try to locate Flutter using environment variable or common installation paths
+  return ENV['FLUTTER_ROOT'] if ENV['FLUTTER_ROOT']
+  
+  # Last resort: try common paths
+  [
+    File.expand_path('~/flutter'),
+    File.expand_path('/usr/local/flutter'),
+    File.expand_path('/opt/flutter')
+  ].each do |path|
+    return path if File.directory?(path)
+  end
+  
+  raise "FLUTTER_ROOT not found. Please set FLUTTER_ROOT environment variable or install Flutter in a standard location."
 end
 
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    flutter_additional_ios_build_settings(target)
-    
-    # Add deployment target to all targets
-    target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
-      
-      # Set code signing settings to automatic for all targets
-      config.build_settings['CODE_SIGNING_ALLOWED'] = 'YES'
-      config.build_settings['CODE_SIGNING_REQUIRED'] = 'YES'
-      
-      # Enable arm64 for simulators for M1 Macs
-      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386'
+# Only require podhelper if we found a valid Flutter root
+if flutter_root
+  require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
+  flutter_ios_podfile_setup
+
+  target 'Runner' do
+    use_frameworks!
+    use_modular_headers!
+
+    flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+    target 'RunnerTests' do
+      inherit! :search_paths
     end
   end
+
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      if flutter_root
+        flutter_additional_ios_build_settings(target)
+      end
+      
+      # Add deployment target to all targets
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+        
+        # Set code signing settings for all targets
+        config.build_settings['CODE_SIGNING_ALLOWED'] = 'YES'
+        config.build_settings['CODE_SIGNING_REQUIRED'] = 'YES'
+        config.build_settings['DEVELOPMENT_TEAM'] = 'T6NPC95BFV'
+        
+        # Enable arm64 for simulators for M1 Macs
+        config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386'
+      end
+    end
+
+    # Disable code signing for bundles
+    installer.pods_project.targets.each do |target|
+      if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
+        target.build_configurations.each do |config|
+          config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+        end
+      end
+    end
+  end
+else
+  puts "Warning: Flutter configuration couldn't be loaded. Pod installation may fail."
 end

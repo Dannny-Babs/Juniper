@@ -30,9 +30,6 @@ dependencies:
   go_router: ^14.8.1 # Update to latest version
   intl: ^0.20.1
   image_picker: ^1.1.2
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.15.3
-  cloud_firestore: ^4.13.6
   tab_container: ^3.5.3
   shimmer: ^3.0.0
   cached_network_image: ^3.4.1

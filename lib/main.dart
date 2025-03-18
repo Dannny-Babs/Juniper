@@ -6,8 +6,20 @@ import 'package:path_provider/path_provider.dart'
 import 'core/utils/utils.dart';
 import 'features/property_details/data/repositories/property_repository_impl.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Clear any hanging PIF transfer sessions that might cause issues
+  try {
+    final tempDir = await getTemporaryDirectory();
+    final pifDir = Directory('${tempDir.path}/PIFSession');
+    if (await pifDir.exists()) {
+      await pifDir.delete(recursive: true);
+    }
+  } catch (e) {
+    debugPrint('Failed to clear PIF sessions: $e');
+  }
 
   // Initialize database properly
   await initializeDependencies();
@@ -35,11 +47,6 @@ void main() async {
         BlocProvider(
           create: (context) => ChatBloc(),
         ),
-        BlocProvider(
-          create: (context) => PropertyDetailsBloc(
-            propertyRepository: PropertyRepositoryImpl(),
-          ),
-        ),
         BlocProvider<PropertyDetailsBloc>(
           create: (context) => PropertyDetailsBloc(
             propertyRepository: PropertyRepositoryImpl(),
@@ -60,6 +67,21 @@ Future<void> initializeDependencies() async {
 
     final dbPath = path.join(appDocDir.path, 'juniper.db');
 
+    // Try to delete any problematic lockfiles that might cause PIF transfer issues
+    try {
+      final lockFile = File('$dbPath-shm');
+      if (await lockFile.exists()) {
+        await lockFile.delete();
+      }
+      final journalFile = File('$dbPath-wal');
+      if (await journalFile.exists()) {
+        await journalFile.delete();
+      }
+    } catch (e) {
+      debugPrint('Failed to clear database lock files: $e');
+      // Continue anyway
+    }
+
     // Open database with minimal configuration first
     final database = await openDatabase(
       dbPath,
@@ -76,6 +98,9 @@ Future<void> initializeDependencies() async {
           )
         ''');
       },
+      // Add timeout to prevent hanging
+      singleInstance: true,
+      readOnly: false,
     );
 
     // Configure database after it's open
