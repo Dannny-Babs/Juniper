@@ -26,6 +26,31 @@ Juniper is a modern mobile app that bridges the gap between renters, landlords, 
 
 ---
 
+## Demo
+
+Here are some screenshots of the Juniper app in action:
+
+<p align="center">
+  <img src="demo/IMG_4352.PNG" width="200" alt="Onboarding Screen">
+  <img src="demo/IMG_4353.PNG" width="200" alt="Home Screen">
+  <img src="demo/IMG_4354.PNG" width="200" alt="Search Screen">
+  <img src="demo/IMG_4355.PNG" width="200" alt="Property Details">
+  <img src="demo/IMG_4357.PNG" width="200" alt="Investment Screen">
+  <img src="demo/IMG_4358.PNG" width="200" alt="Analytics Screen">
+  <img src="demo/IMG_4360.PNG" width="200" alt="Settings Screen">
+</p>
+
+### Demo Video
+
+<p align="center">
+  <video width="400" controls>
+    <source src="demo/demo_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+---
+
 ## Technology Stack
 
 - **Framework**: Flutter
@@ -103,20 +128,3 @@ For questions or feedback, feel free to reach out:
  • Author: Daniel
  • Email: <dbabs297@gmail.com>
  • LinkedIn: in/dannybabs
-
-
-
-Code Fix:
-
-
-Runner
-All interface orientations must be supported unless the app requires full screen.
-
-/Users/ozii/Documents/Juniper/ios/Runner/Assets.xcassets
-/Users/ozii/Documents/Juniper/ios/Runner/Assets.xcassets:./AppIcon.appiconset A 76x76@2x app icon is required for iPad apps targeting iOS 7.0 and later
-
-/Users/ozii/Documents/Juniper/ios/Runner/Assets.xcassets:./AppIcon.appiconset A 83.5x83.5@2x app icon is required for iPad apps targeting iOS 9.0 and later
-
-permission_handler_apple
-/Users/ozii/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/PhonePermissionStrategy.m
-/Users/ozii/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/PhonePermissionStrategy.m:49:35 'subscriberCellularProvider' is deprecated: first deprecated in iOS 12.0
