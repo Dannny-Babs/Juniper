@@ -102,6 +102,7 @@ lib/
 │   ├── investment/      # Investment tracking and analytics
 │   ├── onboarding/      # Onboarding screens and flow
 ├── presentation/        # UI layers and widgets
+```
 
 Future Roadmap
  • Implement AI-powered apartment recommendations
