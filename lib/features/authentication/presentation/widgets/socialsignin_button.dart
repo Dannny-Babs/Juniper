@@ -29,6 +29,10 @@ class SocialSignInButton extends StatelessWidget {
             ),
             onPressed: () {
               // Handle Google sign in
+              context
+                  .read<NavigationBloc>()
+                  .add(AuthenticationStatusChanged(true));
+              context.go('/home');
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

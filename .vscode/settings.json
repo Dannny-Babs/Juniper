@@ -1,3 +1,9 @@
 {
-    "cmake.sourceDirectory": "C:/Users/danny/Documents/dev/juniper/windows/flutter"
+    "cmake.sourceDirectory": "C:/Users/danny/Documents/dev/juniper/linux",
+    "cSpell.words": [
+        "borderstyle",
+        "Timeframe",
+        "timeframes"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.juniper"
     ndkVersion = '28.0.12674087 rc2'
-    compileSdkVersion = 34
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -28,6 +28,14 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        
+        // Add OpenGL ES version
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+        manifestPlaceholders = [
+            'appGlEsVersion': '0x00020000' // OpenGL ES 2.0
+        ]
     }
 
     buildTypes {

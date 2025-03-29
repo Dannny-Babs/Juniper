@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
+import 'package:juniper/core/utils/utils.dart';
 
 class AppTheme {
   // Base text style
@@ -162,6 +162,46 @@ class AppTheme {
     );
   }
 
+  // Helper method to build bar theme
+  static NavigationBarThemeData _buildNavigationBarTheme(
+      ColorScheme colorScheme, bool isDark) {
+    return NavigationBarThemeData(
+      height: 165.h,
+      elevation: 0,
+      backgroundColor: isDark ? AppColors.surfaceDark100 : Colors.white,
+      indicatorColor: Colors.transparent,
+      labelTextStyle: WidgetStateProperty.resolveWith((states) {
+        final TextStyle baseStyle = TextStyle(
+          fontFamily: 'HelveticaNeue',
+          letterSpacing: -0.1,
+        );
+
+        if (states.contains(WidgetState.selected)) {
+          return baseStyle.copyWith(
+            fontSize: 14 .sp,
+            fontWeight: FontWeight.w500,
+            color: AppColors.primary500,
+          );
+        }
+
+        return baseStyle.copyWith(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.normal,
+            color: isDark ? AppColors.textSecondaryDark : AppColors.neutral500);
+      }),
+      iconTheme: WidgetStateProperty.resolveWith((states) {
+        final color = states.contains(WidgetState.selected)
+            ? AppColors.primary500
+            : isDark
+                ? AppColors.textSecondaryDark
+                : AppColors.neutral500;
+
+        return IconThemeData(color: color, size: 24);
+      }),
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+    );
+  }
+
   // Helper method to build card theme
   static CardTheme _buildCardTheme(ColorScheme colorScheme, bool isDark) {
     return CardTheme(
@@ -205,6 +245,7 @@ class AppTheme {
     ),
     scaffoldBackgroundColor: AppColors.backgroundLight,
     cardTheme: _buildCardTheme(ColorScheme.light(), false),
+    navigationBarTheme: _buildNavigationBarTheme(ColorScheme.light(), false),
     inputDecorationTheme:
         _buildInputDecorationTheme(ColorScheme.light(), false),
     textTheme: _buildTextTheme(ColorScheme.light()),
@@ -262,6 +303,7 @@ class AppTheme {
     cardTheme: _buildCardTheme(ColorScheme.dark(), true),
     inputDecorationTheme: _buildInputDecorationTheme(ColorScheme.dark(), true),
     textTheme: _buildTextTheme(ColorScheme.dark()),
+    navigationBarTheme: _buildNavigationBarTheme(ColorScheme.dark(), true),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         elevation: WidgetStateProperty.resolveWith((states) {

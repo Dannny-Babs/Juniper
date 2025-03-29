@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:juniper/core/utils/colors.dart';
 import 'package:juniper/core/utils/packages.dart';
 
 enum ButtonVariant { primary, secondary, outline, error, success }
@@ -23,6 +24,8 @@ class CustomButton extends StatefulWidget {
   final BorderRadius? borderRadius;
   final Color? textColor;
   final Color? backgroundColor;
+  final bool noShadow;
+  
 
   const CustomButton({
     super.key,
@@ -42,6 +45,7 @@ class CustomButton extends StatefulWidget {
     this.borderRadius,
     this.textColor,
     this.backgroundColor,
+    this.noShadow = false
   });
 
   @override
@@ -138,22 +142,25 @@ class _CustomButtonState extends State<CustomButton>
     switch (widget.variant) {
       case ButtonVariant.primary:
         return _isHovered
-            ? theme.colorScheme.primary.withOpacity(0.9)
+            ? theme.colorScheme.primary.withAlpha((0.9 * 255).round())
             : theme.colorScheme.primary;
       case ButtonVariant.secondary:
         return _isHovered
-            ? theme.colorScheme.secondaryContainer.withOpacity(0.9)
+            ? theme.colorScheme.secondaryContainer
+                .withAlpha((0.9 * 255).round())
             : theme.colorScheme.secondaryContainer;
       case ButtonVariant.outline:
         return _isHovered
-            ? theme.colorScheme.surface.withOpacity(0.1)
+            ? theme.colorScheme.surface.withAlpha((0.1 * 255).round())
             : Colors.transparent;
       case ButtonVariant.error:
         return _isHovered
-            ? theme.colorScheme.error.withOpacity(0.9)
+            ? theme.colorScheme.error.withAlpha((0.9 * 255).round())
             : theme.colorScheme.error;
       case ButtonVariant.success:
-        return _isHovered ? Colors.green.withOpacity(0.9) : Colors.green;
+        return _isHovered
+            ? Colors.green.withAlpha((0.9 * 255).round())
+            : Colors.green;
     }
   }
 
@@ -163,8 +170,10 @@ class _CustomButtonState extends State<CustomButton>
     }
 
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     if (widget.isDisabled) {
-      return theme.colorScheme.onSurface.withOpacity(0.38);
+      return theme.colorScheme.onSurface.withAlpha(102);
     }
 
     switch (widget.variant) {
@@ -173,12 +182,20 @@ class _CustomButtonState extends State<CustomButton>
       case ButtonVariant.secondary:
         return theme.colorScheme.onSecondaryContainer;
       case ButtonVariant.outline:
-        return theme.colorScheme.primary;
+        return isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight;
       case ButtonVariant.error:
         return theme.colorScheme.onError;
       case ButtonVariant.success:
         return Colors.white;
     }
+  }
+
+  Border _borderstyle(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    return widget.variant == ButtonVariant.outline
+        ? Border.all(color: isDark ? AppColors.borderDark : AppColors.borderLight)
+        : const Border();
   }
 
   @override
@@ -198,14 +215,16 @@ class _CustomButtonState extends State<CustomButton>
           child: Container(
             width: buttonSize.width,
             height: buttonSize.height,
+
             decoration: BoxDecoration(
               color: _getBackgroundColor(context),
               borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
-              boxShadow: widget.isDisabled || widget.isLoading
+              border: _borderstyle(context),
+              boxShadow: widget.isDisabled || widget.isLoading || widget.noShadow
                   ? []
                   : [
                       BoxShadow(
-                        color: theme.shadowColor.withOpacity(0.2),
+                        color: theme.shadowColor.withAlpha((0.2 * 255).round()),
                         blurRadius: 8,
                         offset: Offset(0, 4),
                       ),

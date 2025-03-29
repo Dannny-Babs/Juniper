@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:juniper/core/utils/utils.dart';
 import 'package:juniper/core/widgets/button.dart';
-import '../bloc/onboarding_bloc.dart';
 import '../widgets/slider.dart';
+import '../bloc/onboarding_bloc.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -42,8 +44,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
     context.read<OnboardingBloc>().add(OnboardingStarted());
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<OnboardingBloc, OnboardingState>(
@@ -63,7 +63,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           body: Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.all(AppConstants.padding24),
+                padding: const EdgeInsets.all(AppConstants.padding28),
                 child: Column(
                   children: [
                     Row(
@@ -71,15 +71,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       children: [
                         _buildPagination(state.currentPage),
                         TextButton(
-                          onPressed: () => context.read<OnboardingBloc>().add(OnboardingSkipped()),
+                          onPressed: () => context
+                              .read<OnboardingBloc>()
+                              .add(OnboardingSkipped()),
                           child: Row(
                             children: [
                               Text(
                                 'Skip',
-                                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                  color: AppColors.neutral500.withAlpha(230),
-                                  fontSize: 14.sp,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      color: AppColors.neutral500,
+                                      fontSize: 14.sp,
+                                    ),
                               ),
                               const SizedBox(width: 3),
                               const Icon(
@@ -97,8 +102,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       child: PageView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         controller: _pageController,
+                        onPageChanged: (index) {
+                          context
+                              .read<OnboardingBloc>()
+                              .add(OnboardingPageChanged(pageIndex: index));
+                        },
                         itemCount: slides.length,
-                        
                         itemBuilder: (context, index) {
                           return OnboardingSlideWidget(slide: slides[index]);
                         },
@@ -145,21 +154,26 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   Widget _buildButtons(OnboardingState state) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomButton(
       height: 48.sp,
       text: state.currentPage == slides.length - 1 ? 'Get Started' : 'Continue',
-      backgroundColor: AppColors.neutral500,
-      textColor: AppColors.neutral100,
+      backgroundColor:
+          isDark ? AppColors.backgroundLight : AppColors.neutral800,
+      textColor: isDark ? AppColors.neutral900 : AppColors.backgroundLight,
       size: ButtonSize.medium,
       isLoading: state.isLoading,
       onPressed: () {
         if (state.currentPage == slides.length - 1) {
           context.read<OnboardingBloc>().add(OnboardingCompleted());
         } else {
-          _pageController.nextPage(
+          final nextPage = state.currentPage + 1;
+          _pageController.animateToPage(
+            nextPage,
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
           );
+          context.read<OnboardingBloc>().add(OnboardingPageChanged(pageIndex: nextPage));
         }
       },
     );
